@@ -1,5 +1,5 @@
 <template>
-  <body>
+  <body id="paper">
   <el-form :rules="rules" class="login-container" label-position="left"
            label-width="0px" v-loading="loading">
     <h3 class="login_title">系统登录</h3>
@@ -14,7 +14,7 @@
     <el-checkbox class="login_remember" v-model="checked"
                  label-position="left">记住密码</el-checkbox>
     <el-form-item style="width: 100%">
-      <el-button type="primary" style="width: 100%" @click="submitClick">登录</el-button>
+      <el-button type="primary" style="width: 100%" v-on:click="login">登录</el-button>
     </el-form-item>
   </el-form>
   </body>
@@ -36,30 +36,30 @@
       }
     },
     methods: {
-      submitClick: function () {
-        var _this = this
-        this.loading = true
-        this.postRequest('/login', {
-          username: this.loginForm.username,
-          password: this.loginForm.password
-        }).then(resp => {
-          _this.loading = false
-          if (resp && resp.status === 200) {
-            var data = resp.data
-            _this.$store.commit('login', data.obj)
-            var path = _this.$route.query.redirect
-            _this.$router
-              .replace({path: path === '/' || path === undefined ? '/home' : path})
-          }
-        })
+      login () {
+        this.$axios
+          .post('/login', {
+            username: this.loginForm.username,
+            password: this.loginForm.password
+          })
+          .then(successResponse => {
+            this.responseResult = JSON.stringify(successResponse.data)
+            if (successResponse.data.code === 200) {
+              this.$router.replace({path: '/home'})
+            }
+          })
+          .catch(failResponse => {})
+      }
       }
     }
-  }
 </script>
 <style>
-  body{
+   #paper {
     background:url("../assets/img/bg/eva1.jpg") no-repeat;
     background-position: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
   }
   .login-container {
     border-radius: 15px;

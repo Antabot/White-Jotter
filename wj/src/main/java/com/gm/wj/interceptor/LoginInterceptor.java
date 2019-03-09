@@ -31,7 +31,7 @@ public class LoginInterceptor  implements HandlerInterceptor{
         if(begingWith(page, requireAuthPages)){
             User user = (User) session.getAttribute("user");
             if(user==null) {
-                httpServletResponse.sendRedirect("guapi");
+                httpServletResponse.sendRedirect("login");
                 return false;
             }
         }
