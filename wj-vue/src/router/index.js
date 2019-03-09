@@ -20,7 +20,8 @@ export default new Router({
       component: Login
     },
     {
-      // 表面是appindex，实际上是先访问了home然后跳转的。home页面并不需要被访问，只是作为其它组件的父组件
+      // 表面是appindex，实际上是先访问了home然后跳转的。
+      // home页面并不需要被访问，只是作为其它组件的父组件
       path: '/home',
       name: 'Home',
       component: Home,
