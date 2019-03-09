@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import HelloWorld from '@/components/HelloWorld'
 import AppIndex from '@/components/home/AppIndex'
 import JotterIndex from '@/components/jotter/JotterIndex'
 import Editor from '@/components/jotter/Editor'
