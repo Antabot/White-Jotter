@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 @JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 
 public class User {
