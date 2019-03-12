@@ -1,24 +1,22 @@
 <template>
-  <elmain>
-  <el-row class="proto-card-list">
-    <el-col :span="8" class="picture">
-      <img src="book.png">
-    </el-col>
-    <el-col :span="8" class="body">
-      <!--<el-row>-->
-        <!--<el-col :span="24">-->
-          <h1 class="header">书名</h1>
-        <!--</el-col>-->
-      <!--</el-row>-->
-      <!--<el-row>-->
-        <!--<el-col :span="24">-->
-          <p class="text">简介 啊啊啊啊啊编程好难啊</p>
-        <!--</el-col>-->
-      <!--</el-row>-->
-    </el-col>
-    <el-col :span="8" class="footer"></el-col>
-  </el-row>
-  </elmain>
+<div class="book">
+  <!--<el-row>-->
+    <!--<el-col :span="8" class="cover">-->
+      <!--<img src="book.png">-->
+    <!--</el-col>-->
+  <!--</el-row>-->
+  <div class="cover">
+    <a href="#nowhere">
+      <img src="https://img3.doubanio.com/view/subject/m/public/s29958602.jpg" alt="">
+    </a>
+  </div>
+  <div class="info">
+    <div class="title">
+      <a href="">且在人间</a>
+    </div>
+    <div class="author">余秀华</div>
+  </div>
+</div>
 </template>
 
 <script>
@@ -27,47 +25,41 @@
     }
 </script>
 <style scoped>
-  .proto-card-list {
-    height: 150px;
-    background: #99a9bf;
-    line-height: 100px;
-    margin: 0;
+  .book {
+  width: 115px;
+  height: 220px;
+}
+
+  .cover {
+    width: 115px;
+    height: 172px;
+    margin-bottom: 7px;
+    overflow: hidden;
   }
-  .picture {
-    background: #e5e9f2;
-    margin: 0px;
-    width: 25%;
-    height: 100%;
+
+  img {
+    width: 115px;
+    height: 172px;
   }
-  .header {
-    background: #99a9bf;
-    margin: 0px;
-    line-height: 50px;
+
+  .title {
+    font-size: 14px;
+    text-align: left;
   }
-  .text {
-    background: #e5e9f2;
-    margin: 0px;
-    line-height: 100px;
+
+  .author {
+    color: #333;
+    width: 102px;
+    font-size: 13px;
+    margin-bottom: 6px;
+    text-align: left;
   }
-  .footer {
-    background: #d3dce6;
-    line-height: 100px;
+
+  a {
+    text-decoration: none;
   }
-  .body{
-    width: 40%;
-    background: blue;
-    margin: 0px;
-    height: 100%;
-  }
-  .bg-purple-light {
-    background: #e5e9f2;
-  }
-  .grid-content {
-    border-radius: 4px;
-    min-height: 36px;
-  }
-  .row-bg {
-    padding: 10px 0;
-    background-color: #f9fafc;
+
+  a:link, a:visited, a:focus {
+    color: #3377aa;
   }
 </style>
