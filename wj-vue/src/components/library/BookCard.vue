@@ -1,10 +1,5 @@
 <template>
 <div class="book">
-  <!--<el-row>-->
-    <!--<el-col :span="8" class="cover">-->
-      <!--<img src="book.png">-->
-    <!--</el-col>-->
-  <!--</el-row>-->
   <div class="cover">
     <a href="#nowhere">
       <img src="https://img3.doubanio.com/view/subject/m/public/s29958602.jpg" alt="">
@@ -12,7 +7,7 @@
   </div>
   <div class="info">
     <div class="title">
-      <a href="">且在人间</a>
+      <a href="">{{book.title}}</a>
     </div>
     <div class="author">余秀华</div>
   </div>
@@ -21,7 +16,34 @@
 
 <script>
     export default {
-        name: 'BookCard'
+      name: 'BookCard',
+      methods: {
+        loadEmps () {
+          var _this = this
+          this.$axios.get('/libraryindex/books').then(resp => {
+            if (resp && resp.status === 200) {
+              var data = resp.data
+              _this.books = data.books
+          }
+        })
+      }
+      },
+      data: function () {
+        return {
+          books: [],
+          book: {
+            cover: '',
+            title: '',
+            author: '',
+            link: ''
+          },
+          rules: {
+            cover: [{required: true, message: '必填:封面', trigger: 'blur'}],
+            title: [{required: true, message: '必填:标题', trigger: 'blur'}],
+            author: [{required: true, message: '必填:作者', trigger: 'blur'}]
+          }
+        }
+      }
     }
 </script>
 <style scoped>
