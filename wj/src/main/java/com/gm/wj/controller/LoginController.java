@@ -37,7 +37,7 @@ public class LoginController {
     @CrossOrigin
     @RequestMapping(value = "/api/login", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
     @ResponseBody
-    public Result login(@Valid @RequestBody VueLoginInfoVo loginInfoVo, BindingResult bindingResult, HttpSession session) {
+    public Result login(@Valid @RequestBody VueLoginInfoVo loginInfoVo, HttpSession session) {
 //        if (bindingResult.hasErrors()) {
 //            String message = String.format("登陆失败，详细信息[%s]。", bindingResult.getFieldError().getDefaultMessage());
 //            return ResultFactory.buildFailResult(message);
