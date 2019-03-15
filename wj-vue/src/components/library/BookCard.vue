@@ -10,16 +10,16 @@
       </el-input>
       <el-button size="small" type="primary" icon="el-icon-search" @click="searchClick">搜索</el-button>
     </div>
-<el-card style="width: 135px;margin-bottom: 20px;height: 233px" class="book" bodyStyle="padding:10px" v-for="(item,index) in books" :key="item.id"
+<el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 3px" class="book" bodyStyle="padding:10px" v-for="(item,index) in books" :key="item.id"
          v-loading="cardLoading[index]">
   <div class="cover">
-    <a href="/details?id='{{item.id}}'">
+    <a href="">
       <img :src="item.cover" alt="">
     </a>
   </div>
   <div class="info">
     <div class="title">
-      <a href="/details?id='{{item.id}}'">{{item.title}}</a>
+      <a href="">{{item.title}}</a>
     </div>
     <div class="author">{{item.author}}</div>
   </div>
@@ -82,7 +82,7 @@
   img {
     width: 115px;
     height: 172px;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
   }
 
   .title {

@@ -61,6 +61,9 @@
     width: 100%;
     position: fixed;
   }
+   body{
+     margin: 0px;
+   }
   .login-container {
     border-radius: 15px;
     background-clip: padding-box;
