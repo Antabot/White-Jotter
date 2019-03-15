@@ -11,7 +11,7 @@
         <book-card></book-card>
       </el-row>
       <el-row>
-        <pagination></pagination>
+        <!--<pagination></pagination>-->
       </el-row>
     </el-main>
       <!--<el-footer>-->

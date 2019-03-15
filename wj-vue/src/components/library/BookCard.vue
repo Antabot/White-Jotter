@@ -10,25 +10,57 @@
       </el-input>
       <el-button size="small" type="primary" icon="el-icon-search" @click="searchClick">搜索</el-button>
     </div>
-<el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 3px" class="book" bodyStyle="padding:10px" v-for="(item,index) in books" :key="item.id"
-         v-loading="cardLoading[index]">
-  <div class="cover">
-    <a href="">
-      <img :src="item.cover" alt="">
-    </a>
-  </div>
-  <div class="info">
-    <div class="title">
-      <a href="">{{item.title}}</a>
-    </div>
-    <div class="author">{{item.author}}</div>
-  </div>
-</el-card>
+    <el-tooltip effect="dark" placement="right" v-for="(item,index) in books" :key="item.id"
+                v-loading="cardLoading[index]">
+      <p slot="content" style="font-size: 14px;margin-bottom: 6px;">{{item.title}}</p>
+      <p slot="content"  style="font-size: 13px;margin-bottom: 6px">
+        <span>{{item.author}}</span> /
+        <span>{{item.date}}</span> /
+        <span>{{item.press}}</span>
+      </p>
+      <p slot="content" style="width: 300px" class="abstract">{{item.abs}}</p>
+      <el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 3px" class="book" bodyStyle="padding:10px" shadow="hover">
+        <div class="cover">
+          <a href="">
+            <img :src="item.cover" alt="">
+          </a>
+        </div>
+        <div class="info">
+          <div class="title">
+            <a href="">{{item.title}}</a>
+          </div>
+          <div class="author">{{item.author}}</div>
+        </div>
+      </el-card>
+    </el-tooltip>
+    <!--测试内容-->
+    <!--<el-tooltip effect="dark"  placement="right" enterable="false">-->
+      <!--<p slot="content" style="font-size: 14px;margin-bottom: 6px;">且在人间</p>-->
+      <!--<p slot="content"  style="font-size: 13px;margin-bottom: 6px">-->
+        <!--<span>余秀华</span> /-->
+        <!--<span>2019-3-15</span> /-->
+        <!--<span>人民邮电出版社</span>-->
+      <!--</p>-->
+      <!--<p slot="content" style="width: 300px" class="abstract">简介</p>-->
+  <!--<el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 3px" class="book" bodyStyle="padding:10px"-->
+           <!--shadow="hover">-->
+    <!--<div class="cover">-->
+      <!--<a href="">-->
+        <!--<img src="../../assets/img/books/s29958602.jpg" alt="">-->
+      <!--</a>-->
+    <!--</div>-->
+    <!--<div class="info">-->
+      <!--<div class="title">-->
+        <!--<a href="">且在人间</a>-->
+      <!--</div>-->
+      <!--<div class="author">余秀华</div>-->
+    <!--</div>-->
+  <!--</el-card>-->
+    <!--</el-tooltip>-->
   </div>
 </template>
 
 <script>
-//    import ElCard from "../../../node_modules/element-ui/packages/card/src/main.vue";
 
     export default {
       name: 'BookCard',
@@ -55,17 +87,6 @@
             books: [],
             cardLoading: [],
             keywords: ''
-//            book: {
-//              cover: '',
-//              title: '',
-//              author: '',
-//              link: ''
-//            },
-//            rules: {
-//              cover: [{required: true, message: '必填:封面'}],
-//              title: [{required: true, message: '必填:标题'}],
-//              author: [{required: true, message: '必填:作者'}]
-//            }
           }
         }
       }
@@ -98,6 +119,11 @@
     text-align: left;
   }
 
+  .abstract {
+    display: block;
+    line-height: 17px;
+  }
+
   a {
     text-decoration: none;
   }
@@ -105,4 +131,5 @@
   a:link, a:visited, a:focus {
     color: #3377aa;
   }
+
 </style>

@@ -1,7 +1,6 @@
 package com.gm.wj.controller;
 
 import com.gm.wj.pojo.Book;
-import com.gm.wj.result.Result;
 import com.gm.wj.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -16,6 +16,33 @@ public class Book {
     String cover;
     String title;
     String author;
+    String date;
+    String press;
+    String abs;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getPress() {
+        return press;
+    }
+
+    public void setPress(String press) {
+        this.press = press;
+    }
+
+    public String getAbs() {
+        return abs;
+    }
+
+    public void setAbs(String abs) {
+        this.abs = abs;
+    }
 
     public int getId() {
         return id;
