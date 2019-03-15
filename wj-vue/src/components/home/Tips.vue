@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import Card from '@/components/common/Card'
+  import Card from '@/components/home/Card'
   export default {
     name: 'Tips',
     components: {Card}
