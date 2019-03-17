@@ -13,9 +13,8 @@
   .el-carousel__item h3 {
     color: #475669;
     font-size: 14px;
-    opacity: 0.75;
     /*line-height: 300px;*/
-    margin: 0;
+    margin: 0px;
   }
 
   .el-carousel__item:nth-child(2n) {
@@ -27,7 +26,7 @@
   }
 
   .carousel_img {
-    height: 280px;
+    height: 275px;
     /*width: 300px;*/
     text-align: center;
   }
@@ -39,16 +38,16 @@
     data: function () {
       return {
         items: [{
-          title: 'How2J.cn',
+          title: 'How2J.cn - Java 全栈学习网站',
           img: '../../../static/img/carousel/how2j.png',
           link: 'http://how2j.cn?p=50613'},
         {
-          title: 'Vue',
+          title: 'Vue.js - 渐进式 JavaScript 框架',
           img: '../../../static/img/carousel/vue.png',
           link: 'https://cn.vuejs.org/'
         },
         {
-          title: 'element-ui',
+          title: 'element-ui - 网站快速成型工具',
           img: '../../../static/img/carousel/element.png',
           link: 'http://element-cn.eleme.io/#/zh-CN'
         }]
