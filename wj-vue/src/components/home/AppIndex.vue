@@ -1,8 +1,9 @@
 <template>
     <div>
       <carousel></carousel>
-      <tips></tips>
+      <!--<tips></tips>-->
       <quick-nav></quick-nav>
+      <slogan></slogan>
     </div>
 </template>
 
@@ -10,9 +11,10 @@
   import Carousel from '@/components/home/Carousel'
   import QuickNav from '@/components/home/QuickNav'
   import Tips from '@/components/home/Tips'
+  import Slogan from '@/components/home/Slogan'
   export default {
     name: 'AppIndex',
-    components: {Carousel, QuickNav, Tips}
+    components: {Carousel, QuickNav, Tips, Slogan}
   }
 </script>
 

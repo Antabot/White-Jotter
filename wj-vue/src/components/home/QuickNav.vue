@@ -1,18 +1,8 @@
 <template>
     <div id="pro-div">
-      <el-row id="introduce">
-        <el-col :span="24">
-          <i class="el-icon-time" style="font-size: 300px;color: azure;margin-top: 50px"></i>
-          <span style="font-size: 30px;color: azure;">How much time do you left?</span><br>
-          <span style="color: azure;margin-left: 280px">Little ugly mmk</span>
-        </el-col>
-      </el-row>
-      <el-row id="quick-nav">
-        <el-col :span="6" class="nav-item"></el-col>
-        <el-col :span="6" class="nav-item"></el-col>
-        <el-col :span="6" class="nav-item"></el-col>
-        <el-col :span="6" class="nav-item"></el-col>
-      </el-row>
+      <img src="../../assets/img/icon/icon2.png" alt="" style="margin-left: -500px;margin-top: -80px">
+      <img src="../../assets/img/icon/icon5.png" alt="" style="width: 300px;position: absolute;margin-left: 200px">
+      <!--<img src="../../assets/img/icon/icon4.png" alt="" style="float: left;position: absolute">-->
     </div>
 </template>
 
@@ -25,32 +15,8 @@
 <style scoped>
 
 #pro-div{
-  height: 800px;
-  background-image: url("../../assets/img/bg/topo.png"), linear-gradient(70deg, #313375, #696cd2);
-}
-
-#introduce{
-  position: absolute;
-  height: 400px;
-  width: 60%;
-  margin-left: 20%;
-  margin-top: 100px;
-  background-color:black;
-}
-
-#quick-nav{
-  position: absolute;
   height: 200px;
-  width: 60%;
-  margin-left: 20%;
-  margin-top: 501px;
-  /*background-color: black;*/
+  /*background-image: url("../../assets/img/bg/topo.png"), linear-gradient(70deg, #313375, #696cd2);*/
 }
 
-.nav-item{
-  height: 150px;
-  background-color: black;
-  border-color: transparent;
-  border: 2px solid;
-  }
 </style>
