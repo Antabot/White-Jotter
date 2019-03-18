@@ -1,7 +1,7 @@
 <template>
   <el-carousel :interval="4000" type="card" height="300px" arrow="always" style="padding: 20px 5px">
     <el-carousel-item v-for="item in items" :key="item" style="box-shadow: 10px 10px 5px #888888;">
-      <a :href=item.link target="_Blank">
+      <a :href=item.link target="_blank">
         <img :src=item.img alt="" class="carousel_img">
       </a>
       <h3>{{item.title}}</h3>

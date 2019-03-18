@@ -2,7 +2,7 @@
     <div id="pro-div">
       <img src="../../assets/img/icon/icon2.png" alt="" style="margin-left: -500px;margin-top: -80px">
       <img src="../../assets/img/icon/icon5.png" alt="" style="width: 300px;position: absolute;margin-left: 200px">
-      <!--<img src="../../assets/img/icon/icon4.png" alt="" style="float: left;position: absolute">-->
+      <img src="../../assets/img/icon/icon7.png" alt="" style="position: absolute">
     </div>
 </template>
 
