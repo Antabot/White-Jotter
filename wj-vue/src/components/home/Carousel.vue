@@ -1,5 +1,5 @@
 <template>
-  <el-carousel :interval="4000" type="card" height="300px" arrow="always" style="padding: 20px 5px">
+  <el-carousel  class="push" :interval="4000" type="card" height="280px" arrow="always">
     <el-carousel-item v-for="item in items" :key="item" style="box-shadow: 10px 10px 5px #888888;">
       <a :href=item.link target="_blank">
         <img :src=item.img alt="" class="carousel_img">
@@ -17,6 +17,11 @@
     margin: 0px;
   }
 
+  .push {
+    padding: 20px 5px;
+    min-width: 1300px;
+  }
+
   .el-carousel__item:nth-child(2n) {
     background: linear-gradient(black, white);
   }
@@ -26,8 +31,8 @@
   }
 
   .carousel_img {
-    height: 275px;
-    /*width: 300px;*/
+    height: 100%;
+    width: 100%;
     text-align: center;
   }
 </style>

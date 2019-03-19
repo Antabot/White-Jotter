@@ -18,7 +18,7 @@
 
 <style scoped>
   .box-card {
-    width: 100%;
+    min-width: 1300px;
     height: 310px;
     background-color: black;
     text-align: right;

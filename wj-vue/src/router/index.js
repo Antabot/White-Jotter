@@ -6,6 +6,7 @@ import Editor from '@/components/jotter/Editor'
 import LibraryIndex from '@/components/library/LibraryIndex'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
+import Subject from '@/components/library/subject/Subject'
 
 Vue.use(Router)
 
@@ -24,15 +25,15 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home,
-      redirect: 'appindex',
+      redirect: 'index',
       children: [
         {
-          path: '/appindex',
+          path: '/index',
           name: 'AppIndex',
           component: AppIndex
         },
         {
-          path: '/jotterindex',
+          path: '/jotter',
           name: 'JotterIndex',
           component: JotterIndex
         },
@@ -42,9 +43,14 @@ export default new Router({
           component: Editor
         },
         {
-          path: '/libraryindex',
-          name: 'LibraryIndex',
+          path: '/library',
+          name: 'Library',
           component: LibraryIndex
+        },
+        {
+          path: '/library/subject',
+          name: 'Subject',
+          component: Subject
         }
       ]
     },

@@ -70,7 +70,7 @@
       methods: {
         loadBooks () {
           var _this = this
-          this.$axios.get('/libraryindex').then(resp => {
+          this.$axios.get('/library').then(resp => {
             if (resp && resp.status === 200) {
               _this.books = resp.data
               var length = resp.data.length
