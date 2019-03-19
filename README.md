@@ -21,7 +21,7 @@
 
 作为核心功能页面之一，提供图书信息展示、图书信息管理两大功能
 
-![](https://i.imgur.com/FNhSywG.png)
+![](https://i.imgur.com/pGKogJ2.png)
 
 ## 3.笔记本
 
