@@ -1,5 +1,7 @@
 <template>
+  <div id="book-bg">
   <div class="subject">
+    <el-card style="margin-top: 30px;width: 680px">
     <el-row>
       <h1>且在人间</h1>
     </el-row>
@@ -20,7 +22,6 @@
               </div>
         </div>
     </el-row>
-    <el-card style="margin-top: 30px">
       <el-button style="float: right; padding: 3px 0" type="text">修改</el-button>
     <div class="abstract">
       <h2><span>内容简介</span>&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·</h2>
@@ -31,21 +32,32 @@
 
           女主人公周玉生活在乡村，患有“脑瘫”，她几乎被所有人漠视，甚至被整个社会抛弃，但是她渴望被当成一个普通的健康人,而不是带着怜悯或不屑，她只要求平等。爱情的缺 失，家庭的不幸，生活的种种际遇让周玉用诗歌的方式把 情感抒发出来，最终她用诗歌创作出了一个文学的世界，得到了人们的认可。作者用平静的笔调书写残疾人的底层生活,将堆积在心底的黑暗与爱化作成长的养分,达到了一种真实而达观、勇敢而平静的生命境界。
 
-          《刀挑玫瑰》——患癌女白领与死神搏斗，却意外染上艾滋的情爱故事，情节荒诞，却也在情理之中。女主人公艾蓝本是事业型女性，爱上已婚男后，又因意外流产而分手。后来她在一次体检中发现自己患上肺癌，父亲为了让艾蓝安心养病，想尽办法让已婚男回心转意照顾女儿。...</p>
+          ...</p>
       </div>
     </div>
     </el-card>
-    <div style="min-height:100px;"> </div>
+    <!--<div style="min-height:100px;"> </div>-->
+  </div>
   </div>
 </template>
 
 <style scoped>
+  #book-bg {
+    width: 100%;
+    height: 700px;
+    position: absolute;
+    background: url("../../../assets/img/bg/bg2.jpg") no-repeat;
+    background-size: cover%;
+    background-position: center;
+    /*margin: 0;*/
+  }
   .subject{
-    width: 900px;
+    /*min-width: 500px;*/
     /*实现把主体内容放在页面的中间偏左位置*/
     position: absolute;
-    left:30%;
-    margin-left: -95px;
+    left:20%;
+    top: 5%;
+    margin-left: -60px;
   }
 
   .cover {
@@ -89,5 +101,9 @@
     font-size: 16px;
     color: #007722;
     line-height: 150%;
+  }
+
+  .intro {
+    width: 600px;
   }
 </style>
