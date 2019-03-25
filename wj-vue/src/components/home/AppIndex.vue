@@ -1,5 +1,5 @@
 <template>
-    <div style="max-width: 1100px;margin-left: auto;margin-right: auto;">
+    <div style="width: 1300px;margin-left: auto;margin-right: auto;background-color: #FAF9DE">
       <carousel></carousel>
       <!--<tips></tips>-->
       <quick-nav></quick-nav>
