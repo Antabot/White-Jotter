@@ -46,9 +46,9 @@
     width: 100%;
     height: 700px;
     position: absolute;
-    background: url("../../../assets/img/bg/bg2.jpg") no-repeat;
-    background-size: cover%;
-    background-position: center;
+    /*background: url("../../../assets/img/bg/bg2.jpg") no-repeat;*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
     /*margin: 0;*/
   }
   .subject{
