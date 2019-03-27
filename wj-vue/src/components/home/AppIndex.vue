@@ -1,9 +1,9 @@
 <template>
-    <div style="width: 1300px;margin-left: auto;margin-right: auto;background-color: #FAF9DE">
+    <div style="width: 100%;margin-left: auto;margin-right: auto;">
       <carousel></carousel>
-      <!--<tips></tips>-->
       <quick-nav></quick-nav>
       <slogan></slogan>
+      <Footer></Footer>
     </div>
 </template>
 
@@ -12,9 +12,10 @@
   import QuickNav from '@/components/home/QuickNav'
   import Tips from '@/components/home/Tips'
   import Slogan from '@/components/home/Slogan'
+  import Footer from '@/components/common/Footer'
   export default {
     name: 'AppIndex',
-    components: {Carousel, QuickNav, Tips, Slogan}
+    components: {Carousel, QuickNav, Tips, Slogan, Footer}
   }
 </script>
 

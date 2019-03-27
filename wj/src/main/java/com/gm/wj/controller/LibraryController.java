@@ -14,7 +14,7 @@ public class LibraryController {
     @Autowired
     BookService bookService;
 
-    @GetMapping(value="/api/libraryindex")
+    @GetMapping(value="/api/library")
     public List<Book> list() throws Exception {
         return bookService.list();
     }

@@ -1,6 +1,6 @@
 <template>
-  <el-carousel  class="push" :interval="4000" type="card" height="280px" arrow="always">
-    <el-carousel-item v-for="item in items" :key="item" style="box-shadow: 10px 10px 5px #888888;">
+  <el-carousel  class="push" :interval="4000" type="card" arrow="always">
+    <el-carousel-item v-for="item in items" :key="item" style="box-shadow: 10px 10px 5px #888888;height: 110%">
       <a :href=item.link target="_blank">
         <img :src=item.img alt="" class="carousel_img">
       </a>
@@ -18,8 +18,10 @@
   }
 
   .push {
-    padding: 20px 5px;
-    min-width: 1300px;
+    padding:20px 0;
+    width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .el-carousel__item:nth-child(2n) {
@@ -31,7 +33,7 @@
   }
 
   .carousel_img {
-    height: 100%;
+    height: 92%;
     width: 100%;
     text-align: center;
   }
