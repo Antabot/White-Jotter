@@ -12,9 +12,9 @@
                 auto-complete="off" placeholder="密码"></el-input>
     </el-form-item>
     <el-checkbox class="login_remember" v-model="checked"
-                 label-position="left">记住密码</el-checkbox>
+                 label-position="left"><span style="color: #505458">记住密码</span></el-checkbox>
     <el-form-item style="width: 100%">
-      <el-button type="primary" style="width: 100%" v-on:click="login">登录</el-button>
+      <el-button type="primary" style="width: 100%;background: #505458;border: none" v-on:click="login">登录</el-button>
     </el-form-item>
   </el-form>
   </body>
@@ -84,4 +84,10 @@
     margin: 0px 0px 35px 0px;
     text-align: left;
   }
+  /*.login_button {*/
+    /*background: #505458;*/
+  /*}*/
+  /*el_checkbox {*/
+    /*background: #505458;*/
+  /*}*/
 </style>

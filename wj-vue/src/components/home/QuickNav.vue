@@ -1,8 +1,8 @@
 <template>
     <div id="pro-div">
-      <img src="../../assets/img/icon/icon2.png" alt="" width="300" height="280" style="margin-left: -60%;">
-      <img src="../../assets/img/icon/icon5.png" alt="" style="width: 300px;position: absolute;margin-left: 500px">
-      <img src="../../assets/img/icon/icon7.png" alt="" style="position: absolute">
+      <img src="../../assets/img/icon/icon2.png" alt="" width="300" height="280">
+      <img src="../../assets/img/icon/icon5.png" alt="" style="width: 300px; margin-left: 500px">
+      <img src="../../assets/img/icon/icon7.png" alt="" style="">
     </div>
 </template>
 

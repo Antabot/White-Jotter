@@ -22,6 +22,7 @@
     width: 1500px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
   }
 
   .el-carousel__item:nth-child(2n) {

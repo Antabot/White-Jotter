@@ -5,14 +5,15 @@
       router="true"
       mode="horizontal"
       @select="handleSelect"
-      background-color="#545c64"
+      background-color="black"
       text-color="#fff"
+      @mouseenter.native="onMouseEnter"
       active-text-color="#ffd04b"
       style="min-width: 1300px">
       <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
         {{ item.navItem }}
       </el-menu-item>
-      <span style="float: right;padding: 20px"><a href="#nowhere" style="color: #fff">登录/注册</a></span>
+      <span style="float: right;padding: 20px;"><a href="#nowhere" style="color: #fff">登录/注册</a></span>
       <i class="el-icon-menu" style="float:right;font-size: 45px;color: aliceblue;padding-top: 8px"></i>
     </el-menu>
   </div>
@@ -31,9 +32,18 @@
         ]
       }
     },
+    computed: {
+      hoverBackground () {
+        return '#ffd04b'
+      }
+    },
     methods: {
       handleSelect (key, keyPath) {
         console.log(key, keyPath)
+      },
+      onMouseEnter () {
+        // window.alert('aaa')
+        this.$el.style.backgroundColor = 'red'
       }
     }
   }
