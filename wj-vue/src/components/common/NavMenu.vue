@@ -5,12 +5,11 @@
       router="true"
       mode="horizontal"
       @select="handleSelect"
-      background-color="black"
+      background-color="#222"
       text-color="#fff"
-      @mouseenter.native="onMouseEnter"
       active-text-color="#ffd04b"
       style="min-width: 1300px">
-      <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
+      <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name" @mouseenter.native="onMouseEnter()">
         {{ item.navItem }}
       </el-menu-item>
       <span style="float: right;padding: 20px;"><a href="#nowhere" style="color: #fff">登录/注册</a></span>
@@ -43,7 +42,7 @@
       },
       onMouseEnter () {
         // window.alert('aaa')
-        this.$el.style.backgroundColor = 'red'
+        // this.$el.style.backgroundColor = 'red'
       }
     }
   }

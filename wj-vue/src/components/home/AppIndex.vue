@@ -1,11 +1,13 @@
 <template>
-    <div style="width: 100%;margin-left: auto;margin-right: auto;">
+  <div class="index-body">
+    <div class="home">
       <carousel></carousel>
       <Card></Card>
       <!--<quick-nav></quick-nav>-->
       <slogan></slogan>
       <Footer></Footer>
     </div>
+  </div>
 </template>
 
 <script>
@@ -22,4 +24,16 @@
 </script>
 
 <style scoped>
+  .home {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -20px;
+
+  }
+  .index-body {
+    background: url("../../assets/img/bg/4.jpg");
+    /*background-size: cover;*/
+    background-position: center;
+  }
 </style>
