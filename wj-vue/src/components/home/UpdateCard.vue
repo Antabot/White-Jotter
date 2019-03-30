@@ -2,7 +2,7 @@
   <el-card class="box-card">
     <div slot="header" class="clearfix">
       <span style="font-weight: bold;font-size: 20px">最近更新</span>
-      <el-button style="float: right; padding: 3px 0" type="text">修改</el-button>
+      <!--<el-button style="float: right; padding: 3px 0" type="text">修改</el-button>-->
     </div>
     <div class="block">
       <el-timeline>

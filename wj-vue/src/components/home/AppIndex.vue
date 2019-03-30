@@ -1,18 +1,16 @@
 <template>
   <div>
     <side-menu id="side-menu"></side-menu>
-    <div class="index-body">
       <div class="home">
-        <div class="header-div">
+        <div id="header-div">
           <div style="height: 150px"></div>
           <carousel></carousel>
           <quick-nav style="float: right;margin-top: -450px;margin-right: 480px"></quick-nav>
         </div>
-        <update-card></update-card>
-        <slogan></slogan>
-        <Footer></Footer>
+        <update-card id="update-card"></update-card>
+        <slogan id="slogan"></slogan>
+        <about id="about"></about>
       </div>
-    </div>
   </div>
 </template>
 
@@ -20,12 +18,12 @@
   import Carousel from '@/components/home/Carousel'
   import QuickNav from '@/components/home/QuickNav'
   import Slogan from '@/components/home/Slogan'
-  import Footer from '@/components/common/Footer'
+  import About from '@/components/common/About'
   import UpdateCard from '@/components/home/UpdateCard'
   import SideMenu from '@/components/home/SideMenu'
   export default {
     name: 'AppIndex',
-    components: {Carousel, QuickNav, Slogan, Footer, UpdateCard, SideMenu}
+    components: {Carousel, QuickNav, Slogan, About, UpdateCard, SideMenu}
   }
 </script>
 
@@ -37,14 +35,8 @@
     margin-top: -20px;
 
   }
-  .index-body {
-    /*background: url("../../assets/img/bg/index.jpg");*/
-    /*background-size: cover;*/
-    background-position: center;
-    background-color: #f5f6f7;
-  }
 
-  .header-div {
+  #header-div {
     padding-bottom: 20px;
     padding-left: 5px;
     background-color: white;
@@ -52,7 +44,7 @@
   }
 
   #side-menu {
-    position: absolute;
+    position: fixed;
     margin-left: 50%;
     left: -700px;
     top: 100px;
