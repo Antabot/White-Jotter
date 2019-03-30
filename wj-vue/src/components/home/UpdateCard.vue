@@ -8,14 +8,14 @@
       <el-timeline>
         <el-timeline-item timestamp="2019/3/30" placement="top">
           <el-card>
-            <h4>更新首页布局</h4>
-            <p>Evan 提交于 2019/3/30 21:23</p>
+            <h4>完善左侧导航</h4>
+            <p>Evan 提交于 2019/3/30 21:59</p>
           </el-card>
         </el-timeline-item>
-        <el-timeline-item timestamp="2018/4/3" placement="top">
+        <el-timeline-item timestamp="2019/3/30" placement="top">
           <el-card>
-            <h4>更新 Github 模板</h4>
-            <p>王小虎 提交于 2018/4/3 20:46</p>
+            <h4>更新首页布局</h4>
+            <p>Evan 提交于 2019/3/30 21:23</p>
           </el-card>
         </el-timeline-item>
         <el-timeline-item timestamp="2018/4/2" placement="top">
