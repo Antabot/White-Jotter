@@ -1,9 +1,12 @@
 <template>
   <div class="index-body">
     <div class="home">
+      <div class="header-div">
+      <div style="height: 150px"></div>
       <carousel></carousel>
+      <quick-nav style="float: right;margin-top: -450px;margin-right: 480px"></quick-nav>
+      </div>
       <Card></Card>
-      <!--<quick-nav></quick-nav>-->
       <slogan></slogan>
       <Footer></Footer>
     </div>
@@ -25,7 +28,7 @@
 
 <style scoped>
   .home {
-    width: 960px;
+    width: 990px;
     margin-left: auto;
     margin-right: auto;
     margin-top: -20px;
@@ -35,5 +38,12 @@
     background: url("../../assets/img/bg/4.jpg");
     /*background-size: cover;*/
     background-position: center;
+  }
+
+  .header-div {
+    padding-bottom: 20px;
+    padding-left: 5px;
+    background-color: #ffe55c;
+    background: url("../../assets/img/bg/bg4.jpg");
   }
 </style>

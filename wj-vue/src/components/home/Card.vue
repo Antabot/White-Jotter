@@ -1,26 +1,44 @@
 <template>
-  <div style="width: 80%; margin-left: auto; margin-right: auto; height: 350px">
-    <div style="position: relative">
-      <el-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>最新内容</span>
-        <el-button style="float: right; padding: 3px 0" type="text">处理</el-button>
-      </div>
-      <div v-for="o in 4" :key="o" class="text item">
-        {{'新增内容 ' + o }}
-      </div>
-    </el-card>
-      <el-card class="box-card-2">
-        <div slot="header" class="clearfix">
-          <span>最新内容</span>
-          <el-button style="float: right; padding: 3px 0" type="text">处理</el-button>
-        </div>
-        <div v-for="o in 4" :key="o" class="text item">
-          {{'新增内容 ' + o }}
-        </div>
-      </el-card>
+  <el-card class="box-card">
+    <div slot="header" class="clearfix">
+      <span>最近更新</span>
+      <el-button style="float: right; padding: 3px 0" type="text">处理</el-button>
     </div>
-  </div>
+    <div class="block">
+      <el-timeline>
+        <el-timeline-item timestamp="2018/4/12" placement="top">
+          <el-card>
+            <h4>更新 Github 模板</h4>
+            <p>王小虎 提交于 2018/4/12 20:46</p>
+          </el-card>
+        </el-timeline-item>
+        <el-timeline-item timestamp="2018/4/3" placement="top">
+          <el-card>
+            <h4>更新 Github 模板</h4>
+            <p>王小虎 提交于 2018/4/3 20:46</p>
+          </el-card>
+        </el-timeline-item>
+        <el-timeline-item timestamp="2018/4/2" placement="top">
+          <el-card>
+            <h4>更新 Github 模板</h4>
+            <p>王小虎 提交于 2018/4/2 20:46</p>
+          </el-card>
+        </el-timeline-item>
+        <el-timeline-item timestamp="2018/4/3" placement="top">
+          <el-card>
+            <h4>更新 Github 模板</h4>
+            <p>王小虎 提交于 2018/4/3 20:46</p>
+          </el-card>
+        </el-timeline-item>
+        <el-timeline-item timestamp="2018/4/3" placement="top">
+          <el-card>
+            <h4>更新 Github 模板</h4>
+            <p>王小虎 提交于 2018/4/3 20:46</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+    </div>
+  </el-card>
 </template>
 
 <script>
@@ -30,40 +48,10 @@
 </script>
 
 <style scoped>
-  .text {
-    font-size: 14px;
-  }
-
-  .item {
-    margin-bottom: 18px;
-  }
-
   .box-card {
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 50px;
-    float: left;
-    width: 47%;
-    position: absolute;
-  }
-  .box-card-2 {
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 50px;
-    right: 0;
-    float: right;
-    width: 47%;
-    position: absolute;
-  }
-
-  .clearfix:before,
-  .clearfix:after {
-    display: table;
-    content: "";
-  }
-  .clearfix:after {
-    clear: both
+    margin-top: 5px;
+    width: 988px;
+    height: 970px;
+    text-align: left;
   }
 </style>

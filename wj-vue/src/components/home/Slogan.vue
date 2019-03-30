@@ -24,7 +24,7 @@
     height: 150px;
     background-color: #222;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 5px;
   }
 
   .slogan {
