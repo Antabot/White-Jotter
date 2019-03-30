@@ -1,15 +1,15 @@
 <template>
   <el-card class="box-card">
     <div slot="header" class="clearfix">
-      <span>最近更新</span>
-      <el-button style="float: right; padding: 3px 0" type="text">处理</el-button>
+      <span style="font-weight: bold;font-size: 20px">最近更新</span>
+      <el-button style="float: right; padding: 3px 0" type="text">修改</el-button>
     </div>
     <div class="block">
       <el-timeline>
-        <el-timeline-item timestamp="2018/4/12" placement="top">
+        <el-timeline-item timestamp="2019/3/30" placement="top">
           <el-card>
-            <h4>更新 Github 模板</h4>
-            <p>王小虎 提交于 2018/4/12 20:46</p>
+            <h4>更新首页布局</h4>
+            <p>Evan 提交于 2019/3/30 21:23</p>
           </el-card>
         </el-timeline-item>
         <el-timeline-item timestamp="2018/4/3" placement="top">
@@ -51,7 +51,7 @@
   .box-card {
     margin-top: 5px;
     width: 988px;
-    height: 970px;
+    height: 1050px;
     text-align: left;
   }
 </style>

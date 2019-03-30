@@ -16,7 +16,7 @@
     color: black;
     font-size: 15px;
     /*line-height: 300px;*/
-    bottom: 40px;
+    bottom: 43px;
     float: left;
     position: relative;
   }

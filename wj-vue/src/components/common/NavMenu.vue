@@ -5,15 +5,23 @@
       router="true"
       mode="horizontal"
       @select="handleSelect"
-      background-color="#222"
-      text-color="#fff"
-      active-text-color="#ffd04b"
+      background-color="white"
+      text-color="#222"
+      active-text-color="red"
       style="min-width: 1300px">
-      <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name" @mouseenter.native="onMouseEnter()">
+      <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
         {{ item.navItem }}
       </el-menu-item>
-      <span style="float: right;padding: 20px;"><a href="#nowhere" style="color: #fff">登录/注册</a></span>
-      <i class="el-icon-menu" style="float:right;font-size: 45px;color: aliceblue;padding-top: 8px"></i>
+      <span style="float: right;padding: 20px;"><a href="#nowhere" style="color: #222">登录/注册</a></span>
+      <i class="el-icon-menu" style="float:right;font-size: 45px;color: #222;padding-top: 8px"></i>
+      <span style="position: absolute;padding-top: 20px;right: 43%;font-size: 20px;font-weight: bold">White Jotter - Your Mind Palace</span>
+      <el-input
+        placeholder="快速搜索..."
+        prefix-icon="el-icon-search"
+        size="medium"
+        style="width: 300px;position:absolute;margin-top: 12px;right: 18%"
+        v-model="keywords">
+      </el-input>
     </el-menu>
   </div>
 </template>
@@ -39,10 +47,6 @@
     methods: {
       handleSelect (key, keyPath) {
         console.log(key, keyPath)
-      },
-      onMouseEnter () {
-        // window.alert('aaa')
-        // this.$el.style.backgroundColor = 'red'
       }
     }
   }
