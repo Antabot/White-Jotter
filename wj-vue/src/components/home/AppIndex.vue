@@ -15,12 +15,12 @@
 </template>
 
 <script>
-  import Carousel from '@/components/home/Carousel'
-  import QuickNav from '@/components/home/QuickNav'
-  import Slogan from '@/components/home/Slogan'
+  import Carousel from './Carousel'
+  import QuickNav from './QuickNav'
+  import Slogan from './Slogan'
   import About from '@/components/common/About'
-  import UpdateCard from '@/components/home/UpdateCard'
-  import SideMenu from '@/components/home/SideMenu'
+  import UpdateCard from './UpdateCard'
+  import SideMenu from './SideMenu'
   export default {
     name: 'AppIndex',
     components: {Carousel, QuickNav, Slogan, About, UpdateCard, SideMenu}

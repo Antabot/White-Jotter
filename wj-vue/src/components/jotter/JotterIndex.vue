@@ -15,8 +15,8 @@
 </template>
 
 <script>
-  import JotterNav from '@/Components/jotter/JotterNav'
-  import Module from '@/Components/jotter/Module'
+  import JotterNav from './JotterNav'
+  import Module from './Module'
   export default {
     name: 'JotterIndex',
     components: {
