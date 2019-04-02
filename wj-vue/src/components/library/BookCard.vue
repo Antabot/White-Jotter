@@ -19,7 +19,7 @@
         <span>{{item.press}}</span>
       </p>
       <p slot="content" style="width: 300px" class="abstract">{{item.abs}}</p>
-      <el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 3px" class="book" bodyStyle="padding:10px" shadow="hover">
+      <el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book" bodyStyle="padding:10px" shadow="hover">
         <div class="cover">
           <a href="">
             <img :src="item.cover" alt="">
@@ -33,30 +33,7 @@
         </div>
       </el-card>
     </el-tooltip>
-    <!--测试内容-->
-    <!--<el-tooltip effect="dark"  placement="right" enterable="false">-->
-      <!--<p slot="content" style="font-size: 14px;margin-bottom: 6px;">且在人间</p>-->
-      <!--<p slot="content"  style="font-size: 13px;margin-bottom: 6px">-->
-        <!--<span>余秀华</span> /-->
-        <!--<span>2019-3-15</span> /-->
-        <!--<span>人民邮电出版社</span>-->
-      <!--</p>-->
-      <!--<p slot="content" style="width: 300px" class="abstract">简介</p>-->
-  <!--<el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 3px" class="book" bodyStyle="padding:10px"-->
-           <!--shadow="hover">-->
-    <!--<div class="cover">-->
-      <!--<a href="">-->
-        <!--<img src="../../assets/img/books/s29958602.jpg" alt="">-->
-      <!--</a>-->
-    <!--</div>-->
-    <!--<div class="info">-->
-      <!--<div class="title">-->
-        <!--<a href="">且在人间</a>-->
-      <!--</div>-->
-      <!--<div class="author">余秀华</div>-->
-    <!--</div>-->
-  <!--</el-card>-->
-    <!--</el-tooltip>-->
+    <i class="el-icon-circle-plus-outline" @click="open"></i>
   </div>
 </template>
 
@@ -79,9 +56,46 @@
               })
             }
           })
+        },
+        testFunc () {
+          alert('hello')
+        },
+        open () {
+          const h = this.$createElement
+          this.$msgbox({
+            title: '添加内容',
+            message: h('p', {style: 'width: 60px'}, [
+              h('span', {style: 'color: teal'}, '书名'),
+              h('input', null),
+              h('br'),
+              h('span', null, '作者'),
+              h('input', null)
+            ]),
+            showCancelButton: true,
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            beforeClose: (action, instance, done) => {
+              if (action === 'confirm') {
+                instance.confirmButtonLoading = true
+                instance.confirmButtonText = '执行中...'
+                setTimeout(() => {
+                  done()
+                  setTimeout(() => {
+                    instance.confirmButtonLoading = false
+                  }, 300)
+                }, 3000)
+              } else {
+                done()
+              }
+            }
+          }).then(action => {
+            this.$message({
+              type: 'info',
+              message: 'action: ' + action
+            })
+          })
         }
       },
-
         data: function () {
           return {
             books: [],
@@ -122,6 +136,13 @@
   .abstract {
     display: block;
     line-height: 17px;
+  }
+
+  .el-icon-circle-plus-outline {
+    margin: 50px 0;
+    font-size: 100px;
+    float: left;
+    cursor:pointer;
   }
 
   a {

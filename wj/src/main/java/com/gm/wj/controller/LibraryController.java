@@ -3,6 +3,7 @@ package com.gm.wj.controller;
 import com.gm.wj.pojo.Book;
 import com.gm.wj.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,7 @@ public class LibraryController {
     @Autowired
     BookService bookService;
 
+    @CrossOrigin
     @GetMapping(value="/api/library")
     public List<Book> list() throws Exception {
         return bookService.list();

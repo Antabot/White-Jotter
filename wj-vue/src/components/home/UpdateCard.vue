@@ -6,7 +6,13 @@
     </div>
     <div class="block">
       <el-timeline>
-        <el-timeline-item timestamp="2019/4/1" placement="top">
+        <el-timeline-item timestamp="2019/4/2" placement="top">
+          <el-card>
+            <h4>完善后端拦截器，使用图床存放静态图片，修改图书馆模块</h4>
+            <p>Evan 提交于 2019/4/2 22:12</p>
+          </el-card>
+        </el-timeline-item>
+        <el-timeline-item timestamp="2019/4/2" placement="top">
           <el-card>
             <h4>重构部分代码</h4>
             <p>Evan 提交于 2019/4/1 09:19</p>
@@ -28,12 +34,6 @@
           <el-card>
             <h4>更新首页布局</h4>
             <p>Evan 提交于 2019/3/30 21:23</p>
-          </el-card>
-        </el-timeline-item>
-        <el-timeline-item timestamp="2018/4/2" placement="top">
-          <el-card>
-            <h4>更新 Github 模板</h4>
-            <p>王小虎 提交于 2018/4/2 20:46</p>
           </el-card>
         </el-timeline-item>
       </el-timeline>

@@ -4,7 +4,7 @@
 	<artifactId>wj</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>wj</name>
-	<description>Demo project for Spring Boot</description>
+	<description>White Jotter - Your Mind Palace</description>
 	<packaging>war</packaging>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

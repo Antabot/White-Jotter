@@ -8,11 +8,7 @@ import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
 
@@ -20,16 +16,11 @@ import org.springframework.web.util.HtmlUtils;
 @Controller
 public class LoginController {
 
-    /**
-     * 登录控制器，前后端分离用的不同协议和端口，所以需要加入@CrossOrigin支持跨域。
-     * 在逻辑处理中我们判断BindingResult知否含有错误信息，如果有错误信息，则直接返回错误信息。
-     */
-
     @Autowired
     UserService userService;
 
     @CrossOrigin
-    @RequestMapping(value = "/api/login", method = RequestMethod.POST)
+    @PostMapping(value = "/api/login")
     @ResponseBody
     public Result login(@RequestBody User requestUser, HttpSession session) {
         String username = requestUser.getUsername();
