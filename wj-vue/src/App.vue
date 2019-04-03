@@ -1,8 +1,6 @@
 <template>
   <!--此处的 id 虽然也名为 app，但与主 html 中含义不同-->
   <div id="app">
-  <!--<img src="./assets/logo.png">-->
-    <!--<nav-menu></nav-menu>-->
   <router-view/>
 </div>
 </template>

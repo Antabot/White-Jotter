@@ -3,10 +3,9 @@ package com.gm.wj.controller;
 import com.gm.wj.pojo.Book;
 import com.gm.wj.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -16,8 +15,16 @@ public class LibraryController {
     BookService bookService;
 
     @CrossOrigin
-    @GetMapping(value="/api/library")
+    @GetMapping(value = "/api/library")
     public List<Book> list() throws Exception {
         return bookService.list();
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "/api/library")
+    public Book add(@RequestBody Book book) throws Exception {
+        bookService.add(book);
+        System.out.printf("test");
+        return book;
     }
 }

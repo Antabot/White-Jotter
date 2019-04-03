@@ -7,6 +7,7 @@ import LibraryIndex from '@/components/library/LibraryIndex'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Subject from '@/components/library/subject/Subject'
+import Refresh from '@/components/common/Refresh'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
       name: 'Login',
       redirect: '/login',
       component: Login
+    },
+    {
+      path: '/refresh',
+      name: 'Refresh',
+      component: Refresh
     },
     {
       // 表面是appindex，实际上是先访问了home然后跳转的。

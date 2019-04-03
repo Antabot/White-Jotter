@@ -17,4 +17,8 @@ public class BookService {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         return bookDAO.findAll(sort);
     }
+
+    public void add(Book book) {
+        bookDAO.save(book);
+    }
 }
