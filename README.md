@@ -15,13 +15,13 @@
 
 作为展示页面，包括开发这个项目的主要参考资料、近期更新和 Slogan
 
-![首页](https://img-blog.csdnimg.cn/2019033109220482.png)
+![首页](https://img-blog.csdnimg.cn/20190403215932913.png)
 
 ## 2.图书馆
 
 作为核心功能页面之一，提供图书信息展示、图书信息管理两大功能
 
-![](https://img-blog.csdnimg.cn/20190402222036301.png)
+![图书馆](https://img-blog.csdnimg.cn/20190402222036301.png)
 
 图书详情页面包括对图书信息的修改和编辑等。
 
@@ -47,11 +47,11 @@
 
 # 三、部署方法
 
-1.clone项目到本地`git@github.com:Antabot/White-Jotter.git`
+1.clone项目到本地`git clone https://github.com/Antabot/White-Jotter`
 
-2.数据库脚本放在 `wj` 项目的 `resources` 目录下，在MySQL中执行数据库脚本  
+2.数据库脚本放在 `wj` 项目的根目录下，在MySQL中执行数据库脚本  
 
-3.数据库配置在 `wj` 项目的 `resources` 目录下的`application.properties` 文件中  
+3.数据库配置在 `wj` 项目的 `src\main\resources` 目录下的`application.properties` 文件中  
 
 4.在IntelliJ IDEA中运行 `wj` 项目  
 
@@ -80,15 +80,20 @@ npm run build
 该命令执行成功之后， `wj-vue` 目录下生成一个 `dist` 文件夹，将该文件夹中的两个文件 `static` 和 `index.html` 拷贝到 SpringBoot 项目中 `resources/static/` 目录下，然后就可以像第 4 步那样直接访问了。  
 
 
-# 文档
+# 教程
 
-文档包括项目的需求分析以及对项目开发过程中遇到的一些问题的详细记录，主要是为了帮助小伙伴们快速理解这个项目。  
+我在 CSDN 上分享了开发这个项目的教程，有兴趣的小伙伴可以点击下面的链接查看。  
 
-1.[需求文档]()  
+1.[项目简介](https://blog.csdn.net/Neuf_Soleil/article/details/88925013)
+
+2.[使用 CLI 搭建 Vue.js 项目](https://blog.csdn.net/Neuf_Soleil/article/details/88926242)
+
+(持续更新中)
 
 
-# 更新记录
+# 近期更新
 
+04-03 完成图书新增功能
 
 # 其他资料
 
