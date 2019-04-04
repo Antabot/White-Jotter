@@ -24,7 +24,13 @@ public class LibraryController {
     @PostMapping(value = "/api/library")
     public Book add(@RequestBody Book book) throws Exception {
         bookService.add(book);
-        System.out.printf("test");
         return book;
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "/api/delete")
+    public void delete(@RequestBody Book book) throws Exception {
+        bookService.deleteById(book.getId());
+//        System.out.println(book.getId());
     }
 }

@@ -8,7 +8,7 @@
         <el-col :span="24" style="width: 100%;text-align: left;line-height: 100%;height: 40px"><Tag></Tag></el-col>
       </el-row>
       <el-row>
-        <book-card></book-card>
+        <books></books>
       </el-row>
       <el-row>
         <!--<pagination></pagination>-->
@@ -24,10 +24,10 @@
     import SideMenu from './SideMenu'
     import Tag from './Tag'
     import Pagination from './Pagination'
-    import BookCard from './BookCard'
+    import Books from './Books'
     export default {
         name: 'AppLibrary',
-      components: {BookCard, Pagination, Tag, SideMenu}
+      components: {Books, Pagination, Tag, SideMenu}
     }
 </script>
 

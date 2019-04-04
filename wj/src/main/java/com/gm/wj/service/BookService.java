@@ -21,4 +21,8 @@ public class BookService {
     public void add(Book book) {
         bookDAO.save(book);
     }
+
+    public void deleteById(int id) {
+        bookDAO.deleteById(id);
+    }
 }

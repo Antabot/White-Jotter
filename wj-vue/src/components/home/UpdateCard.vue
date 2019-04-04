@@ -6,9 +6,15 @@
     </div>
     <div class="block">
       <el-timeline>
+        <el-timeline-item timestamp="2019/4/4" placement="top">
+          <el-card>
+            <h4>实现图书删除功能</h4>
+            <p>Evan 提交于 2019/4/4 22:50</p>
+          </el-card>
+        </el-timeline-item>
         <el-timeline-item timestamp="2019/4/3" placement="top">
           <el-card>
-            <h4>实现图书添加功能与无空白刷新页面</h4>
+            <h4>实现图书添加功能</h4>
             <p>Evan 提交于 2019/4/3 21:34</p>
           </el-card>
         </el-timeline-item>
@@ -28,18 +34,6 @@
           <el-card>
             <h4>更新 README.md</h4>
             <p>Evan 提交于 2019/3/31 09:19</p>
-          </el-card>
-        </el-timeline-item>
-        <el-timeline-item timestamp="2019/3/30" placement="top">
-          <el-card>
-            <h4>完善左侧导航</h4>
-            <p>Evan 提交于 2019/3/30 21:59</p>
-          </el-card>
-        </el-timeline-item>
-        <el-timeline-item timestamp="2019/3/30" placement="top">
-          <el-card>
-            <h4>更新首页布局</h4>
-            <p>Evan 提交于 2019/3/30 21:23</p>
           </el-card>
         </el-timeline-item>
       </el-timeline>

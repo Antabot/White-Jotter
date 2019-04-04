@@ -30,16 +30,18 @@
           <div class="title">
             <a href="">{{item.title}}</a>
           </div>
-          <div class="author">{{item.author}}</div>
+          <i class="el-icon-delete" @click="deleteBook(item.id)"></i>
         </div>
+        <div class="author">{{item.author}}</div>
       </el-card>
     </el-tooltip>
-    <add-button></add-button>
+    <add-button @onSubmit="loadBooks()"></add-button>
   </div>
 </template>
 
 <script>
   import AddButton from './AddButton'
+
   export default {
     name: 'BookCard',
     components: {AddButton},
@@ -58,6 +60,27 @@
             })
           }
         })
+      },
+      deleteBook (id) {
+        this.$confirm('此操作将永久删除该书籍, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+            this.$axios
+              .post('/delete', {id: id}).then(resp => {
+              if (resp && resp.status === 200) {
+                this.loadBooks()
+              }
+            })
+          }
+        ).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          })
+        })
+        // alert(id)
       }
     },
     data: function () {
@@ -100,6 +123,11 @@
   .abstract {
     display: block;
     line-height: 17px;
+  }
+
+  .el-icon-delete {
+    cursor: pointer;
+    float: right;
   }
 
   a {

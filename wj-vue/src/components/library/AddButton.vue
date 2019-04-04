@@ -60,14 +60,6 @@
     mounted: {
     },
     methods: {
-      refresh () {
-        this.$router.replace({
-          path: '/refresh',
-          query: {
-            t: Date.now()
-          }
-        })
-      },
       onSubmit () {
         console.log('submit!')
         this.$axios
@@ -81,7 +73,7 @@
           }).then(resp => {
             if (resp && resp.status === 200) {
               this.dialogFormVisible = false
-              this.refresh()
+              this.$emit('onSubmit')
             }
         })
       }
