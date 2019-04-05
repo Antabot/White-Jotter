@@ -22,8 +22,8 @@ public class LibraryController {
 
     @CrossOrigin
     @PostMapping(value = "/api/library")
-    public Book add(@RequestBody Book book) throws Exception {
-        bookService.add(book);
+    public Book addOrUpdate(@RequestBody Book book) throws Exception {
+        bookService.addOrUpdate(book);
         return book;
     }
 

@@ -18,7 +18,7 @@ public class BookService {
         return bookDAO.findAll(sort);
     }
 
-    public void add(Book book) {
+    public void addOrUpdate(Book book) {
         bookDAO.save(book);
     }
 

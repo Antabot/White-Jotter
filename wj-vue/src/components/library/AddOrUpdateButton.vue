@@ -43,27 +43,23 @@
       return {
         dialogFormVisible: false,
         form: {
-          name: '',
+          id: '',
+          title: '',
           author: '',
           date: '',
           press: '',
           cover: '',
-          abs: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
+          abs: ''
         },
         formLabelWidth: '120px'
       }
-    },
-    mounted: {
     },
     methods: {
       onSubmit () {
         console.log('submit!')
         this.$axios
           .post('/library', {
+            id: this.form.id,
             cover: this.form.cover,
             title: this.form.title,
             author: this.form.author,

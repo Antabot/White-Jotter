@@ -21,10 +21,8 @@
       <p slot="content" style="width: 300px" class="abstract">{{item.abs}}</p>
       <el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book"
                bodyStyle="padding:10px" shadow="hover">
-        <div class="cover">
-          <a href="">
-            <img :src="item.cover" alt="">
-          </a>
+        <div class="cover" @click="editBook(item)">
+          <img :src="item.cover" alt="封面">
         </div>
         <div class="info">
           <div class="title">
@@ -35,16 +33,15 @@
         <div class="author">{{item.author}}</div>
       </el-card>
     </el-tooltip>
-    <add-button @onSubmit="loadBooks()"></add-button>
+    <add-or-update-button @onSubmit="loadBooks()" ref="add"></add-or-update-button>
   </div>
 </template>
 
 <script>
-  import AddButton from './AddButton'
-
+  import AddOrUpdateButton from './AddOrUpdateButton'
   export default {
     name: 'BookCard',
-    components: {AddButton},
+    components: {AddOrUpdateButton},
     mounted: function () {
       this.loadBooks()
     },
@@ -81,6 +78,18 @@
           })
         })
         // alert(id)
+      },
+      editBook (item) {
+        this.$refs.add.dialogFormVisible = true
+        this.$refs.add.form = {
+          id: item.id,
+          cover: item.cover,
+          title: item.title,
+          author: item.author,
+          date: item.date,
+          press: item.press,
+          abs: item.abs
+        }
       }
     },
     data: function () {
@@ -99,6 +108,7 @@
     height: 172px;
     margin-bottom: 7px;
     overflow: hidden;
+    cursor: pointer;
   }
 
   img {
