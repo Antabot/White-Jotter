@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 10px;display: flex;justify-content: center;align-items: center">
+  <div style="margin-bottom: 30px;display: flex;justify-content: center;align-items: center">
     <el-input
       @keyup.enter.native="searchClick"
       placeholder="通过书名或作者搜索..."

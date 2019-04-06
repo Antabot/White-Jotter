@@ -5,7 +5,7 @@
     </el-aside>
     <el-main>
       <el-row>
-        <el-col :span="24" style="width: 100%;text-align: left;line-height: 100%;height: 40px"><Tag></Tag></el-col>
+        <!--<el-col :span="24" style="width: 100%;text-align: left;line-height: 100%;height: 40px"><Tag></Tag></el-col>-->
       </el-row>
       <el-row>
         <books></books>

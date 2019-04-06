@@ -1,6 +1,5 @@
 白卷是一个前后端分离的图书管理系统，项目采用 SpringBoot+Vue 开发。  
 
-
 项目地址：[https://github.com/Antabot/White-Jotter](https://github.com/Antabot/White-Jotter)       
 
 # 前言 
@@ -21,9 +20,37 @@
 
 作为核心功能页面之一，提供图书信息展示、图书信息管理两大功能
 
-![图书馆](https://img-blog.csdnimg.cn/20190402222036301.png)
+![图书馆](https://img-blog.csdnimg.cn/20190406195541462.png)
 
-图书详情页面包括对图书信息的修改和编辑等。
+功能实现情况
+
+### 1.图书展示
+
+功能描述 | 实现情况
+---|---
+基本信息 | 完成
+扩充信息 | 未完成
+
+### 2.图书管理
+
+功能描述 | 实现情况
+---|---
+图书分类 | 未完成
+图书上传 | 基本完成
+图书维护 | 基本完成
+
+### 3.信息查询
+
+功能描述 | 实现情况
+---|---
+图书检索 | 基本完成
+图书排序 | 未完成
+
+### 4.其它功能
+
+功能描述 | 实现情况
+---|---
+阅读标注 | 未完成
 
 ## 3.笔记本
 
@@ -40,7 +67,7 @@
 ## 2.后端技术栈
 
 1.SpringBoot  
-2.SpringSecurity  
+2.Java Persistence API  
 3.MySQL  
   
 在开发过程中还会不断用到一些细碎的技术，有必要的我会增添上去
@@ -51,9 +78,9 @@
 
 2.数据库脚本放在 `wj` 项目的根目录下，在MySQL中执行数据库脚本  
 
-3.数据库配置在 `wj` 项目的 `src\main\resources` 目录下的`application.properties` 文件中  
+3.数据库配置在 `wj` 项目的 `src\main\resources` 目录下的`application.properties` 文件中，mysql 版本为 5.7.21   
 
-4.在IntelliJ IDEA中运行 `wj` 项目  
+4.在IntelliJ IDEA中运行 `wj` 项目，为了保证项目成功运行，可以右键点击 `pom.xml` 选择 maven -> reimport
 
 至此，服务端就启动成功了，此时在地址栏输入 `http://localhost:8443` 即可访问项目登录页面，默认账号为 `admin`，密码为 `123`
 
@@ -79,7 +106,6 @@ npm run build
 
 该命令执行成功之后， `wj-vue` 目录下生成一个 `dist` 文件夹，将该文件夹中的两个文件 `static` 和 `index.html` 拷贝到 SpringBoot 项目中 `resources/static/` 目录下，然后就可以像第 4 步那样直接访问了。  
 
-
 # 教程
 
 我在 CSDN 上分享了开发这个项目的教程，有兴趣的小伙伴可以点击下面的链接查看。  
@@ -90,14 +116,11 @@ npm run build
 
 (持续更新中)
 
-
 # 近期更新
 
+04-06 完成图书查询功能  
+04-05 完成图书修改功能  
 04-04 完成图书删除功能  
 04-03 完成图书新增功能
 
 # 其他资料
-
- 
-
- 

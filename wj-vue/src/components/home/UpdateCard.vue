@@ -6,6 +6,12 @@
     </div>
     <div class="block">
       <el-timeline>
+        <el-timeline-item timestamp="2019/4/6" placement="top">
+          <el-card>
+            <h4>实现搜索框模糊查询</h4>
+            <p>Evan 提交于 2019/4/6 19:51</p>
+          </el-card>
+        </el-timeline-item>
         <el-timeline-item timestamp="2019/4/5" placement="top">
           <el-card>
             <h4>实现图书修改功能</h4>
@@ -28,12 +34,6 @@
           <el-card>
             <h4>完善后端拦截器，使用图床存放静态图片，修改图书馆模块</h4>
             <p>Evan 提交于 2019/4/2 22:12</p>
-          </el-card>
-        </el-timeline-item>
-        <el-timeline-item timestamp="2019/4/2" placement="top">
-          <el-card>
-            <h4>重构部分代码</h4>
-            <p>Evan 提交于 2019/4/1 09:19</p>
           </el-card>
         </el-timeline-item>
       </el-timeline>
