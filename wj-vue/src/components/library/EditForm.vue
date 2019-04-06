@@ -1,7 +1,7 @@
 <template>
   <div>
     <i class="el-icon-circle-plus-outline"  @click="dialogFormVisible = true"></i>
-    <el-dialog title="添加图书" :visible.sync="dialogFormVisible">
+    <el-dialog title="添加/修改图书" :visible.sync="dialogFormVisible">
       <el-form :model="form" style="text-align: left">
         <el-form-item label="书名" :label-width="formLabelWidth">
           <el-input v-model="form.title" autocomplete="off" placeholder="不加《》"></el-input>
@@ -38,7 +38,7 @@
 
 <script>
   export default {
-    name: 'AddButton',
+    name: 'EditForm',
     data () {
       return {
         dialogFormVisible: false,

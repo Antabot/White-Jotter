@@ -1,13 +1,12 @@
 package com.gm.wj.controller;
 
 import com.gm.wj.pojo.Book;
+import com.gm.wj.pojo.Search;
 import com.gm.wj.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
 
 @RestController
 public class LibraryController {
@@ -32,5 +31,15 @@ public class LibraryController {
     public void delete(@RequestBody Book book) throws Exception {
         bookService.deleteById(book.getId());
 //        System.out.println(book.getId());
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "/api/search")
+    public List<Book> searchResult(@RequestBody Search s) throws Exception {
+        if ("".equals(s.getKeywords())) {
+            return bookService.list();
+        } else {
+            return bookService.Search(s.getKeywords());
+        }
     }
 }

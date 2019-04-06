@@ -1,15 +1,6 @@
 <template>
   <div>
-    <div style="margin-bottom: 10px;display: flex;justify-content: center;align-items: center">
-      <el-input
-        placeholder="默认展示部分书籍，可以通过书名搜索更多书籍..."
-        prefix-icon="el-icon-search"
-        size="small"
-        style="width: 400px;margin-right: 10px"
-        v-model="keywords">
-      </el-input>
-      <el-button size="small" type="primary" icon="el-icon-search" @click="searchClick">搜索</el-button>
-    </div>
+    <search-bar @onSearch="searchResult" ref="searchBar"></search-bar>
     <el-tooltip effect="dark" placement="right" v-for="(item,index) in books" :key="item.id"
                 v-loading="cardLoading[index]">
       <p slot="content" style="font-size: 14px;margin-bottom: 6px;">{{item.title}}</p>
@@ -33,15 +24,16 @@
         <div class="author">{{item.author}}</div>
       </el-card>
     </el-tooltip>
-    <add-or-update-button @onSubmit="loadBooks()" ref="add"></add-or-update-button>
+    <edit-form @onSubmit="loadBooks()" ref="edit"></edit-form>
   </div>
 </template>
 
 <script>
-  import AddOrUpdateButton from './AddOrUpdateButton'
+  import EditForm from './EditForm'
+  import SearchBar from './SearchBar'
   export default {
     name: 'BookCard',
-    components: {AddOrUpdateButton},
+    components: {EditForm, SearchBar},
     mounted: function () {
       this.loadBooks()
     },
@@ -49,6 +41,21 @@
       loadBooks () {
         var _this = this
         this.$axios.get('/library').then(resp => {
+          if (resp && resp.status === 200) {
+            _this.books = resp.data
+            var length = resp.data.length
+            _this.cardLoading = Array.apply(null, Array(length)).map(function (item, i) {
+              return false
+            })
+          }
+        })
+      },
+      searchResult () {
+        var _this = this
+        this.$axios
+          .post('/search', {
+            keywords: this.$refs.searchBar.keywords
+          }).then(resp => {
           if (resp && resp.status === 200) {
             _this.books = resp.data
             var length = resp.data.length
@@ -80,8 +87,8 @@
         // alert(id)
       },
       editBook (item) {
-        this.$refs.add.dialogFormVisible = true
-        this.$refs.add.form = {
+        this.$refs.edit.dialogFormVisible = true
+        this.$refs.edit.form = {
           id: item.id,
           cover: item.cover,
           title: item.title,
@@ -92,11 +99,10 @@
         }
       }
     },
-    data: function () {
+    data () {
       return {
         books: [],
-        cardLoading: [],
-        keywords: ''
+        cardLoading: []
       }
     }
   }
