@@ -4,7 +4,7 @@
 
 # 前言 
 
-这是一个简单的小项目，旨在熟悉 Java Web 项目开发流程，我会把开发的经验分享给大家，包括需求分析、网页设计、原型、功能实现等，并尽量采用目前较为流行的技术。
+这是一个简单的小项目，旨在熟悉 Java Web 项目开发流程，我会把开发的经验分享给大家，并尽量采用目前较为流行的技术。
 
 由于我经验尚欠，项目中难免有许多不足之处，希望路过的大神们能够帮忙指出。
 
@@ -113,6 +113,8 @@ npm run build
 1.[项目简介](https://blog.csdn.net/Neuf_Soleil/article/details/88925013)
 
 2.[使用 CLI 搭建 Vue.js 项目](https://blog.csdn.net/Neuf_Soleil/article/details/88926242)
+
+3.[前后端结合测试（登录页面开发](https://blog.csdn.net/Neuf_Soleil/article/details/88955387)
 
 (持续更新中)
 
