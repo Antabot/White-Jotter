@@ -5,19 +5,10 @@
     </el-aside>
     <el-main>
       <el-row>
-        <!--<el-col :span="24" style="width: 100%;text-align: left;line-height: 100%;height: 40px"><Tag></Tag></el-col>-->
-      </el-row>
-      <el-row>
-        <books></books>
-      </el-row>
-      <el-row>
-        <!--<pagination></pagination>-->
+        <books class="books-area"></books>
       </el-row>
     </el-main>
-      <!--<el-footer>-->
-        <!--<Pagination></Pagination>-->
-      <!--</el-footer>-->
-      </el-container>
+  </el-container>
 </template>
 
 <script>
@@ -32,5 +23,7 @@
 </script>
 
 <style scoped>
-
+  .books-area {
+    width: 1540px;
+  }
 </style>

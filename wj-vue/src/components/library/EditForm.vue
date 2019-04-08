@@ -1,31 +1,34 @@
 <template>
   <div>
-    <i class="el-icon-circle-plus-outline"  @click="dialogFormVisible = true"></i>
+    <i class="el-icon-circle-plus-outline"  @click="buttonClick"></i>
     <el-dialog title="添加/修改图书" :visible.sync="dialogFormVisible">
-      <el-form :model="form" style="text-align: left">
-        <el-form-item label="书名" :label-width="formLabelWidth">
+      <el-form :model="form" style="text-align: left" ref="dataForm">
+        <el-form-item label="书名" :label-width="formLabelWidth" prop="title">
           <el-input v-model="form.title" autocomplete="off" placeholder="不加《》"></el-input>
         </el-form-item>
-        <el-form-item label="作者" :label-width="formLabelWidth">
+        <el-form-item label="作者" :label-width="formLabelWidth" prop="author">
           <el-input v-model="form.author" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="出版日期" :label-width="formLabelWidth">
+        <el-form-item label="出版日期" :label-width="formLabelWidth" prop="date">
           <el-input v-model="form.date" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="出版社" :label-width="formLabelWidth">
+        <el-form-item label="出版社" :label-width="formLabelWidth" prop="press">
           <el-input v-model="form.press" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="封面" :label-width="formLabelWidth">
+        <el-form-item label="封面" :label-width="formLabelWidth" prop="cover">
           <el-input v-model="form.cover" autocomplete="off" placeholder="请输入 URL"></el-input>
         </el-form-item>
-        <el-form-item label="简介" :label-width="formLabelWidth">
+        <el-form-item label="简介" :label-width="formLabelWidth" prop="abs">
           <el-input type="textarea" v-model="form.abs" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="分类" :label-width="formLabelWidth">
-          <el-select v-model="form.region" placeholder="功能完善中">
-            <el-option label="分类一" value="shanghai"></el-option>
-            <el-option label="分类二" value="beijing"></el-option>
-          </el-select>
+        <el-form-item label="分类" :label-width="formLabelWidth" prop="categories">
+        <el-select v-model="form.region" placeholder="功能完善中">
+          <el-option label="分类一" value="shanghai"></el-option>
+          <el-option label="分类二" value="beijing"></el-option>
+        </el-select>
+        </el-form-item>
+        <el-form-item prop="id" style="height: 0">
+          <el-input type="hidden" v-model="form.id" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -55,6 +58,12 @@
       }
     },
     methods: {
+      buttonClick () {
+        this.$nextTick(() => {
+          this.$refs.dataForm.resetFields()
+        })
+        this.dialogFormVisible = true
+      },
       onSubmit () {
         console.log('submit!')
         this.$axios
