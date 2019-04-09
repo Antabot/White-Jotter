@@ -1,7 +1,9 @@
 <template>
   <div>
     <i class="el-icon-circle-plus-outline"  @click="buttonClick"></i>
-    <el-dialog title="添加/修改图书" :visible.sync="dialogFormVisible">
+    <el-dialog
+      title="添加/修改图书"
+      :visible.sync="dialogFormVisible">
       <el-form :model="form" style="text-align: left" ref="dataForm">
         <el-form-item label="书名" :label-width="formLabelWidth" prop="title">
           <el-input v-model="form.title" autocomplete="off" placeholder="不加《》"></el-input>
@@ -21,10 +23,10 @@
         <el-form-item label="简介" :label-width="formLabelWidth" prop="abs">
           <el-input type="textarea" v-model="form.abs" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="分类" :label-width="formLabelWidth" prop="categories">
-        <el-select v-model="form.region" placeholder="功能完善中">
-          <el-option label="分类一" value="shanghai"></el-option>
-          <el-option label="分类二" value="beijing"></el-option>
+        <el-form-item label="分类" :label-width="formLabelWidth" prop="cid">
+        <el-select v-model="form.cid" placeholder="功能完善中">
+          <el-option label="分类一" value="1"></el-option>
+          <el-option label="分类二" value="2"></el-option>
         </el-select>
         </el-form-item>
         <el-form-item prop="id" style="height: 0">
@@ -52,16 +54,17 @@
           date: '',
           press: '',
           cover: '',
-          abs: ''
+          abs: '',
+          cid: ''
         },
         formLabelWidth: '120px'
       }
     },
     methods: {
       buttonClick () {
-        this.$nextTick(() => {
-          this.$refs.dataForm.resetFields()
-        })
+        this.form = {
+          id: ''
+        }
         this.dialogFormVisible = true
       },
       onSubmit () {
@@ -74,7 +77,8 @@
             author: this.form.author,
             date: this.form.date,
             press: this.form.press,
-            abs: this.form.abs
+            abs: this.form.abs,
+            cid: this.form.cid
           }).then(resp => {
             if (resp && resp.status === 200) {
               this.dialogFormVisible = false
@@ -88,7 +92,7 @@
 
 <style scoped>
   .el-icon-circle-plus-outline {
-    margin: 50px 0;
+    margin: 50px 0 0 20px;
     font-size: 100px;
     float: left;
     cursor: pointer;

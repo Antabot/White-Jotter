@@ -113,7 +113,8 @@
           author: item.author,
           date: item.date,
           press: item.press,
-          abs: item.abs
+          abs: item.abs,
+          cid: item.cid
         }
       }
     }
