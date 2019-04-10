@@ -14,13 +14,13 @@ public class LibraryController {
     BookService bookService;
 
     @CrossOrigin
-    @GetMapping(value = "/api/library")
+    @GetMapping(value = "/api/books")
     public List<Book> list() throws Exception {
         return bookService.list();
     }
 
     @CrossOrigin
-    @PostMapping(value = "/api/library")
+    @PostMapping(value = "/api/books")
     public Book addOrUpdate(@RequestBody Book book) throws Exception {
         bookService.addOrUpdate(book);
         return book;
@@ -41,5 +41,12 @@ public class LibraryController {
         } else {
             return bookService.Search(s.getKeywords());
         }
+    }
+
+    @CrossOrigin
+    @GetMapping("/categories/{cid}/books")
+    public List<Book> listByCategory (@PathVariable("cid")int cid) throws Exception {
+        System.out.println("test");
+        return bookService.listByCategory(cid);
     }
 }

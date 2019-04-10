@@ -70,7 +70,7 @@
       onSubmit () {
         console.log('submit!')
         this.$axios
-          .post('/library', {
+          .post('/books', {
             id: this.form.id,
             cover: this.form.cover,
             title: this.form.title,

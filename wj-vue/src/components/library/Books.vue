@@ -58,13 +58,9 @@
     methods: {
       loadBooks () {
         var _this = this
-        this.$axios.get('/library').then(resp => {
+        this.$axios.get('/books').then(resp => {
           if (resp && resp.status === 200) {
             _this.books = resp.data
-            var length = resp.data.length
-            _this.cardLoading = Array.apply(null, Array(length)).map(function (item, i) {
-              return false
-            })
           }
         })
       },

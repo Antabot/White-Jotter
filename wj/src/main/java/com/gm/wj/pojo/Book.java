@@ -13,12 +13,24 @@ public class Book {
     @Column(name = "id")
     int id;
 
+    @ManyToOne
+    @JoinColumn(name="cid")
+    private Category category;
+
     String cover;
     String title;
     String author;
     String date;
     String press;
     String abs;
+
+    public Category getCategory() {
+        return category;
+}
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public String getDate() {
         return date;
