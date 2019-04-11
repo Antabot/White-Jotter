@@ -44,9 +44,19 @@ public class LibraryController {
     }
 
     @CrossOrigin
-    @GetMapping("/categories/{cid}/books")
+    @GetMapping("/api/categories/{cid}/books")
     public List<Book> listByCategory (@PathVariable("cid")int cid) throws Exception {
-        System.out.println("test");
-        return bookService.listByCategory(cid);
+        if (0 != cid) {
+            return bookService.listByCategory(cid);
+        } else {
+            return list();
+        }
     }
+
+//    @CrossOrigin
+//    @GetMapping("/categories/1/books")
+//    public List<Book> listByCategory () throws Exception {
+//        System.out.println("test");
+//        return bookService.listByCategory(1);
+//    }
 }

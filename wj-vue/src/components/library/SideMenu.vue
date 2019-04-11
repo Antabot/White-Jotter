@@ -1,11 +1,12 @@
 <template>
   <el-menu
-    default-active="2"
-    class="el-menu-vertical-demo"
+    default-active="0"
     @select="handleSelect"
-    background-color="#545c64"
-    text-color="#fff"
-    active-text-color="#ffd04b">
+    active-text-color="red">
+    <el-menu-item index="0">
+      <i class="el-icon-menu"></i>
+      <span slot="title">全部</span>
+    </el-menu-item>
     <el-menu-item index="1">
       <i class="el-icon-menu"></i>
       <span slot="title">文学</span>
