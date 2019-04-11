@@ -22,6 +22,7 @@ public class LibraryController {
     @CrossOrigin
     @PostMapping(value = "/api/books")
     public Book addOrUpdate(@RequestBody Book book) throws Exception {
+        System.out.println(book.getCategory());
         bookService.addOrUpdate(book);
         return book;
     }
@@ -30,7 +31,6 @@ public class LibraryController {
     @PostMapping(value = "/api/delete")
     public void delete(@RequestBody Book book) throws Exception {
         bookService.deleteById(book.getId());
-//        System.out.println(book.getId());
     }
 
     @CrossOrigin
@@ -53,10 +53,4 @@ public class LibraryController {
         }
     }
 
-//    @CrossOrigin
-//    @GetMapping("/categories/1/books")
-//    public List<Book> listByCategory () throws Exception {
-//        System.out.println("test");
-//        return bookService.listByCategory(1);
-//    }
 }

@@ -14,12 +14,12 @@
 <script>
   import SideMenu from './SideMenu'
   import Tag from './Tag'
-  import Pagination from './Pagination'
   import Books from './Books'
+  import About from '../common/About'
 
   export default {
     name: 'AppLibrary',
-    components: {Books, Pagination, Tag, SideMenu},
+    components: {Books, Tag, SideMenu, About},
     methods: {
       listByCategory () {
         var _this = this
@@ -37,6 +37,8 @@
 
 <style scoped>
   .books-area {
-    width: 1540px;
+    width: 990px;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>

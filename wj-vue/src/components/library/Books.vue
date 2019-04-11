@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-row style="height: 600px;">
+    <el-row style="height: 840px;">
       <search-bar @onSearch="searchResult" ref="searchBar"></search-bar>
       <el-tooltip effect="dark" placement="right"
                   v-for="item in books.slice((currentPage-1)*pagesize,currentPage*pagesize)"
@@ -43,13 +43,13 @@
   import EditForm from './EditForm'
   import SearchBar from './SearchBar'
   export default {
-    name: 'BookCard',
+    name: 'Books',
     components: {EditForm, SearchBar},
     data () {
       return {
         books: [],
         currentPage: 1,
-        pagesize: 19
+        pagesize: 17
       }
     },
     mounted: function () {

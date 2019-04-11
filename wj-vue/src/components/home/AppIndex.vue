@@ -46,7 +46,7 @@
   #side-menu {
     position: fixed;
     margin-left: 50%;
-    left: -700px;
+    left: -680px;
     top: 100px;
   }
 </style>

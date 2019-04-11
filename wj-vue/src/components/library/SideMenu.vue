@@ -1,5 +1,6 @@
 <template>
   <el-menu
+    class="categories"
     default-active="0"
     @select="handleSelect"
     active-text-color="red">
@@ -56,4 +57,10 @@
 </script>
 
 <style scoped>
+  .categories {
+    /*position: fixed;*/
+    /*margin-left: 50%;*/
+    /*left: -520px;*/
+    /*top: 100px;*/
+  }
 </style>
