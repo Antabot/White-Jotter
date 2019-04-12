@@ -6,7 +6,6 @@
     <el-main>
       <el-row>
         <books class="books-area" ref="booksArea"></books>
-        <img-upload></img-upload>
       </el-row>
     </el-main>
   </el-container>
