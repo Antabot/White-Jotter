@@ -18,7 +18,8 @@
           <el-input v-model="form.press" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="封面" :label-width="formLabelWidth" prop="cover">
-          <el-input v-model="form.cover" autocomplete="off" placeholder="请输入 URL"></el-input>
+          <!--<el-input v-model="form.cover" autocomplete="off" placeholder="请输入 URL"></el-input>-->
+          <img-upload></img-upload>
         </el-form-item>
         <el-form-item label="简介" :label-width="formLabelWidth" prop="abs">
           <el-input type="textarea" v-model="form.abs" autocomplete="off"></el-input>
@@ -46,8 +47,10 @@
 </template>
 
 <script>
+  import ImgUpload from './ImgUpload'
   export default {
     name: 'EditForm',
+    components: {ImgUpload},
     data () {
       return {
         dialogFormVisible: false,

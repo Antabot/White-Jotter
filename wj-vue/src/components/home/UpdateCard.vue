@@ -43,7 +43,7 @@
 
 <script>
   export default {
-    name: 'Card'
+    name: 'UpdateCard'
   }
 </script>
 

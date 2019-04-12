@@ -6,6 +6,7 @@
     <el-main>
       <el-row>
         <books class="books-area" ref="booksArea"></books>
+        <img-upload></img-upload>
       </el-row>
     </el-main>
   </el-container>
@@ -16,10 +17,11 @@
   import Tag from './Tag'
   import Books from './Books'
   import About from '../common/About'
+  import ImgUpload from './ImgUpload'
 
   export default {
     name: 'AppLibrary',
-    components: {Books, Tag, SideMenu, About},
+    components: {Books, Tag, SideMenu, About, ImgUpload},
     methods: {
       listByCategory () {
         var _this = this
