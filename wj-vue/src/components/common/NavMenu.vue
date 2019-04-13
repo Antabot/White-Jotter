@@ -2,7 +2,7 @@
   <div>
     <el-menu
       :default-active="'/index'"
-      router="true"
+      router
       mode="horizontal"
       @select="handleSelect"
       background-color="white"
@@ -36,7 +36,8 @@
           {name: '/jotter', navItem: '笔记本'},
           {name: '/library', navItem: '图书馆'},
           {name: '#nowhere', navItem: '个人中心'}
-        ]
+        ],
+        keywords: ''
       }
     },
     computed: {

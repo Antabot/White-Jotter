@@ -1,10 +1,11 @@
 <template>
   <div>
-    <i class="el-icon-circle-plus-outline"  @click="buttonClick"></i>
+    <i class="el-icon-circle-plus-outline"  @click="dialogFormVisible = true"></i>
     <el-dialog
       title="添加/修改图书"
-      :visible.sync="dialogFormVisible">
-      <el-form :model="form" style="text-align: left" ref="dataForm">
+      :visible.sync="dialogFormVisible"
+      @close="clear">
+      <el-form v-model="form" style="text-align: left" ref="dataForm">
         <el-form-item label="书名" :label-width="formLabelWidth" prop="title">
           <el-input v-model="form.title" autocomplete="off" placeholder="不加《》"></el-input>
         </el-form-item>
@@ -18,7 +19,8 @@
           <el-input v-model="form.press" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="封面" :label-width="formLabelWidth" prop="cover">
-          <el-input v-model="form.cover" autocomplete="off" placeholder="请输入 URL"></el-input>
+          <el-input v-model="form.cover" autocomplete="off" placeholder="图片 URL"></el-input>
+          <img-upload @onUpload="uploadImg" ref="imgUpload"></img-upload>
         </el-form-item>
         <el-form-item label="简介" :label-width="formLabelWidth" prop="abs">
           <el-input type="textarea" v-model="form.abs" autocomplete="off"></el-input>
@@ -46,8 +48,10 @@
 </template>
 
 <script>
+  import ImgUpload from './ImgUpload'
   export default {
     name: 'EditForm',
+    components: {ImgUpload},
     data () {
       return {
         dialogFormVisible: false,
@@ -69,11 +73,18 @@
       }
     },
     methods: {
-      buttonClick () {
+      clear () {
+        this.$refs.imgUpload.clear()
         this.form = {
-          id: ''
+          id: '',
+          title: '',
+          author: '',
+          date: '',
+          press: '',
+          cover: '',
+          abs: '',
+          cid: ''
         }
-        this.dialogFormVisible = true
       },
       onSubmit () {
         this.category.id = this.form.cid
@@ -93,6 +104,9 @@
               this.$emit('onSubmit')
             }
         })
+      },
+      uploadImg () {
+        this.form.cover = this.$refs.imgUpload.url
       }
     }
   }
