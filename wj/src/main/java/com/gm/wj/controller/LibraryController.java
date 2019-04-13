@@ -61,21 +61,24 @@ public class LibraryController {
     }
 
     @PostMapping("api/covers")
-    public void coversUpload(MultipartFile file, HttpServletRequest request) throws Exception {
+    public String coversUpload(MultipartFile file, HttpServletRequest request) throws Exception {
         String folder = "D:/workspace/img";
         File imageFolder = new File(folder);
-        File f = new File(imageFolder, getRandomString(6) + ".jpg");
+        File f = new File(imageFolder, getRandomString(6) + file.getOriginalFilename()
+                .substring(file.getOriginalFilename().length() - 4));
         String filename = file.getName();
         if (!f.getParentFile().exists())
             f.getParentFile().mkdirs();
         try {
             file.transferTo(f);
-            System.out.println(f.getPath());
-            System.out.println("http://localhost:8443/img/books/" + f.getName());
+//            System.out.println(file.getOriginalFilename());
+//            System.out.println("http://localhost:8443/api/file/" + f.getName());
+            String imgURL = "http://localhost:8443/api/file/" + f.getName();
+            return imgURL;
         } catch (IOException e) {
             e.printStackTrace();
+            return "";
         }
-//        System.out.println(file.getOriginalFilename());
     }
 
     public String getRandomString(int length) {

@@ -6,6 +6,12 @@
     </div>
     <div class="block">
       <el-timeline>
+        <el-timeline-item timestamp="2019/4/13" placement="top">
+          <el-card>
+            <h4>实现上传至服务器和输入 URL 两种方式添加封面</h4>
+            <p>Evan 提交于 2019/4/13 21:32</p>
+          </el-card>
+        </el-timeline-item>
         <el-timeline-item timestamp="2019/4/11" placement="top">
           <el-card>
             <h4>实现图书分类功能</h4>
@@ -28,12 +34,6 @@
           <el-card>
             <h4>实现图书修改功能</h4>
             <p>Evan 提交于 2019/4/5 22:52</p>
-          </el-card>
-        </el-timeline-item>
-        <el-timeline-item timestamp="2019/4/4" placement="top">
-          <el-card>
-            <h4>实现图书删除功能</h4>
-            <p>Evan 提交于 2019/4/4 22:50</p>
           </el-card>
         </el-timeline-item>
       </el-timeline>
