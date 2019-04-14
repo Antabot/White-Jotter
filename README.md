@@ -10,13 +10,17 @@
 
 # 一、整体效果
 
-## 1.首页
+## 1.登录页面
+
+![登录页面](https://i.loli.net/2019/04/14/5cb2fd5b78ae7.png)
+
+## 2.首页
 
 作为展示页面，包括开发这个项目的主要参考资料、近期更新和 Slogan
 
 ![首页](https://img-blog.csdnimg.cn/20190403215932913.png)
 
-## 2.图书馆
+## 3.图书馆
 
 作为核心功能页面之一，提供图书信息展示、图书信息管理两大功能
 
@@ -55,7 +59,7 @@
 ---|---
 阅读标注 | 未完成
 
-## 3.笔记本
+## 4.笔记本
 
 该页面尚未成型
 
@@ -118,6 +122,10 @@ npm run build
 2.[使用 CLI 搭建 Vue.js 项目](https://blog.csdn.net/Neuf_Soleil/article/details/88926242)
 
 3.[前后端结合测试（登录页面开发）](https://blog.csdn.net/Neuf_Soleil/article/details/88955387)
+
+4.[数据库的引入](https://blog.csdn.net/Neuf_Soleil/article/details/89294300)
+
+5.[使用 Element 辅助前端开发](https://blog.csdn.net/Neuf_Soleil/article/details/89298717)
 
 (持续更新中)
 
