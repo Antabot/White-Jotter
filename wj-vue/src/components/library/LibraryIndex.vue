@@ -4,9 +4,7 @@
       <SideMenu @indexSelect="listByCategory" ref="sideMenu"></SideMenu>
     </el-aside>
     <el-main>
-      <el-row>
         <books class="books-area" ref="booksArea"></books>
-      </el-row>
     </el-main>
   </el-container>
 </template>
