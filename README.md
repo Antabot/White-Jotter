@@ -81,7 +81,13 @@
 
 # 三、部署方法
 
-1.clone项目到本地`git clone https://github.com/Antabot/White-Jotter`
+1.clone 项目到本地
+
+`git clone https://github.com/Antabot/White-Jotter`
+
+注意：为配合教程，主分支暂时不更新，下一步的开发将主要在 `dev` 分支上进行，mysql 版本替换为 8.0.15, clone 请使用命令
+
+`git clone -b dev https://github.com/Antabot/White-Jotter`
 
 2.数据库脚本放在 `wj` 项目的根目录下，在MySQL中执行数据库脚本  
 
