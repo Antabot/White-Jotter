@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : MySQL
-Source Server Version : 50725
+Source Server Version : 50721
 Source Host           : localhost:3306
 Source Database       : wj
 
 Target Server Type    : MYSQL
-Target Server Version : 50725
+Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2019-04-11 19:26:20
+Date: 2019-04-15 18:54:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `book` (
   PRIMARY KEY (`id`),
   KEY `fk_book_category_on_cid` (`cid`),
   CONSTRAINT `fk_book_category_on_cid` FOREIGN KEY (`cid`) REFERENCES `category` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of book

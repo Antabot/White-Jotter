@@ -2,6 +2,7 @@
   <div>
     <el-row style="height: 840px;">
       <search-bar @onSearch="searchResult" ref="searchBar"></search-bar>
+      <view-switch class="switch"></view-switch>
       <el-tooltip effect="dark" placement="right"
                   v-for="item in books.slice((currentPage-1)*pagesize,currentPage*pagesize)"
                   :key="item.id">
@@ -42,9 +43,10 @@
 <script>
   import EditForm from './EditForm'
   import SearchBar from './SearchBar'
+  import ViewSwitch from './ViewSwitch'
   export default {
     name: 'Books',
-    components: {EditForm, SearchBar},
+    components: {EditForm, SearchBar, ViewSwitch},
     data () {
       return {
         books: [],
@@ -153,6 +155,13 @@
   .el-icon-delete {
     cursor: pointer;
     float: right;
+  }
+
+  .switch {
+    display: flex;
+    position: absolute;
+    left: 780px;
+    top: 25px;
   }
 
   a {

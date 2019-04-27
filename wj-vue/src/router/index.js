@@ -6,6 +6,7 @@ import Editor from '@/components/jotter/Editor'
 import LibraryIndex from '@/components/library/LibraryIndex'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
+import AdminIndex from '@/components/admin/AdminIndex'
 
 Vue.use(Router)
 
@@ -14,9 +15,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Login',
-      redirect: '/login',
-      component: Login
+      name: 'index',
+      redirect: '/index',
+      component: AppIndex,
+      meta: {
+        requireAuth: true
+      }
     },
     {
       // home页面并不需要被访问，只是作为其它组件的父组件
@@ -28,22 +32,34 @@ export default new Router({
         {
           path: '/index',
           name: 'AppIndex',
-          component: AppIndex
+          component: AppIndex,
+          meta: {
+            requireAuth: true
+          }
         },
         {
           path: '/jotter',
-          name: 'JotterIndex',
-          component: JotterIndex
+          name: 'Jotter',
+          component: JotterIndex,
+          meta: {
+            requireAuth: true
+          }
         },
         {
           path: '/editor',
           name: 'Editor',
-          component: Editor
+          component: Editor,
+          meta: {
+            requireAuth: true
+          }
         },
         {
           path: '/library',
           name: 'Library',
-          component: LibraryIndex
+          component: LibraryIndex,
+          meta: {
+            requireAuth: true
+          }
         }
       ]
     },
@@ -51,6 +67,14 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: AdminIndex,
+      meta: {
+        requireAuth: true
+      }
     }
   ]
 })
