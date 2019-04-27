@@ -30,7 +30,7 @@ public class LoginController {
             return ResultFactory.buildFailResult(message);
         } else {
             session.setAttribute("user", user);
-            return ResultFactory.buildSuccessResult("登录成功");
+            return ResultFactory.buildSuccessResult(user);
         }
     }
 }

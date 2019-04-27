@@ -37,15 +37,18 @@
     },
     methods: {
       login () {
+        var _this = this
         this.$axios
           .post('/login', {
             username: this.loginForm.username,
             password: this.loginForm.password
           })
-          .then(successResponse => {
-            this.responseResult = JSON.stringify(successResponse.data)
-            if (successResponse.data.code === 200) {
-              this.$router.replace({path: '/home'})
+          .then(resp => {
+            if (resp.data.code === 200) {
+              var data = resp.data
+              _this.$store.commit('login', data.data)
+              var path = _this.$route.query.redirect
+              _this.$router.replace({path: path === '/' || path === undefined ? '/home' : path})
             }
           })
           .catch(failResponse => {})
