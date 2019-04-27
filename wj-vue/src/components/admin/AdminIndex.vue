@@ -1,10 +1,10 @@
 <template>
   <div>
-    <el-row>
-      <Header></Header>
+    <el-row style="z-index: 1;">
+      <Header style="position: absolute;width: 100%;"></Header>
     </el-row>
-    <el-row>
-      <el-col :span="4">
+    <el-row style="z-index: 0;">
+      <el-col style="width: 250px" >
         <admin-menu></admin-menu>
       </el-col>
     </el-row>

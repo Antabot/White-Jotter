@@ -8,7 +8,8 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
-      <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
+      <div style="height: 80px;"></div>
+      <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name" style="font-size: 18px">
         <i :class="item.icon"></i>
         {{ item.navItem }}
       </el-menu-item>
@@ -35,6 +36,8 @@
 
 <style scoped>
   .el-menu-admin {
-    height: 1000px;
+    height: 1200px;
+    font-size: 30px;
+    border-radius: 5px;
   }
 </style>
