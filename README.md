@@ -85,17 +85,13 @@
 
 `git clone https://github.com/Antabot/White-Jotter`
 
-注意：为配合教程，主分支暂时不更新，下一步的开发将主要在 `dev` 分支上进行，mysql 版本替换为 8.0.15, clone 请使用命令
-
-`git clone -b dev https://github.com/Antabot/White-Jotter`
-
 2.数据库脚本放在 `wj` 项目的根目录下，在MySQL中执行数据库脚本  
 
-3.数据库配置在 `wj` 项目的 `src\main\resources` 目录下的`application.properties` 文件中，mysql 版本为 5.7.21   
+3.数据库配置在 `wj` 项目的 `src\main\resources` 目录下的`application.properties` 文件中，mysql 版本为 8.0.15   
 
-4.在IntelliJ IDEA中运行 `wj` 项目，为了保证项目成功运行，可以右键点击 `pom.xml` 选择 maven -> reimport
+4.在IntelliJ IDEA中运行 `wj` 项目，为了保证项目成功运行，可以右键点击 `pom.xml` 选择 maven -> reimport ，并重启项目
 
-至此，服务端就启动成功了，此时在地址栏输入 `http://localhost:8443` 即可访问项目登录页面，默认账号为 `admin`，密码为 `123`
+至此，服务端就启动成功了，同时，运行 `wj-vue` 项目，访问 `http://localhost:8080` ，即可进入登录页面，默认账号是 `admin`，密码是 `123`
 
 如果要做二次开发，请继续看第五、六步。
 
@@ -117,7 +113,7 @@ npm run dev
 npm run build
 ```  
 
-该命令执行成功之后， `wj-vue` 目录下生成一个 `dist` 文件夹，将该文件夹中的两个文件 `static` 和 `index.html` 拷贝到 SpringBoot 项目中 `resources/static/` 目录下，然后就可以像第 4 步那样直接访问了。  
+该命令执行成功之后， `wj-vue` 目录下生成一个 `dist` 文件夹，可以将该文件夹中的两个文件 `static` 和 `index.html` 拷贝到 `wj` 项目中 `resources/static/` 目录下，然后直接运行 `wj` 项目，访问 `http://localhost:8443` ，实际上是把前端打包后作为静态文件，但不推荐使用这种方式。
 
 # 教程
 
@@ -137,6 +133,7 @@ npm run build
 
 # 近期更新
 
+04-27 使用前端拦截器，数据库迁移至 mysql 8.0.15，后台管理页面初始化
 04-13 完成图片的上传功能  
 04-11 完成图书分类功能  
 04-08 完成图书分页功能  
