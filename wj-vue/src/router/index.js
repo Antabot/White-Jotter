@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import AppIndex from '@/components/home/AppIndex'
-import JotterIndex from '@/components/jotter/JotterIndex'
-import Editor from '@/components/jotter/Editor'
-import LibraryIndex from '@/components/library/LibraryIndex'
-import Login from '@/components/Login'
-import Home from '@/components/Home'
-import AdminIndex from '@/components/admin/AdminIndex'
+import AppIndex from '../components/home/AppIndex'
+import JotterIndex from '../components/jotter/JotterIndex'
+import Editor from '../components/jotter/Editor'
+import LibraryIndex from '../components/library/LibraryIndex'
+import Login from '../components/Login'
+import Home from '../components/Home'
+import AdminIndex from '../components/admin/AdminIndex'
 
 Vue.use(Router)
 
@@ -27,7 +27,7 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home,
-      redirect: 'index',
+      redirect: '/index',
       children: [
         {
           path: '/index',
