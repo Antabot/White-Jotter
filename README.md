@@ -129,6 +129,14 @@ npm run build
 
 5.[使用 Element 辅助前端开发](https://blog.csdn.net/Neuf_Soleil/article/details/89298717)
 
+6.[前端路由与登录拦截器](https://learner.blog.csdn.net/article/details/89422585)
+
+7.[导航栏与图书页面设计](https://learner.blog.csdn.net/article/details/89853305)
+
+8.[数据库设计与增删改查](https://learner.blog.csdn.net/article/details/92413933)
+
+9.[核心功能的前端实现](https://learner.blog.csdn.net/article/details/95310666)
+
 (持续更新中)
 
 # 近期更新
