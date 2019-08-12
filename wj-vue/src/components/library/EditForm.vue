@@ -26,7 +26,7 @@
           <el-input type="textarea" v-model="form.abs" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="分类" :label-width="formLabelWidth" prop="cid">
-        <el-select v-model="form.cid" placeholder="请选择分类">
+        <el-select v-model="form.category.id" placeholder="请选择分类">
           <el-option label="文学" value="1"></el-option>
           <el-option label="流行" value="2"></el-option>
           <el-option label="文化" value="3"></el-option>
@@ -63,11 +63,11 @@
           press: '',
           cover: '',
           abs: '',
-          cid: ''
-        },
-        category: {
-          id: '',
-          name: ''
+          cid: '',
+          category: {
+            id: '',
+            name: ''
+          }
         },
         formLabelWidth: '120px'
       }
@@ -83,11 +83,10 @@
           press: '',
           cover: '',
           abs: '',
-          cid: ''
+          category: ''
         }
       },
       onSubmit () {
-        this.category.id = this.form.cid
         this.$axios
           .post('/books', {
             id: this.form.id,
@@ -97,7 +96,7 @@
             date: this.form.date,
             press: this.form.press,
             abs: this.form.abs,
-            category: this.category
+            category: this.form.category
           }).then(resp => {
             if (resp && resp.status === 200) {
               this.dialogFormVisible = false
