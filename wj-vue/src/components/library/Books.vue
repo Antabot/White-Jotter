@@ -44,6 +44,7 @@
   import EditForm from './EditForm'
   import SearchBar from './SearchBar'
   import ViewSwitch from './ViewSwitch'
+
   export default {
     name: 'Books',
     components: {EditForm, SearchBar, ViewSwitch},
@@ -112,8 +113,14 @@
           date: item.date,
           press: item.press,
           abs: item.abs,
-          cid: item.cid
+          category: {
+            id: item.category.id.toString(),
+            name: item.category.name
+          }
         }
+        // this.$refs.edit.category = {
+        //   id: item.category.id.toString()
+        // }
       }
     }
   }

@@ -7,7 +7,7 @@
 
 <script>
   export default {
-    name: 'Switch',
+    name: 'ViewSwitch',
     data () {
       return {
         value: true
