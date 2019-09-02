@@ -1,12 +1,11 @@
-白卷是一个前后端分离的图书管理系统，项目采用 SpringBoot+Vue 开发。  
+白卷目前是一个前后端分离的图书管理系统，项目采用 SpringBoot+Vue 开发。  
 
-项目地址：[https://github.com/Antabot/White-Jotter](https://github.com/Antabot/White-Jotter)       
 
 # 前言 
 
 这是一个简单的小项目，旨在熟悉 Java Web 项目开发流程，我会把开发的经验分享给大家，并尽量采用目前较为流行的技术。
 
-由于经验尚欠，项目中难免有许多不足之处，希望路过的大神们能够帮忙指出。
+随着时间的推移，项目会逐渐完善，最终变成什么亚子，我也不知道。
 
 # 一、整体效果
 
@@ -140,6 +139,8 @@ npm run build
 8.[数据库设计与增删改查](https://learner.blog.csdn.net/article/details/92413933)
 
 9.[核心功能的前端实现](https://learner.blog.csdn.net/article/details/95310666)
+
+10.[图片上传与项目的打包部署](https://learner.blog.csdn.net/article/details/97619312)
 
 (持续更新中)
 
