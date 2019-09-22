@@ -138,6 +138,8 @@ npm run build
 
 10.[图片上传与项目的打包部署](https://learner.blog.csdn.net/article/details/97619312)
 
+11.[用户角色权限管理模块设计](https://learner.blog.csdn.net/article/details/100849732)
+
 (持续更新中)
 
 # 近期更新
