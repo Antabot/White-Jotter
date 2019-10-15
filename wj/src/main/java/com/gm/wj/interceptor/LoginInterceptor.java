@@ -3,6 +3,8 @@ package com.gm.wj.interceptor;
 
 import com.gm.wj.pojo.User;
 import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,9 +31,10 @@ public class LoginInterceptor  implements HandlerInterceptor{
         uri = StringUtils.remove(uri, contextPath+"/");
         String page = uri;
 
+        // 使用 shiro，仅对后端拦截有效
         if(begingWith(page, requireAuthPages)){
-            User user = (User) session.getAttribute("user");
-            if(user==null) {
+            Subject subject = SecurityUtils.getSubject();
+            if(!subject.isAuthenticated()) {
                 httpServletResponse.sendRedirect("login");
                 return false;
             }

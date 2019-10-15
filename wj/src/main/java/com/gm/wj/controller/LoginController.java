@@ -6,8 +6,12 @@ import com.gm.wj.pojo.User;
 import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.UserService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,18 +29,22 @@ public class LoginController {
         String username = requestUser.getUsername();
         username = HtmlUtils.htmlEscape(username);
 
-        User user = userService.get(username, requestUser.getPassword());
-        if (null == user) {
-            String message = "账号密码错误";
-            return ResultFactory.buildFailResult(message);
-        } else {
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(username, requestUser.getPassword());
+        try {
+            subject.login(token);
+            User user = userService.getByName(username);
             session.setAttribute("user", user);
             return ResultFactory.buildSuccessResult(user);
+        } catch (AuthenticationException e) {
+            String message = "账号密码错误";
+            return ResultFactory.buildFailResult(message);
         }
     }
 
     @PostMapping("api/register")
-    public Object register(@RequestBody User user) {
+    @ResponseBody
+    public Result register(@RequestBody User user) {
         String username = user.getUsername();
         String password = user.getPassword();
         username = HtmlUtils.htmlEscape(username);
@@ -60,5 +68,16 @@ public class LoginController {
         userService.add(user);
 
         return ResultFactory.buildSuccessResult(user);
+    }
+
+    @ResponseBody
+    @GetMapping("api/logout")
+    public Result logout() {
+        Subject subject = SecurityUtils.getSubject();
+        if (subject.isAuthenticated()) {
+            subject.logout();
+        }
+        String message = "成功登出";
+        return ResultFactory.buildSuccessResult(message);
     }
 }
