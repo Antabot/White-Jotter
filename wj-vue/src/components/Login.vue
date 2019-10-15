@@ -14,7 +14,8 @@
       <el-checkbox class="login_remember" v-model="checked"
                    label-position="left"><span style="color: #505458">记住密码</span></el-checkbox>
       <el-form-item style="width: 100%">
-        <el-button type="primary" style="width: 100%;background: #505458;border: none" v-on:click="login">登录</el-button>
+        <el-button type="primary" style="width: 40%;background: #505458;border: none" v-on:click="login">登录</el-button>
+        <router-link to="register"><el-button type="primary" style="width: 40%;background: #505458;border: none">注册</el-button></router-link>
       </el-form-item>
     </el-form>
   </body>
@@ -24,13 +25,13 @@
     data () {
       return {
         rules: {
-          account: [{required: true, message: '请输入正确的用户名', trigger: 'blur'}],
-          checkPass: [{required: true, message: '请输入正确的密码', trigger: 'blur'}]
+          account: [{required: true, message: '用户名不能为空', trigger: 'blur'}],
+          checkPass: [{required: true, message: '密码不能为空', trigger: 'blur'}]
         },
         checked: true,
         loginForm: {
-          username: 'admin',
-          password: '123'
+          username: '',
+          password: ''
         },
         loading: false
       }
@@ -66,7 +67,7 @@
     position: fixed;
   }
    body{
-     margin: 0px;
+     margin: -5px 0px;
    }
   .login-container {
     border-radius: 15px;

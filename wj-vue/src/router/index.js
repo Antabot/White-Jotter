@@ -7,6 +7,7 @@ import LibraryIndex from '../components/library/LibraryIndex'
 import Login from '../components/Login'
 import Home from '../components/Home'
 import AdminIndex from '../components/admin/AdminIndex'
+import Register from '../components/Register'
 
 Vue.use(Router)
 
@@ -67,6 +68,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
       path: '/admin',
