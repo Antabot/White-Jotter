@@ -30,10 +30,11 @@ public class LoginController {
         username = HtmlUtils.htmlEscape(username);
 
         Subject subject = SecurityUtils.getSubject();
+//        subject.getSession().setTimeout(10000);
         UsernamePasswordToken token = new UsernamePasswordToken(username, requestUser.getPassword());
         try {
             subject.login(token);
-            User user = userService.getByName(username);
+            User user = userService.getByUserName(username);
             session.setAttribute("user", user);
             return ResultFactory.buildSuccessResult(user);
         } catch (AuthenticationException e) {

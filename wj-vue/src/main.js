@@ -17,10 +17,14 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(mavonEditor)
 
+// 页面刷新时，重新赋值token，也可直接在 store 里设置 token 默认值
+// if (window.localStorage.getItem('token')) {
+//   store.commit('login', window.localStorage.getItem('token'))
+// }
+
 router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) {
-      if (store.state.user.username) {
-        console.log(store.state.user.username)
+      if (store.state.user !== '未登录') {
         next()
       } else {
         next({
@@ -33,6 +37,40 @@ router.beforeEach((to, from, next) => {
     }
   }
 )
+
+// http request 拦截器
+axios.interceptors.request.use(
+  config => {
+    if (store.state.token) {
+      // 判断是否存在token，如果存在的话，则每个http header都加上token
+      config.headers.Authorization = `token ${store.state.token}`
+    }
+    return config
+  },
+  err => {
+    return Promise.reject(err)
+  })
+
+// http response 拦截器
+axios.interceptors.response.use(
+  response => {
+    return response
+  },
+  error => {
+    if (error.response) {
+      switch (error.response.status) {
+        case 401:
+          // 返回 401 清除token信息并跳转到登录页面
+          store.commit('logout')
+          router.replace({
+            path: 'login',
+            query: {redirect: router.currentRoute.fullPath}
+          })
+      }
+    }
+    // 返回接口返回的错误信息
+    return Promise.reject(error.response.data)
+  })
 
 /* eslint-disable no-new */
 new Vue({

@@ -27,7 +27,7 @@ public class WJRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String userName = token.getPrincipal().toString();
-        User user = userService.getByName(userName);
+        User user = userService.getByUserName(userName);
         String passwordInDB = user.getPassword();
         String salt = user.getSalt();
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(userName, passwordInDB, ByteSource.Util.bytes(salt), getName());
