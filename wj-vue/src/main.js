@@ -24,7 +24,8 @@ Vue.use(mavonEditor)
 
 router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) {
-      if (store.state.user !== '未登录') {
+      if (store.state.token) {
+        axios.post('/authentication')
         next()
       } else {
         next({
@@ -42,8 +43,9 @@ router.beforeEach((to, from, next) => {
 axios.interceptors.request.use(
   config => {
     if (store.state.token) {
+      console.log(store.state.token)
       // 判断是否存在token，如果存在的话，则每个http header都加上token
-      config.headers.Authorization = `token ${store.state.token}`
+      config.headers.Authorization = `token ${JSON.stringify(store.state.token)}`
     }
     return config
   },
