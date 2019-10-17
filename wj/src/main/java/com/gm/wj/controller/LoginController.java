@@ -2,6 +2,8 @@ package com.gm.wj.controller;
 
 import javax.servlet.http.HttpSession;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.gm.wj.pojo.User;
 import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
@@ -13,6 +15,7 @@ import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
@@ -30,12 +33,13 @@ public class LoginController {
         username = HtmlUtils.htmlEscape(username);
 
         Subject subject = SecurityUtils.getSubject();
+//        subject.getSession().setTimeout(10000);
         UsernamePasswordToken token = new UsernamePasswordToken(username, requestUser.getPassword());
         try {
             subject.login(token);
-            User user = userService.getByName(username);
+            User user = userService.getByUserName(username);
             session.setAttribute("user", user);
-            return ResultFactory.buildSuccessResult(user);
+            return ResultFactory.buildSuccessResult(token);
         } catch (AuthenticationException e) {
             String message = "账号密码错误";
             return ResultFactory.buildFailResult(message);
@@ -79,5 +83,12 @@ public class LoginController {
         }
         String message = "成功登出";
         return ResultFactory.buildSuccessResult(message);
+    }
+
+    @ResponseBody
+    @PostMapping(value = "api/authentication")
+    public String authentication(@RequestHeader("Authorization") String token){
+//        System.out.println(user.getUsername());
+        return "authentication success";
     }
 }

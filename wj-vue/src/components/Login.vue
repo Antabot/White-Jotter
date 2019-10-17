@@ -3,11 +3,11 @@
     <el-form :rules="rules" class="login-container" label-position="left"
              label-width="0px" v-loading="loading">
       <h3 class="login_title">系统登录</h3>
-      <el-form-item prop="account">
+      <el-form-item prop="username">
         <el-input type="text" v-model="loginForm.username"
                   auto-complete="off" placeholder="账号"></el-input>
       </el-form-item>
-      <el-form-item prop="checkPass">
+      <el-form-item prop="password">
         <el-input type="password" v-model="loginForm.password"
                   auto-complete="off" placeholder="密码"></el-input>
       </el-form-item>
@@ -25,8 +25,8 @@
     data () {
       return {
         rules: {
-          account: [{required: true, message: '用户名不能为空', trigger: 'blur'}],
-          checkPass: [{required: true, message: '密码不能为空', trigger: 'blur'}]
+          username: [{required: true, message: '用户名不能为空', trigger: 'blur'}],
+          password: [{required: true, message: '密码不能为空', trigger: 'blur'}]
         },
         checked: true,
         loginForm: {
