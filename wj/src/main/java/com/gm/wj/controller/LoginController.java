@@ -8,6 +8,7 @@ import com.gm.wj.pojo.User;
 import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.UserService;
+import com.gm.wj.util.TokenUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -34,12 +35,15 @@ public class LoginController {
 
         Subject subject = SecurityUtils.getSubject();
 //        subject.getSession().setTimeout(10000);
-        UsernamePasswordToken token = new UsernamePasswordToken(username, requestUser.getPassword());
+        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, requestUser.getPassword());
         try {
-            subject.login(token);
+            subject.login(usernamePasswordToken);
             User user = userService.getByUserName(username);
-            session.setAttribute("user", user);
-            return ResultFactory.buildSuccessResult(token);
+            TokenUtil tokenUtil = new TokenUtil();
+            String token = tokenUtil.getToken(user);
+            user.setToken(token);
+            session.setAttribute("token", token);
+            return ResultFactory.buildSuccessResult(user);
         } catch (AuthenticationException e) {
             String message = "账号密码错误";
             return ResultFactory.buildFailResult(message);
@@ -87,7 +91,7 @@ public class LoginController {
 
     @ResponseBody
     @PostMapping(value = "api/authentication")
-    public String authentication(@RequestHeader("Authorization") String token){
+    public String authentication(@RequestHeader("Token") String token){
 //        System.out.println(user.getUsername());
         return "authentication success";
     }
