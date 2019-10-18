@@ -17,6 +17,7 @@ public class User {
     String password;
     String name;
     String salt;
+    String token;
 
     public int getId() {
         return id;
@@ -56,6 +57,14 @@ public class User {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
 

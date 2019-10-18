@@ -24,7 +24,8 @@ Vue.use(mavonEditor)
 
 router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) {
-      if (store.state.token) {
+      if (store.state.user.token) {
+        console.log(store.state.user.token)
         axios.post('/authentication')
         next()
       } else {
@@ -42,10 +43,10 @@ router.beforeEach((to, from, next) => {
 // http request 拦截器
 axios.interceptors.request.use(
   config => {
-    if (store.state.token) {
-      console.log(store.state.token)
+    if (store.state.user.token) {
       // 判断是否存在token，如果存在的话，则每个http header都加上token
-      config.headers.Authorization = `token ${JSON.stringify(store.state.token)}`
+      // config.headers.Token = `token ${JSON.stringify(store.state.user.token)}`
+      config.headers.Token = JSON.stringify(store.state.user.token)
     }
     return config
   },

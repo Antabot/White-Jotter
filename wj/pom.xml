@@ -117,6 +117,11 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.41</version>
 		</dependency>
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.8.3</version>
+		</dependency>
 	</dependencies>
 	<properties>
 		<java.version>1.8</java.version>
