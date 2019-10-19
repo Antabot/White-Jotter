@@ -1,6 +1,6 @@
 <template>
   <body id="paper">
-  <el-form :rules="rules" class="login-container" label-position="left"
+  <el-form class="login-container" label-position="left"
            label-width="0px" v-loading="loading">
     <h3 class="login_title">用户注册</h3>
     <el-form-item>

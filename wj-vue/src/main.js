@@ -11,6 +11,8 @@ import store from './store'
 
 var axios = require('axios')
 axios.defaults.baseURL = 'http://localhost:8443/api'
+// 使请求带上凭证信息
+// axios.defaults.withCredentials = true
 
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
@@ -25,8 +27,7 @@ Vue.use(mavonEditor)
 router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) {
       if (store.state.user.token) {
-        console.log(store.state.user.token)
-        axios.post('/authentication')
+        // axios.post('/authentication')
         next()
       } else {
         next({
@@ -39,20 +40,24 @@ router.beforeEach((to, from, next) => {
     }
   }
 )
-
-// http request 拦截器
+// http request拦截器，会先于state的更新执行，以保证发送logout请求时也带上正确的token
 axios.interceptors.request.use(
   config => {
+    // 输出当前状态下的 token
+    // console.log(store.state.user.token)
     if (store.state.user.token) {
-      // 判断是否存在token，如果存在的话，则每个http header都加上token
+      // 判断当前是否存在token，如果存在的话，则每个http header都加上token
       // config.headers.Token = `token ${JSON.stringify(store.state.user.token)}`
       config.headers.Token = JSON.stringify(store.state.user.token)
+    } else {
+      config.headers.Token = null
     }
     return config
   },
   err => {
     return Promise.reject(err)
-  })
+  }
+  )
 
 // http response 拦截器
 axios.interceptors.response.use(

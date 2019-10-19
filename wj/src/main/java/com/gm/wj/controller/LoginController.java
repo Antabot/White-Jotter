@@ -9,6 +9,7 @@ import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.UserService;
 import com.gm.wj.util.TokenUtil;
+import org.apache.http.HttpResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -91,8 +92,14 @@ public class LoginController {
 
     @ResponseBody
     @PostMapping(value = "api/authentication")
-    public String authentication(@RequestHeader("Token") String token){
-//        System.out.println(user.getUsername());
-        return "authentication success";
+    public String authentication(@RequestHeader("Token") String token, HttpSession session, HttpResponse response){
+        System.out.println(token);
+        System.out.println(session.getAttribute("token"));
+        if (token == session.getAttribute("token")) {
+            return "身份认证成功";
+        } else {
+            response.setStatusCode(401);
+            return "认证失败，请重新登录";
+        }
     }
 }
