@@ -16,17 +16,23 @@ public class MyWebConfigurer implements WebMvcConfigurer {
     }
 
     @Override
-    public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(getLoginIntercepter()).addPathPatterns("/**").excludePathPatterns("/index.html");
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(getLoginIntercepter())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/index.html")
+                .excludePathPatterns("/api/login")
+                .excludePathPatterns("/api/logout");
     }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        //所有请求都允许跨域
+        //所有请求都允许跨域，使用这种配置方法就不能在 interceptor 中再配置 header 了
         registry.addMapping("/**")
-                .allowedOrigins("*")
-                .allowedMethods("*")
-                .allowedHeaders("*");
+                .allowedOrigins("http://localhost:8080")
+                .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
+                .allowCredentials(true)
+                .allowedHeaders("*")
+                .maxAge(3600);
     }
 
     @Override
