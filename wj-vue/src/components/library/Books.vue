@@ -61,7 +61,7 @@
     methods: {
       loadBooks () {
         var _this = this
-        this.$axios.get('/books', {withCredentials: true}).then(resp => {
+        this.$axios.get('/books').then(resp => {
           if (resp && resp.status === 200) {
             _this.books = resp.data
           }
@@ -69,7 +69,6 @@
       },
       handleCurrentChange: function (currentPage) {
         this.currentPage = currentPage
-        console.log(this.currentPage)
       },
       searchResult () {
         var _this = this
