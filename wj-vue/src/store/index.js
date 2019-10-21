@@ -21,13 +21,12 @@ export default new Vuex.Store({
     login (state, data) {
       state.user = data
       window.localStorage.setItem('user', JSON.stringify(data))
-      window.document.cookie = 'have something'
+      // window.document.cookie = 'have something'
     },
     logout (state) {
       // 注意不能用 null 清除，否则将无法判断 user 里具体的内容
       state.user = []
       window.localStorage.removeItem('user')
-      window.document.cookie = null
       // state.routes = []
     }
   },

@@ -44,6 +44,7 @@ public class LoginController {
             String token = tokenUtil.getToken(user);
             user.setToken(token);
             session.setAttribute("token", token);
+            System.out.println(session.getId());
             return ResultFactory.buildSuccessResult(user);
         } catch (AuthenticationException e) {
             String message = "账号密码错误";
@@ -98,7 +99,7 @@ public class LoginController {
         if (token == session.getAttribute("token")) {
             return "身份认证成功";
         } else {
-            response.setStatusCode(401);
+//            response.setStatusCode(401);
             return "认证失败，请重新登录";
         }
     }

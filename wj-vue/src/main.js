@@ -12,7 +12,7 @@ import store from './store'
 var axios = require('axios')
 axios.defaults.baseURL = 'http://localhost:8443/api'
 // 使请求带上凭证信息
-// axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true
 
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
@@ -27,7 +27,7 @@ Vue.use(mavonEditor)
 router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) {
       if (store.state.user.token) {
-        // axios.post('/authentication')
+        axios.post('/authentication')
         next()
       } else {
         next({
