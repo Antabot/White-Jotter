@@ -2,8 +2,6 @@ package com.gm.wj.controller;
 
 import javax.servlet.http.HttpSession;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.gm.wj.pojo.User;
 import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
@@ -17,7 +15,6 @@ import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
@@ -44,7 +41,6 @@ public class LoginController {
             String token = tokenUtil.getToken(user);
             user.setToken(token);
             session.setAttribute("token", token);
-            System.out.println(session.getId());
             return ResultFactory.buildSuccessResult(user);
         } catch (AuthenticationException e) {
             String message = "账号密码错误";
@@ -84,23 +80,19 @@ public class LoginController {
     @GetMapping("api/logout")
     public Result logout() {
         Subject subject = SecurityUtils.getSubject();
-        if (subject.isAuthenticated()) {
-            subject.logout();
-        }
+        subject.logout();
         String message = "成功登出";
         return ResultFactory.buildSuccessResult(message);
     }
 
     @ResponseBody
-    @PostMapping(value = "api/authentication")
+    @GetMapping(value = "api/authentication")
     public String authentication(@RequestHeader("Token") String token, HttpSession session, HttpResponse response){
-        System.out.println(token);
-        System.out.println(session.getAttribute("token"));
-        if (token == session.getAttribute("token")) {
-            return "身份认证成功";
-        } else {
-//            response.setStatusCode(401);
-            return "认证失败，请重新登录";
-        }
+        return "身份认证成功";
+//        if (token.replace("\"", "").equals(session.getAttribute("token"))) {
+//            return "身份认证成功";
+//        } else {
+//            return "认证失败，请重新登录";
+//        }
     }
 }

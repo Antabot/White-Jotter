@@ -19,16 +19,13 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(mavonEditor)
 
-// 页面刷新时，重新赋值token，也可直接在 store 里设置 token 默认值
-// if (window.localStorage.getItem('token')) {
-//   store.commit('login', window.localStorage.getItem('token'))
-// }
-
+// 如果前端没有登录信息则直接拦截，如果有则判断后端是否正常登录（防止构造参数绕过）
 router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) {
-      if (store.state.user.token) {
-        axios.post('/authentication')
-        next()
+      if (store.state.user) {
+        axios.get('/authentication').then(resp => {
+          if (resp) next()
+        })
       } else {
         next({
           path: 'login',
@@ -40,7 +37,7 @@ router.beforeEach((to, from, next) => {
     }
   }
 )
-// http request拦截器，会先于state的更新执行，以保证发送logout请求时也带上正确的token
+// http request拦截器，为请求加上 token
 axios.interceptors.request.use(
   config => {
     // 输出当前状态下的 token
@@ -57,7 +54,7 @@ axios.interceptors.request.use(
   err => {
     return Promise.reject(err)
   }
-  )
+)
 
 // http response 拦截器
 axios.interceptors.response.use(
@@ -65,16 +62,12 @@ axios.interceptors.response.use(
     return response
   },
   error => {
-    if (error.response) {
-      switch (error.response.status) {
-        case 401:
-          // 返回 401 清除token信息并跳转到登录页面
-          store.commit('logout')
-          router.replace({
-            path: 'login',
-            query: {redirect: router.currentRoute.fullPath}
-          })
-      }
+    console.log(error.response)
+    if (error) {
+      router.replace({
+        path: 'login',
+        query: {redirect: router.currentRoute.fullPath}
+      })
     }
     // 返回接口返回的错误信息
     return Promise.reject(error.response.data)
@@ -86,6 +79,6 @@ new Vue({
   render: h => h(App),
   router,
   store,
-  components: { App },
+  components: {App},
   template: '<App/>'
 })
