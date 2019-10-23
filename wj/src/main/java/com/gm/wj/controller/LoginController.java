@@ -36,6 +36,7 @@ public class LoginController {
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, requestUser.getPassword());
         try {
             subject.login(usernamePasswordToken);
+            // 生成随机 token 并存储在 session 中
             User user = userService.getByUserName(username);
             TokenUtil tokenUtil = new TokenUtil();
             String token = tokenUtil.getToken(user);
@@ -63,14 +64,13 @@ public class LoginController {
             return ResultFactory.buildFailResult(message);
         }
 
+        // 默认生成 16 位盐
         String salt = new SecureRandomNumberGenerator().nextBytes().toString();
         int times = 2;
-
         String encodedPassword = new SimpleHash("md5", password, salt, times).toString();
 
         user.setSalt(salt);
         user.setPassword(encodedPassword);
-
         userService.add(user);
 
         return ResultFactory.buildSuccessResult(user);
