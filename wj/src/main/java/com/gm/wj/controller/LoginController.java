@@ -42,7 +42,7 @@ public class LoginController {
             String token = tokenUtil.getToken(user);
             user.setToken(token);
             session.setAttribute("token", token);
-            return ResultFactory.buildSuccessResult(user);
+            return ResultFactory.buildSuccessResult(usernamePasswordToken);
         } catch (AuthenticationException e) {
             String message = "账号密码错误";
             return ResultFactory.buildFailResult(message);
