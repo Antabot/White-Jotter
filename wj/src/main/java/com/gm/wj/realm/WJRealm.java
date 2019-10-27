@@ -18,12 +18,14 @@ public class WJRealm extends AuthorizingRealm {
     @Autowired
     private UserService userService;
 
+    // 简单重写获取授权信息方法
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         SimpleAuthorizationInfo s = new SimpleAuthorizationInfo();
         return s;
     }
 
+    // 获取认证信息，即根据 token 中的用户名从数据库中获取密码、盐等并返回
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String userName = token.getPrincipal().toString();
