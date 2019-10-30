@@ -53,7 +53,7 @@
         var _this = this
         this.$axios.get('/logout').then(resp => {
           if (resp.data.code === 200) {
-            // 登出操作前后端应保持一致
+            // 前后端状态保持一致
             _this.$store.commit('logout')
             _this.$router.replace('/login')
           }
