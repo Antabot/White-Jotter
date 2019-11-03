@@ -27,7 +27,7 @@ public class LoginController {
 
     @PostMapping(value = "/api/login")
     @ResponseBody
-    public Result login(@RequestBody User requestUser, HttpSession session) {
+    public Result login(@RequestBody User requestUser) {
         String username = requestUser.getUsername();
         username = HtmlUtils.htmlEscape(username);
 
@@ -42,7 +42,7 @@ public class LoginController {
             TokenUtil tokenUtil = new TokenUtil();
             String token = tokenUtil.getToken(user);
             user.setToken(token);
-            session.setAttribute("token", token);
+//            session.setAttribute("token", token);
             return ResultFactory.buildSuccessResult(usernamePasswordToken);
         } catch (AuthenticationException e) {
             String message = "账号密码错误";
@@ -88,12 +88,7 @@ public class LoginController {
 
     @ResponseBody
     @GetMapping(value = "api/authentication")
-    public String authentication(@RequestHeader("Token") String token, HttpSession session, HttpResponse response){
+    public String authentication(){
         return "身份认证成功";
-//        if (token.replace("\"", "").equals(session.getAttribute("token"))) {
-//            return "身份认证成功";
-//        } else {
-//            return "认证失败，请重新登录";
-//        }
     }
 }
