@@ -37,7 +37,8 @@ router.beforeEach((to, from, next) => {
     }
   }
 )
-// http request拦截器，为请求加上 token
+
+// http request拦截器，为请求加上 token，测试用，没有必要
 axios.interceptors.request.use(
   config => {
     // 输出当前状态下的 token
