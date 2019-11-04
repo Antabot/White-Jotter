@@ -1,13 +1,9 @@
 package com.gm.wj.controller;
 
-import javax.servlet.http.HttpSession;
-
 import com.gm.wj.pojo.User;
 import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.UserService;
-import com.gm.wj.util.TokenUtil;
-import org.apache.http.HttpResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -39,10 +35,6 @@ public class LoginController {
             subject.login(usernamePasswordToken);
             // 生成随机 token 并存储在 session 中
             User user = userService.getByUserName(username);
-            TokenUtil tokenUtil = new TokenUtil();
-            String token = tokenUtil.getToken(user);
-            user.setToken(token);
-//            session.setAttribute("token", token);
             return ResultFactory.buildSuccessResult(usernamePasswordToken);
         } catch (AuthenticationException e) {
             String message = "账号密码错误";
