@@ -22,8 +22,6 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
 
         Subject subject = SecurityUtils.getSubject();
-        System.out.println(subject.isRemembered());
-        System.out.println(subject.isAuthenticated());
         // 使用 shiro 验证
         if (!subject.isAuthenticated() && !subject.isRemembered()) {
             return false;
