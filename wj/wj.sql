@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-10-18 22:48:01
+Date: 2019-11-05 21:33:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -180,15 +180,14 @@ CREATE TABLE `user` (
   `password` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `salt` varchar(255) DEFAULT NULL,
-  `token` varchar(260) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '35b9529f89cfb9b848060ca576237e17', '管理员', '8O+vDNr2sI3N82BI31fu1A==', null);
-INSERT INTO `user` VALUES ('10', 'test', '07dc769da966d78e4a9c61556ca3a556', '测试', 'Iv0xgP00bfJV3OFRFJSKLg==', null);
+INSERT INTO `user` VALUES ('1', 'admin', '35b9529f89cfb9b848060ca576237e17', '管理员', '8O+vDNr2sI3N82BI31fu1A==');
+INSERT INTO `user` VALUES ('10', 'test', '07dc769da966d78e4a9c61556ca3a556', '测试', 'Iv0xgP00bfJV3OFRFJSKLg==');
 
 -- ----------------------------
 -- Table structure for user_role
