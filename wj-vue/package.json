@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "element-ui": "^2.8.2",
+    "element-ui": "^2.12.0",
     "mavon-editor": "^2.6.17",
     "vue": "^2.6.10",
     "vue-router": "^3.0.1",
