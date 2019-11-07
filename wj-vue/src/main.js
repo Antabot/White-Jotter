@@ -22,7 +22,7 @@ Vue.use(mavonEditor)
 // 如果前端没有登录信息则直接拦截，如果有则判断后端是否正常登录（防止构造参数绕过）
 router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) {
-      if (store.state.user) {
+      if (store.state.user.username) {
         axios.get('/authentication').then(resp => {
           if (resp) next()
         })
