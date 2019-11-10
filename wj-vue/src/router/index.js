@@ -8,7 +8,6 @@ import Login from '../components/Login'
 import Home from '../components/Home'
 import AdminIndex from '../components/admin/AdminIndex'
 import Register from '../components/Register'
-import Vote from '../components/DLC/Vote'
 
 Vue.use(Router)
 
@@ -79,14 +78,6 @@ export default new Router({
       path: '/admin',
       name: 'Admin',
       component: AdminIndex,
-      meta: {
-        requireAuth: true
-      }
-    },
-    {
-      path: '/vote',
-      name: 'Vote',
-      component: Vote,
       meta: {
         requireAuth: true
       }

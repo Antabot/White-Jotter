@@ -7,6 +7,9 @@
       <el-col style="width: 250px" >
         <admin-menu></admin-menu>
       </el-col>
+      <el-col>
+        <router-view/>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -17,7 +20,10 @@
 
   export default {
     name: 'AdminIndex',
-    components: {AdminMenu, Header}
+    components: {AdminMenu, Header},
+    // 配置获取菜单方法
+    mounted () {
+    }
   }
 </script>
 

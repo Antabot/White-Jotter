@@ -9,6 +9,16 @@
       text-color="#fff"
       active-text-color="#ffd04b">
       <div style="height: 80px;"></div>
+      <!--<template v-for="(item,i) in navList">-->
+        <!--index 没有用但是必需字段-->
+        <!--<el-submenu :key="i" index="i + ''">-->
+          <!--<span slot="title">测试</span>-->
+          <!--<el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name" style="font-size: 18px">-->
+            <!--<i :class="item.icon"></i>-->
+            <!--{{ item.navItem }}-->
+          <!--</el-menu-item>-->
+        <!--</el-submenu>-->
+      <!--</template>-->
       <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name" style="font-size: 18px">
         <i :class="item.icon"></i>
         {{ item.navItem }}
