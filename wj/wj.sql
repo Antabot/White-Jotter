@@ -10,26 +10,117 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-11-07 12:27:05
+Date: 2019-11-13 21:54:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for artworks
+-- Table structure for admin_menu
 -- ----------------------------
-DROP TABLE IF EXISTS `artworks`;
-CREATE TABLE `artworks` (
-  `id` int(5) NOT NULL,
-  `department` varchar(255) NOT NULL,
-  `author` varchar(255) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+DROP TABLE IF EXISTS `admin_menu`;
+CREATE TABLE `admin_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `path` varchar(64) DEFAULT NULL,
+  `nav_item` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `icon` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `component` varchar(64) DEFAULT NULL,
+  `is_auth_required` tinyint(1) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
--- Records of artworks
+-- Records of admin_menu
+-- ----------------------------
+INSERT INTO `admin_menu` VALUES ('1', '', '', null, '', null, null);
+INSERT INTO `admin_menu` VALUES ('2', '/admin', '用户管理', null, 'AdminIndex', '1', '1');
+INSERT INTO `admin_menu` VALUES ('3', '/admin', '内容管理', null, 'AdminIndex', '1', '1');
+INSERT INTO `admin_menu` VALUES ('4', '/admin', '系统配置', null, 'AdminIndex', '1', '1');
+INSERT INTO `admin_menu` VALUES ('5', '/admin/user/basic', '用户信息', null, 'UserBasic', '1', '1');
+INSERT INTO `admin_menu` VALUES ('6', '/admin/user/role', '角色配置', null, 'UserRole', '1', '1');
+INSERT INTO `admin_menu` VALUES ('7', '/admin/cont/book', '图书管理', null, 'BookManagement', '1', '1');
+
+-- ----------------------------
+-- Table structure for admin_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `admin_permission`;
+CREATE TABLE `admin_permission` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `desc_` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of admin_permission
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for admin_role
+-- ----------------------------
+DROP TABLE IF EXISTS `admin_role`;
+CREATE TABLE `admin_role` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `desc_` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of admin_role
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for admin_role_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `admin_role_menu`;
+CREATE TABLE `admin_role_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rid` int(11) DEFAULT NULL,
+  `mid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of admin_role_menu
+-- ----------------------------
+INSERT INTO `admin_role_menu` VALUES ('1', '1', '1');
+INSERT INTO `admin_role_menu` VALUES ('2', null, null);
+
+-- ----------------------------
+-- Table structure for admin_role_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `admin_role_permission`;
+CREATE TABLE `admin_role_permission` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `rid` bigint(20) DEFAULT NULL,
+  `pid` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_role_permission_role_1` (`rid`),
+  KEY `fk_role_permission_permission_1` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of admin_role_permission
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for admin_user_role
+-- ----------------------------
+DROP TABLE IF EXISTS `admin_user_role`;
+CREATE TABLE `admin_user_role` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `uid` bigint(20) DEFAULT NULL,
+  `rid` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_operator_role_operator_1` (`uid`),
+  KEY `fk_operator_role_role_1` (`rid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of admin_user_role
 -- ----------------------------
 
 -- ----------------------------
@@ -95,99 +186,6 @@ INSERT INTO `category` VALUES ('5', '经管');
 INSERT INTO `category` VALUES ('6', '科技');
 
 -- ----------------------------
--- Table structure for menu
--- ----------------------------
-DROP TABLE IF EXISTS `menu`;
-CREATE TABLE `menu` (
-  `id` int(10) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `navItem` varchar(255) NOT NULL,
-  `icon` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- ----------------------------
--- Records of menu
--- ----------------------------
-
--- ----------------------------
--- Table structure for operation
--- ----------------------------
-DROP TABLE IF EXISTS `operation`;
-CREATE TABLE `operation` (
-  `id` int(10) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- ----------------------------
--- Records of operation
--- ----------------------------
-
--- ----------------------------
--- Table structure for permission
--- ----------------------------
-DROP TABLE IF EXISTS `permission`;
-CREATE TABLE `permission` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `desc_` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of permission
--- ----------------------------
-
--- ----------------------------
--- Table structure for permission_menu
--- ----------------------------
-DROP TABLE IF EXISTS `permission_menu`;
-CREATE TABLE `permission_menu` (
-  `id` int(10) NOT NULL,
-  `pid` int(10) NOT NULL,
-  `mid` int(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- ----------------------------
--- Records of permission_menu
--- ----------------------------
-
--- ----------------------------
--- Table structure for role
--- ----------------------------
-DROP TABLE IF EXISTS `role`;
-CREATE TABLE `role` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `desc_` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of role
--- ----------------------------
-
--- ----------------------------
--- Table structure for role_permission
--- ----------------------------
-DROP TABLE IF EXISTS `role_permission`;
-CREATE TABLE `role_permission` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `rid` bigint(20) DEFAULT NULL,
-  `pid` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_role_permission_role_1` (`rid`),
-  KEY `fk_role_permission_permission_1` (`pid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of role_permission
--- ----------------------------
-
--- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
@@ -205,20 +203,3 @@ CREATE TABLE `user` (
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'admin', '35b9529f89cfb9b848060ca576237e17', '管理员', '8O+vDNr2sI3N82BI31fu1A==');
 INSERT INTO `user` VALUES ('10', 'test', '07dc769da966d78e4a9c61556ca3a556', '测试', 'Iv0xgP00bfJV3OFRFJSKLg==');
-
--- ----------------------------
--- Table structure for user_role
--- ----------------------------
-DROP TABLE IF EXISTS `user_role`;
-CREATE TABLE `user_role` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `uid` bigint(20) DEFAULT NULL,
-  `rid` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_operator_role_operator_1` (`uid`),
-  KEY `fk_operator_role_role_1` (`rid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of user_role
--- ----------------------------
