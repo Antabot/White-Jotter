@@ -5,17 +5,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "admin_role")
+@Table(name = "admin_user_role")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
-public class AdminRole {
+public class AdminUserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     int id;
 
-    String name;
-    @Column(name = "name_zh")
-    String nameZh;
+    int uid;
+    int rid;
 
     public int getId() {
         return id;
@@ -25,19 +24,19 @@ public class AdminRole {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getUid() {
+        return uid;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUid(int uid) {
+        this.uid = uid;
     }
 
-    public String getNameZh() {
-        return nameZh;
+    public int getRid() {
+        return rid;
     }
 
-    public void setNameZh(String nameZh) {
-        this.nameZh = nameZh;
+    public void setRid(int rid) {
+        this.rid = rid;
     }
 }

@@ -11,18 +11,16 @@ import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
-@Controller
+@RestController
 public class LoginController {
 
     @Autowired
     UserService userService;
 
     @PostMapping(value = "/api/login")
-    @ResponseBody
     public Result login(@RequestBody User requestUser) {
         String username = requestUser.getUsername();
         username = HtmlUtils.htmlEscape(username);
@@ -43,7 +41,6 @@ public class LoginController {
     }
 
     @PostMapping("api/register")
-    @ResponseBody
     public Result register(@RequestBody User user) {
         String username = user.getUsername();
         String password = user.getPassword();
@@ -69,7 +66,6 @@ public class LoginController {
         return ResultFactory.buildSuccessResult(user);
     }
 
-    @ResponseBody
     @GetMapping("api/logout")
     public Result logout() {
         Subject subject = SecurityUtils.getSubject();
@@ -78,7 +74,6 @@ public class LoginController {
         return ResultFactory.buildSuccessResult(message);
     }
 
-    @ResponseBody
     @GetMapping(value = "api/authentication")
     public String authentication(){
         return "身份认证成功";
