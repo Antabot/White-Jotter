@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-11-13 21:54:23
+Date: 2019-11-15 22:22:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -64,13 +64,16 @@ DROP TABLE IF EXISTS `admin_role`;
 CREATE TABLE `admin_role` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `desc_` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `name_zh` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin_role
 -- ----------------------------
+INSERT INTO `admin_role` VALUES ('1', 'sysAdmin', '系统管理员');
+INSERT INTO `admin_role` VALUES ('2', 'contentManager', '内容管理员');
+INSERT INTO `admin_role` VALUES ('3', 'viewer', '用户');
 
 -- ----------------------------
 -- Table structure for admin_role_menu
@@ -81,13 +84,21 @@ CREATE TABLE `admin_role_menu` (
   `rid` int(11) DEFAULT NULL,
   `mid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of admin_role_menu
 -- ----------------------------
 INSERT INTO `admin_role_menu` VALUES ('1', '1', '1');
-INSERT INTO `admin_role_menu` VALUES ('2', null, null);
+INSERT INTO `admin_role_menu` VALUES ('2', '1', '2');
+INSERT INTO `admin_role_menu` VALUES ('3', '1', '3');
+INSERT INTO `admin_role_menu` VALUES ('4', '1', '4');
+INSERT INTO `admin_role_menu` VALUES ('5', '1', '5');
+INSERT INTO `admin_role_menu` VALUES ('6', '1', '6');
+INSERT INTO `admin_role_menu` VALUES ('7', '1', '7');
+INSERT INTO `admin_role_menu` VALUES ('8', '2', '3');
+INSERT INTO `admin_role_menu` VALUES ('9', '2', '7');
+INSERT INTO `admin_role_menu` VALUES ('10', null, null);
 
 -- ----------------------------
 -- Table structure for admin_role_permission
@@ -117,11 +128,14 @@ CREATE TABLE `admin_user_role` (
   PRIMARY KEY (`id`),
   KEY `fk_operator_role_operator_1` (`uid`),
   KEY `fk_operator_role_role_1` (`rid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin_user_role
 -- ----------------------------
+INSERT INTO `admin_user_role` VALUES ('1', '1', '1');
+INSERT INTO `admin_user_role` VALUES ('2', '2', '3');
+INSERT INTO `admin_user_role` VALUES ('3', '3', '2');
 
 -- ----------------------------
 -- Table structure for book
@@ -196,10 +210,11 @@ CREATE TABLE `user` (
   `name` varchar(255) DEFAULT NULL,
   `salt` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'admin', '35b9529f89cfb9b848060ca576237e17', '管理员', '8O+vDNr2sI3N82BI31fu1A==');
-INSERT INTO `user` VALUES ('10', 'test', '07dc769da966d78e4a9c61556ca3a556', '测试', 'Iv0xgP00bfJV3OFRFJSKLg==');
+INSERT INTO `user` VALUES ('2', 'test', '07dc769da966d78e4a9c61556ca3a556', '测试', 'Iv0xgP00bfJV3OFRFJSKLg==');
+INSERT INTO `user` VALUES ('3', 'editor', '8583a2d965d6159edbf65c82d871fa3e', '编辑', 'MZTe7Qwf9QgXBXrZzTIqJQ==');
