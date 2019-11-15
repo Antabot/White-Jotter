@@ -1,25 +1,24 @@
 package com.gm.wj.config;
 
 import com.gm.wj.interceptor.LoginInterceptor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.*;
 
 @SpringBootConfiguration
 public class MyWebConfigurer implements WebMvcConfigurer {
 
     @Bean
-    public LoginInterceptor getLoginIntercepter() {
+    public LoginInterceptor getLoginInterceptor() {
         return new LoginInterceptor();
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(getLoginIntercepter())
+        registry.addInterceptor(getLoginInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/index.html")
+                .excludePathPatterns("/api/register")
                 .excludePathPatterns("/api/login")
                 .excludePathPatterns("/api/logout");
     }
