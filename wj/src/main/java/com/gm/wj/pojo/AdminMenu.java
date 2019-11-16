@@ -16,10 +16,9 @@ public class AdminMenu {
     String path;
     String icon;
     String component;
-
-    @OneToMany
-    @JoinColumn(name = "parent_id")
-    @OrderBy("sequence asc")
+    @Column(name = "parent_id")
+    String parentId;
+    @Transient
     List<AdminMenu> children;
 
     @Transient
@@ -63,6 +62,14 @@ public class AdminMenu {
 
     public void setChildren(List<AdminMenu> children) {
         this.children = children;
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
     public MenuMeta getMenuMeta() {

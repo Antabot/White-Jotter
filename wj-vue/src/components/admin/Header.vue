@@ -5,12 +5,21 @@
     </a>
     <span style="font-size: 32px;font-weight: bold;position:absolute;left: 100px">白  卷</span>
     <i class="el-icon-s-unfold" style="font-size: 40px;float: right"></i>
+    <el-button @click="getMenus">测试接口</el-button>
   </el-card>
 </template>
 
 <script>
   export default {
-    name: 'Header'
+    name: 'Header',
+    methods: {
+      getMenus () {
+        this.$axios.get('/menu').then(resp => {
+          if (resp && resp.status === 200) {
+          }
+        })
+      }
+    }
   }
 </script>
 
