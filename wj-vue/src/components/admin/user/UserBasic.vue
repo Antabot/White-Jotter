@@ -1,5 +1,5 @@
 <template>
-  <div>test</div>
+  <span style="font-size: 200px">test</span>
 </template>
 
 <script>

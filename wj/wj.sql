@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-11-15 22:22:41
+Date: 2019-11-17 21:56:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,10 +22,10 @@ DROP TABLE IF EXISTS `admin_menu`;
 CREATE TABLE `admin_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `path` varchar(64) DEFAULT NULL,
-  `nav_item` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `name` varchar(64) DEFAULT NULL,
+  `name_zh` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `icon` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `component` varchar(64) DEFAULT NULL,
-  `is_auth_required` tinyint(1) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -33,13 +33,12 @@ CREATE TABLE `admin_menu` (
 -- ----------------------------
 -- Records of admin_menu
 -- ----------------------------
-INSERT INTO `admin_menu` VALUES ('1', '', '', null, '', null, null);
-INSERT INTO `admin_menu` VALUES ('2', '/admin', '用户管理', null, 'AdminIndex', '1', '1');
-INSERT INTO `admin_menu` VALUES ('3', '/admin', '内容管理', null, 'AdminIndex', '1', '1');
-INSERT INTO `admin_menu` VALUES ('4', '/admin', '系统配置', null, 'AdminIndex', '1', '1');
-INSERT INTO `admin_menu` VALUES ('5', '/admin/user/basic', '用户信息', null, 'UserBasic', '1', '1');
-INSERT INTO `admin_menu` VALUES ('6', '/admin/user/role', '角色配置', null, 'UserRole', '1', '1');
-INSERT INTO `admin_menu` VALUES ('7', '/admin/cont/book', '图书管理', null, 'BookManagement', '1', '1');
+INSERT INTO `admin_menu` VALUES ('1', '/admin', null, '用户管理', 'el-icon-user', 'AdminIndex', '0');
+INSERT INTO `admin_menu` VALUES ('2', '/admin', null, '内容管理', 'el-icon-tickets', 'AdminIndex', '0');
+INSERT INTO `admin_menu` VALUES ('3', '/admin', null, '系统配置', 'el-icon-s-tools', 'AdminIndex', '0');
+INSERT INTO `admin_menu` VALUES ('4', '/admin/user/basic', null, '用户信息', null, 'UserBasic', '1');
+INSERT INTO `admin_menu` VALUES ('5', '/admin/user/role', null, '角色配置', null, 'UserRole', '1');
+INSERT INTO `admin_menu` VALUES ('6', '/admin/cont/book', null, '图书管理', null, 'LibraryManagement', '2');
 
 -- ----------------------------
 -- Table structure for admin_permission
@@ -95,10 +94,8 @@ INSERT INTO `admin_role_menu` VALUES ('3', '1', '3');
 INSERT INTO `admin_role_menu` VALUES ('4', '1', '4');
 INSERT INTO `admin_role_menu` VALUES ('5', '1', '5');
 INSERT INTO `admin_role_menu` VALUES ('6', '1', '6');
-INSERT INTO `admin_role_menu` VALUES ('7', '1', '7');
-INSERT INTO `admin_role_menu` VALUES ('8', '2', '3');
-INSERT INTO `admin_role_menu` VALUES ('9', '2', '7');
-INSERT INTO `admin_role_menu` VALUES ('10', null, null);
+INSERT INTO `admin_role_menu` VALUES ('7', '2', '2');
+INSERT INTO `admin_role_menu` VALUES ('8', '2', '6');
 
 -- ----------------------------
 -- Table structure for admin_role_permission

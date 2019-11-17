@@ -14,15 +14,15 @@ public class AdminMenu {
     @Column(name = "id")
     int id;
     String path;
+    String name;
+    @Column(name = "name_zh")
+    String nameZh;
     String icon;
     String component;
     @Column(name = "parent_id")
-    String parentId;
+    int parentId;
     @Transient
     List<AdminMenu> children;
-
-    @Transient
-    MenuMeta menuMeta;
 
     public int getId() {
         return id;
@@ -38,6 +38,22 @@ public class AdminMenu {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNameZh() {
+        return nameZh;
+    }
+
+    public void setNameZh(String nameZh) {
+        this.nameZh = nameZh;
     }
 
     public String getIcon() {
@@ -64,19 +80,11 @@ public class AdminMenu {
         this.children = children;
     }
 
-    public String getParentId() {
+    public int getParentId() {
         return parentId;
     }
 
-    public void setParentId(String parentId) {
+    public void setParentId(int parentId) {
         this.parentId = parentId;
-    }
-
-    public MenuMeta getMenuMeta() {
-        return menuMeta;
-    }
-
-    public void setMenuMeta(MenuMeta menuMeta) {
-        this.menuMeta = menuMeta;
     }
 }

@@ -4,10 +4,10 @@
       <Header style="position: absolute;width: 100%;"></Header>
     </el-row>
     <el-row style="z-index: 0;">
-      <el-col style="width: 250px" >
+      <el-col :span="4" >
         <admin-menu></admin-menu>
       </el-col>
-      <el-col>
+      <el-col :span="20" style="margin-top: 80px">
         <router-view/>
       </el-col>
     </el-row>
@@ -20,10 +20,8 @@
 
   export default {
     name: 'AdminIndex',
-    components: {AdminMenu, Header},
+    components: {AdminMenu, Header}
     // 配置获取菜单方法
-    mounted () {
-    }
   }
 </script>
 
