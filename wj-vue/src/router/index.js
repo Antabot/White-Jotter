@@ -8,6 +8,7 @@ import Login from '../components/Login'
 import Home from '../components/Home'
 import AdminIndex from '../components/admin/AdminIndex'
 import Register from '../components/Register'
+// import UserBasic from '../components/admin/user/UserBasic'
 
 Vue.use(Router)
 
@@ -33,18 +34,12 @@ export default new Router({
         {
           path: '/index',
           name: 'AppIndex',
-          component: AppIndex,
-          meta: {
-            requireAuth: true
-          }
+          component: AppIndex
         },
         {
           path: '/jotter',
           name: 'Jotter',
-          component: JotterIndex,
-          meta: {
-            requireAuth: true
-          }
+          component: JotterIndex
         },
         {
           path: '/editor',
@@ -57,10 +52,7 @@ export default new Router({
         {
           path: '/library',
           name: 'Library',
-          component: LibraryIndex,
-          meta: {
-            requireAuth: true
-          }
+          component: LibraryIndex
         }
       ]
     },
@@ -81,6 +73,13 @@ export default new Router({
       meta: {
         requireAuth: true
       }
+      // children: [
+      //   {
+      //     path: '/admin/basic',
+      //     name: 'basic',
+      //     component: UserBasic
+      //   }
+      // ]
     }
   ]
 })

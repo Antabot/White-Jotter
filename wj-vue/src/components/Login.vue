@@ -49,7 +49,7 @@
               var data = resp.data.data
               _this.$store.commit('login', data)
               var path = _this.$route.query.redirect
-              _this.$router.replace({path: path === '/' || path === undefined ? '/home' : path})
+              _this.$router.replace({path: path === '/' || path === undefined ? '/admin' : path})
             }
           })
           .catch(failResponse => {})

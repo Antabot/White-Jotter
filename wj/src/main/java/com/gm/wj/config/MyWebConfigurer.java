@@ -20,7 +20,8 @@ public class MyWebConfigurer implements WebMvcConfigurer {
                 .excludePathPatterns("/index.html")
                 .excludePathPatterns("/api/register")
                 .excludePathPatterns("/api/login")
-                .excludePathPatterns("/api/logout");
+                .excludePathPatterns("/api/logout")
+                .excludePathPatterns("/api/books");
     }
 
     @Override

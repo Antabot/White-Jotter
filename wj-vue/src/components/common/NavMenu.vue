@@ -4,7 +4,6 @@
       :default-active="'/index'"
       router
       mode="horizontal"
-      @select="handleSelect"
       background-color="white"
       text-color="#222"
       active-text-color="red"
@@ -45,10 +44,6 @@
       }
     },
     methods: {
-      handleSelect (key, keyPath) {
-        console.log(key, keyPath)
-      },
-
       logout () {
         var _this = this
         this.$axios.get('/logout').then(resp => {
