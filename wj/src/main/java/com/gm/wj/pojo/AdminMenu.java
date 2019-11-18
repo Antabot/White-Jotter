@@ -15,11 +15,9 @@ public class AdminMenu {
     int id;
     String path;
     String name;
-    @Column(name = "name_zh")
     String nameZh;
-    String icon;
+    String iconCls;
     String component;
-    @Column(name = "parent_id")
     int parentId;
     @Transient
     List<AdminMenu> children;
@@ -56,12 +54,12 @@ public class AdminMenu {
         this.nameZh = nameZh;
     }
 
-    public String getIcon() {
-        return icon;
+    public String getIconCls() {
+        return iconCls;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public void setIconCls(String iconCls) {
+        this.iconCls = iconCls;
     }
 
     public String getComponent() {
