@@ -102,7 +102,7 @@ export const formatRoutes = (routes) => {
       component,
       name,
       nameZh,
-      icon,
+      iconCls,
       children
     } = route
 
@@ -125,7 +125,7 @@ export const formatRoutes = (routes) => {
       meta: {
         requireAuth: true
       },
-      iconCls: icon,
+      iconCls: iconCls,
       children: children
     }
     fmtRoutes.push(fmtRoute)
