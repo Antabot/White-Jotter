@@ -39,7 +39,7 @@
 
 <style scoped>
   .el-menu-admin {
-    height: 1200px;
+    height: 1000px;
     border-radius: 5px;
   }
 </style>

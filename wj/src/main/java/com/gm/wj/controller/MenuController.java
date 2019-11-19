@@ -12,7 +12,6 @@ import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,10 +29,10 @@ public class MenuController {
 
     @GetMapping("/api/menu")
     public List<AdminMenu> menu() {
-        return respMenu(getMenuByRole());
+        return respMenu(getMenuByCurrentUser());
     }
 
-    public List<AdminMenu> getMenuByRole() {
+    public List<AdminMenu> getMenuByCurrentUser() {
         String username = SecurityUtils.getSubject().getPrincipal().toString();
         User user = userService.getByUserName(username);
         List<AdminUserRole> userRoleList = adminUserRoleService.listAllByUid(user.getId());
