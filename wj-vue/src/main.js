@@ -23,7 +23,6 @@ Vue.use(mavonEditor)
 router.beforeEach((to, from, next) => {
     if (store.state.user.username && to.path.startsWith('/admin')) {
       axios.get('/authentication').then(resp => {
-        console.log('菜单加载成功')
         initAdminMenu(router, store)
       })
     }
@@ -81,7 +80,7 @@ axios.interceptors.response.use(
     return Promise.reject(error.response.data)
   })
 
-export const initAdminMenu = (router, store) => {
+const initAdminMenu = (router, store) => {
   if (store.state.adminMenus.length > 0) {
     return
   }
@@ -94,39 +93,31 @@ export const initAdminMenu = (router, store) => {
   })
 }
 
-export const formatRoutes = (routes) => {
+const formatRoutes = (routes) => {
   let fmtRoutes = []
   routes.forEach(route => {
-    let {
-      path,
-      component,
-      name,
-      nameZh,
-      iconCls,
-      children
-    } = route
-
-    if (children) {
-      children = formatRoutes(children)
+    if (route.children) {
+      route.children = formatRoutes(route.children)
     }
+
     let fmtRoute = {
-      path: path,
+      path: route.path,
       component: resolve => {
-        if (component.startsWith('User')) {
-          require(['./components/admin/user/' + component + '.vue'], resolve)
-        } else if (component.startsWith('Library')) {
+        if (route.component.startsWith('Admin')) {
+          require(['./components/admin/' + route.component + '.vue'], resolve)
+        } else if (route.component.startsWith('User')) {
+          require(['./components/admin/user/' + route.component + '.vue'], resolve)
+        } else if (route.component.startsWith('Library')) {
           // require(['./library/' + component + '.vue'], resolve)
-        } else if (component.startsWith('Admin')) {
-          require(['./components/admin/' + component + '.vue'], resolve)
         }
       },
-      name: name,
-      nameZh: nameZh,
+      name: route.name,
+      nameZh: route.nameZh,
       meta: {
         requireAuth: true
       },
-      iconCls: iconCls,
-      children: children
+      iconCls: route.iconCls,
+      children: route.children
     }
     fmtRoutes.push(fmtRoute)
   })
