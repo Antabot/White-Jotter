@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-menu
-      :default-active="'/index'"
+      :default-active="currentPath"
       router
       mode="horizontal"
       background-color="white"
@@ -29,6 +29,7 @@
     name: 'NavMenu',
     data () {
       return {
+        // currentPath: this.$route.path,
         navList: [
           {name: '/index', navItem: '首页'},
           {name: '/jotter', navItem: '笔记本'},
@@ -41,6 +42,9 @@
     computed: {
       hoverBackground () {
         return '#ffd04b'
+      },
+      currentPath () {
+        return this.$route.path
       }
     },
     methods: {
