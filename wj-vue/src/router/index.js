@@ -17,12 +17,9 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
-      redirect: '/index',
-      component: AppIndex,
-      meta: {
-        requireAuth: true
-      }
+      name: 'Default',
+      redirect: '/home',
+      component: Home
     },
     {
       // home页面并不需要被访问，只是作为其它组件的父组件
