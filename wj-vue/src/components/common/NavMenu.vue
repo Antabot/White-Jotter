@@ -4,6 +4,7 @@
       :default-active="currentPath"
       router
       mode="horizontal"
+      @select="handleSelect"
       background-color="white"
       text-color="#222"
       active-text-color="red"
@@ -48,6 +49,11 @@
       }
     },
     methods: {
+      handleSelect (key, keyPath) {
+        console.log(key)
+        console.log('...')
+        console.log(keyPath)
+      }
       // logout () {
       //   var _this = this
       //   this.$axios.get('/logout').then(resp => {
