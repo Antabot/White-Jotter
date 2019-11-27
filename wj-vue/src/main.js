@@ -113,9 +113,6 @@ const formatRoutes = (routes) => {
       },
       name: route.name,
       nameZh: route.nameZh,
-      meta: {
-        requireAuth: true
-      },
       iconCls: route.iconCls,
       children: route.children
     }
