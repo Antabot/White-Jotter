@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-11-17 21:56:24
+Date: 2019-11-27 21:47:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,7 +24,7 @@ CREATE TABLE `admin_menu` (
   `path` varchar(64) DEFAULT NULL,
   `name` varchar(64) DEFAULT NULL,
   `name_zh` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `icon` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `icon_cls` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `component` varchar(64) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -33,12 +33,12 @@ CREATE TABLE `admin_menu` (
 -- ----------------------------
 -- Records of admin_menu
 -- ----------------------------
-INSERT INTO `admin_menu` VALUES ('1', '/admin', null, '用户管理', 'el-icon-user', 'AdminIndex', '0');
-INSERT INTO `admin_menu` VALUES ('2', '/admin', null, '内容管理', 'el-icon-tickets', 'AdminIndex', '0');
-INSERT INTO `admin_menu` VALUES ('3', '/admin', null, '系统配置', 'el-icon-s-tools', 'AdminIndex', '0');
-INSERT INTO `admin_menu` VALUES ('4', '/admin/user/basic', null, '用户信息', null, 'UserBasic', '1');
-INSERT INTO `admin_menu` VALUES ('5', '/admin/user/role', null, '角色配置', null, 'UserRole', '1');
-INSERT INTO `admin_menu` VALUES ('6', '/admin/cont/book', null, '图书管理', null, 'LibraryManagement', '2');
+INSERT INTO `admin_menu` VALUES ('1', '/admin', 'User', '用户管理', 'el-icon-user', 'AdminIndex', '0');
+INSERT INTO `admin_menu` VALUES ('2', '/admin', 'Content', '内容管理', 'el-icon-tickets', 'AdminIndex', '0');
+INSERT INTO `admin_menu` VALUES ('3', '/admin', 'System', '系统配置', 'el-icon-s-tools', 'AdminIndex', '0');
+INSERT INTO `admin_menu` VALUES ('4', '/admin/profile', 'Profile', '用户信息', null, 'UserProfile', '1');
+INSERT INTO `admin_menu` VALUES ('5', '/admin/role', 'Role', '角色配置', null, 'UserRole', '1');
+INSERT INTO `admin_menu` VALUES ('6', '/admin/book', 'Book', '图书管理', null, 'LibraryManagement', '2');
 
 -- ----------------------------
 -- Table structure for admin_permission
