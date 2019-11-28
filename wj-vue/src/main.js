@@ -102,13 +102,7 @@ const formatRoutes = (routes) => {
     let fmtRoute = {
       path: route.path,
       component: resolve => {
-        if (route.component.startsWith('Admin')) {
-          require(['./components/admin/' + route.component + '.vue'], resolve)
-        } else if (route.component.startsWith('User')) {
-          require(['./components/admin/user/' + route.component + '.vue'], resolve)
-        } else if (route.component.startsWith('Library')) {
-          // require(['./library/' + component + '.vue'], resolve)
-        }
+        require(['./components/admin/' + route.component + '.vue'], resolve)
       },
       name: route.name,
       nameZh: route.nameZh,

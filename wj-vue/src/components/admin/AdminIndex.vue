@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <body id="admin-body">
     <el-row style="z-index: 1;">
       <Header style="position: absolute;width: 100%;"></Header>
     </el-row>
-    <el-row style="z-index: 0;">
-      <el-col :span="4" >
+    <el-row style="height: 100%;">
+      <el-col :span="4" style="height: 100%">
         <admin-menu></admin-menu>
       </el-col>
-      <el-col :span="20" style="margin-top: 80px">
+      <el-col :span="20" style="margin-top: 80px;height: 90%;">
         <router-view/>
       </el-col>
     </el-row>
-  </div>
+  </body>
 </template>
 
 <script>
@@ -20,11 +20,18 @@
 
   export default {
     name: 'AdminIndex',
-    components: {AdminMenu, Header}
+    components: {AdminMenu, Header},
+    data () {
+      return {
+        dialogVisible: false
+      }
+    }
     // 配置获取菜单方法
   }
 </script>
 
 <style scoped>
-
+  #admin-body {
+  height: 100vh;
+}
 </style>

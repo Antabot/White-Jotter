@@ -15,19 +15,17 @@
         <p slot="content" style="width: 300px" class="abstract">{{item.abs}}</p>
         <el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book"
                  bodyStyle="padding:10px" shadow="hover">
-          <div class="cover" @click="editBook(item)">
+          <div class="cover">
             <img :src="item.cover" alt="封面">
           </div>
           <div class="info">
             <div class="title">
               <a href="">{{item.title}}</a>
             </div>
-            <i class="el-icon-delete" @click="deleteBook(item.id)"></i>
           </div>
           <div class="author">{{item.author}}</div>
         </el-card>
       </el-tooltip>
-      <edit-form @onSubmit="loadBooks()" ref="edit"></edit-form>
     </el-row>
     <el-row>
       <el-pagination
@@ -41,18 +39,17 @@
 </template>
 
 <script>
-  import EditForm from './EditForm'
   import SearchBar from './SearchBar'
   import ViewSwitch from './ViewSwitch'
 
   export default {
     name: 'Books',
-    components: {EditForm, SearchBar, ViewSwitch},
+    components: {SearchBar, ViewSwitch},
     data () {
       return {
         books: [],
         currentPage: 1,
-        pagesize: 17
+        pagesize: 18
       }
     },
     mounted: function () {
@@ -80,46 +77,6 @@
             _this.books = resp.data
           }
         })
-      },
-      deleteBook (id) {
-        this.$confirm('此操作将永久删除该书籍, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-            this.$axios
-              .post('/delete', {id: id}).then(resp => {
-              if (resp && resp.status === 200) {
-                this.loadBooks()
-              }
-            })
-          }
-        ).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          })
-        })
-        // alert(id)
-      },
-      editBook (item) {
-        this.$refs.edit.dialogFormVisible = true
-        this.$refs.edit.form = {
-          id: item.id,
-          cover: item.cover,
-          title: item.title,
-          author: item.author,
-          date: item.date,
-          press: item.press,
-          abs: item.abs,
-          category: {
-            id: item.category.id.toString(),
-            name: item.category.name
-          }
-        }
-        // this.$refs.edit.category = {
-        //   id: item.category.id.toString()
-        // }
       }
     }
   }
