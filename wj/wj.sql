@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-11-27 21:47:25
+Date: 2019-11-28 23:08:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,9 +36,9 @@ CREATE TABLE `admin_menu` (
 INSERT INTO `admin_menu` VALUES ('1', '/admin', 'User', '用户管理', 'el-icon-user', 'AdminIndex', '0');
 INSERT INTO `admin_menu` VALUES ('2', '/admin', 'Content', '内容管理', 'el-icon-tickets', 'AdminIndex', '0');
 INSERT INTO `admin_menu` VALUES ('3', '/admin', 'System', '系统配置', 'el-icon-s-tools', 'AdminIndex', '0');
-INSERT INTO `admin_menu` VALUES ('4', '/admin/profile', 'Profile', '用户信息', null, 'UserProfile', '1');
-INSERT INTO `admin_menu` VALUES ('5', '/admin/role', 'Role', '角色配置', null, 'UserRole', '1');
-INSERT INTO `admin_menu` VALUES ('6', '/admin/book', 'Book', '图书管理', null, 'LibraryManagement', '2');
+INSERT INTO `admin_menu` VALUES ('4', '/admin/user/profile', 'Profile', '用户信息', null, 'user/UserProfile', '1');
+INSERT INTO `admin_menu` VALUES ('5', '/admin/user/role', 'Role', '角色配置', null, 'user/UserRole', '1');
+INSERT INTO `admin_menu` VALUES ('6', '/admin/content/book', 'BookManagement', '图书管理', null, 'content/BookManagement', '2');
 
 -- ----------------------------
 -- Table structure for admin_permission
