@@ -3,7 +3,6 @@
       :default-active="currentPath"
       class="el-menu-admin"
       router
-      @select="handleSelect"
       mode="vertical"
       background-color="#545c64"
       text-color="#fff"
@@ -38,18 +37,13 @@
         currentPath () {
           return this.$route.path
         }
-      },
-      methods: {
-        handleSelect (key, keyPath) {
-          console.log(this)
-        }
       }
     }
 </script>
 
 <style scoped>
   .el-menu-admin {
-    height: 1000px;
     border-radius: 5px;
+    height: 100%;
   }
 </style>
