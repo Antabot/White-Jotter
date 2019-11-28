@@ -31,7 +31,6 @@ router.beforeEach((to, from, next) => {
         axios.get('/authentication').then(resp => {
           if (resp) next()
         })
-        next()
       } else {
         next({
           path: 'login',
