@@ -40,12 +40,20 @@
         <el-table-column
           prop="email"
           label="邮箱"
+          show-overflow-tooltip
           fit>
         </el-table-column>
         <el-table-column
-          prop="status"
           label="状态"
           width="100">
+          <template slot-scope="scope">
+            <el-switch
+              v-model="scope.row.enabled"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              @change="(value) => commitChange(value, scope.row.username)">
+            </el-switch>
+          </template>
         </el-table-column>
         <el-table-column
           label="操作"
@@ -96,6 +104,20 @@
           this.$axios.get('/admin/user').then(resp => {
             if (resp && resp.status === 200) {
               _this.users = resp.data
+            }
+          })
+        },
+        commitChange (value, username) {
+          this.$axios.put('/admin/user', {
+            enabled: value,
+            username: username
+          }).then(resp => {
+            if (resp && resp.status === 200) {
+              if (value) {
+                this.$message('用户 [' + username + '] 已启用')
+              } else {
+                this.$message('用户 [' + username + '] 已禁用')
+              }
             }
           })
         }

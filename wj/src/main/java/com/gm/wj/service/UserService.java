@@ -31,7 +31,7 @@ public class UserService {
         return userDAO.getByUsernameAndPassword(username, password);
     }
 
-    public void add(User user) {
+    public void addOrUpdate(User user) {
         userDAO.save(user);
     }
 }
