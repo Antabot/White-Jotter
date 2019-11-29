@@ -15,8 +15,11 @@ public class User {
     int id;
     String username;
     String password;
-    String name;
     String salt;
+    String name;
+    String phone;
+    String email;
+    boolean enabled;
 
     public int getId() {
         return id;
@@ -58,5 +61,29 @@ public class User {
         this.salt = salt;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 }
 

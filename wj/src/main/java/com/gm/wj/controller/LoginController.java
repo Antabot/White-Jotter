@@ -61,7 +61,7 @@ public class LoginController {
 
         user.setSalt(salt);
         user.setPassword(encodedPassword);
-        userService.add(user);
+        userService.addOrUpdate(user);
 
         return ResultFactory.buildSuccessResult(user);
     }
