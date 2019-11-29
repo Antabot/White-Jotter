@@ -14,11 +14,19 @@
         stripe
         style="width: 100%"
         :max-height="tableHeight">
+        <el-table-column type="expand">
+          <template slot-scope="props">
+            <el-form label-position="left" inline>
+              <el-form-item>
+                <span>{{ props.row.abs }}</span>
+              </el-form-item>
+            </el-form>
+          </template>
+        </el-table-column>
         <el-table-column
-          fixed
           prop="title"
           label="书名"
-          width="150">
+          fit>
         </el-table-column>
         <el-table-column
           prop="category.name"
@@ -28,7 +36,7 @@
         <el-table-column
           prop="author"
           label="作者"
-          width="150">
+          fit>
         </el-table-column>
         <el-table-column
           prop="date"
@@ -38,13 +46,13 @@
         <el-table-column
           prop="press"
           label="出版社"
-          width="180">
+          fit>
         </el-table-column>
-        <el-table-column
-          prop="abs"
-          label="摘要"
-          width="500">
-        </el-table-column>
+        <!--<el-table-column-->
+          <!--prop="abs"-->
+          <!--label="摘要"-->
+          <!--width="500">-->
+        <!--</el-table-column>-->
         <el-table-column
           fixed="right"
           label="操作"
@@ -141,5 +149,4 @@
 </script>
 
 <style scoped>
-
 </style>

@@ -1,5 +1,4 @@
 <template>
-  <el-aside>
       <el-menu
         default-active="1"
         style="width: 170px">
@@ -28,7 +27,6 @@
           </el-menu-item>
         </a>
       </el-menu>
-  </el-aside>
 </template>
 
 <script>
