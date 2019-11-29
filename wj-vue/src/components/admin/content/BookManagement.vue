@@ -14,6 +14,10 @@
         stripe
         style="width: 100%"
         :max-height="tableHeight">
+        <el-table-column
+          type="selection"
+          width="55">
+        </el-table-column>
         <el-table-column type="expand">
           <template slot-scope="props">
             <el-form label-position="left" inline>
@@ -25,7 +29,7 @@
         </el-table-column>
         <el-table-column
           prop="title"
-          label="书名"
+          label="书名（展开查看摘要）"
           fit>
         </el-table-column>
         <el-table-column
@@ -51,7 +55,8 @@
         <!--<el-table-column-->
           <!--prop="abs"-->
           <!--label="摘要"-->
-          <!--width="500">-->
+          <!--show-overflow-tooltip-->
+          <!--fit>-->
         <!--</el-table-column>-->
         <el-table-column
           fixed="right"
@@ -73,6 +78,10 @@
           </template>
         </el-table-column>
       </el-table>
+      <div style="margin: 20px 0 20px 0;float: left">
+        <el-button>取消选择</el-button>
+        <el-button>批量删除</el-button>
+      </div>
     </el-card>
   </div>
 </template>
@@ -82,12 +91,17 @@
   export default {
     name: 'BookManagement',
     components: {EditForm},
+    data () {
+      return {
+        books: []
+      }
+    },
     mounted () {
       this.loadBooks()
     },
     computed: {
       tableHeight () {
-        return window.innerHeight - 250
+        return window.innerHeight - 320
       }
     },
     methods: {
@@ -138,11 +152,6 @@
             _this.books = resp.data
           }
         })
-      }
-    },
-    data () {
-      return {
-        books: []
       }
     }
   }

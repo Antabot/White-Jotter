@@ -9,43 +9,41 @@
     </el-row>
     <el-card style="margin: 18px 2%;width: 95%">
       <el-table
-        :data="books"
+        :data="users"
         stripe
         style="width: 100%"
         :max-height="tableHeight">
         <el-table-column
-          prop="id"
-          label="选择"
-          width="150">
+          type="selection"
+          width="55">
         </el-table-column>
         <el-table-column
-          fixed
-          prop="title"
+          prop="id"
           label="id"
           width="100">
         </el-table-column>
         <el-table-column
-          prop="category.name"
+          prop="username"
           label="用户名"
-          width="100">
+          fit>
         </el-table-column>
         <el-table-column
-          prop="author"
+          prop="name"
           label="真实姓名"
-          width="150">
+          fit>
         </el-table-column>
         <el-table-column
-          prop="date"
+          prop="phone"
           label="手机号"
-          width="120">
+          fit>
         </el-table-column>
         <el-table-column
-          prop="press"
-          label="出版社"
-          width="180">
+          prop="email"
+          label="邮箱"
+          fit>
         </el-table-column>
         <el-table-column
-          prop="abs"
+          prop="status"
           label="状态"
           width="100">
         </el-table-column>
@@ -68,13 +66,40 @@
           </template>
         </el-table-column>
       </el-table>
+      <div style="margin: 20px 0 20px 0;float: left">
+        <el-button>取消选择</el-button>
+        <el-button>批量删除</el-button>
+      </div>
     </el-card>
   </div>
 </template>
 
 <script>
     export default {
-        name: 'UserProfile'
+        name: 'UserProfile',
+      data () {
+          return {
+            users: []
+          }
+      },
+      mounted () {
+        this.listUsers()
+      },
+      computed: {
+        tableHeight () {
+          return window.innerHeight - 320
+        }
+      },
+      methods: {
+        listUsers () {
+          var _this = this
+          this.$axios.get('/admin/user').then(resp => {
+            if (resp && resp.status === 200) {
+              _this.users = resp.data
+            }
+          })
+        }
+      }
     }
 </script>
 
