@@ -1,17 +1,18 @@
 <template>
-  <body id="admin-body">
-    <el-row style="z-index: 1;">
-      <Header style="position: absolute;width: 100%;"></Header>
-    </el-row>
-    <el-row style="height: 100%;">
-      <el-col :span="4" style="height: 100%">
+  <el-container id="admin-body">
+    <el-header style="z-index: 1;height: 80px;margin-left: -20px">
+      <Header style="position: absolute;width: 98%;"></Header>
+    </el-header>
+    <!--<el-row style="height: 100%;">-->
+    <el-container>
+      <el-aside style="height: 112%;margin-top: -80px">
         <admin-menu></admin-menu>
-      </el-col>
-      <el-col :span="20" style="margin-top: 80px;height: 90%;">
-        <router-view/>
-      </el-col>
-    </el-row>
-  </body>
+      </el-aside>
+      <el-main>
+        <router-view style="margin: -30px 0 0 -20px"/>
+      </el-main>
+    </el-container>
+  </el-container>
 </template>
 
 <script>
@@ -25,13 +26,15 @@
       return {
         dialogVisible: false
       }
+    },
+    mounted () {
+      this.$router.replace('/admin/dashboard')
     }
-    // 配置获取菜单方法
   }
 </script>
 
 <style scoped>
   #admin-body {
-  height: 100vh;
+  height: 95vh;
 }
 </style>
