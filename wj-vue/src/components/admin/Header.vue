@@ -30,6 +30,7 @@
     height: 80px;
     opacity: 0.85;
     line-height: 40px;
+    min-width: 900px;
   }
   .el-icon-switch-button {
     cursor: pointer;

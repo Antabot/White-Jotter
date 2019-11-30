@@ -23,6 +23,8 @@ module.exports = {
   rules: {
     // allow async-await
     'generator-star-spacing': 'off',
+    // 取消强制驼峰命名
+    'camelcase': 'off',
     // 'no-tabs': 'off',
     'indent': ["off", 2],
     // allow debugger during development
