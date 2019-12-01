@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-11-28 23:08:59
+Date: 2019-12-01 09:58:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,17 +28,19 @@ CREATE TABLE `admin_menu` (
   `component` varchar(64) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of admin_menu
 -- ----------------------------
-INSERT INTO `admin_menu` VALUES ('1', '/admin', 'User', '用户管理', 'el-icon-user', 'AdminIndex', '0');
-INSERT INTO `admin_menu` VALUES ('2', '/admin', 'Content', '内容管理', 'el-icon-tickets', 'AdminIndex', '0');
-INSERT INTO `admin_menu` VALUES ('3', '/admin', 'System', '系统配置', 'el-icon-s-tools', 'AdminIndex', '0');
-INSERT INTO `admin_menu` VALUES ('4', '/admin/user/profile', 'Profile', '用户信息', null, 'user/UserProfile', '1');
-INSERT INTO `admin_menu` VALUES ('5', '/admin/user/role', 'Role', '角色配置', null, 'user/UserRole', '1');
-INSERT INTO `admin_menu` VALUES ('6', '/admin/content/book', 'BookManagement', '图书管理', null, 'content/BookManagement', '2');
+INSERT INTO `admin_menu` VALUES ('1', '/admin', 'Dashboard', '首页', 'el-icon-s-home', 'AdminIndex', '0');
+INSERT INTO `admin_menu` VALUES ('2', '/admin/dashboard', 'DashboardAdmin', '运行情况', null, 'dashboard/admin/index', '1');
+INSERT INTO `admin_menu` VALUES ('3', '/admin', 'User', '用户管理', 'el-icon-user', 'AdminIndex', '0');
+INSERT INTO `admin_menu` VALUES ('4', '/admin', 'Content', '内容管理', 'el-icon-tickets', 'AdminIndex', '0');
+INSERT INTO `admin_menu` VALUES ('5', '/admin', 'System', '系统配置', 'el-icon-s-tools', 'AdminIndex', '0');
+INSERT INTO `admin_menu` VALUES ('6', '/admin/user/profile', 'Profile', '用户信息', null, 'user/UserProfile', '3');
+INSERT INTO `admin_menu` VALUES ('7', '/admin/user/role', 'Role', '角色配置', null, 'user/UserRole', '3');
+INSERT INTO `admin_menu` VALUES ('8', '/admin/content/book', 'BookManagement', '图书管理', null, 'content/BookManagement', '4');
 
 -- ----------------------------
 -- Table structure for admin_permission
@@ -96,6 +98,8 @@ INSERT INTO `admin_role_menu` VALUES ('5', '1', '5');
 INSERT INTO `admin_role_menu` VALUES ('6', '1', '6');
 INSERT INTO `admin_role_menu` VALUES ('7', '2', '2');
 INSERT INTO `admin_role_menu` VALUES ('8', '2', '6');
+INSERT INTO `admin_role_menu` VALUES ('9', '1', '7');
+INSERT INTO `admin_role_menu` VALUES ('10', '1', '8');
 
 -- ----------------------------
 -- Table structure for admin_role_permission
@@ -202,16 +206,19 @@ INSERT INTO `category` VALUES ('6', '科技');
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` char(255) DEFAULT NULL,
+  `username` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `salt` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `salt` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `enabled` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '35b9529f89cfb9b848060ca576237e17', '管理员', '8O+vDNr2sI3N82BI31fu1A==');
-INSERT INTO `user` VALUES ('2', 'test', '07dc769da966d78e4a9c61556ca3a556', '测试', 'Iv0xgP00bfJV3OFRFJSKLg==');
-INSERT INTO `user` VALUES ('3', 'editor', '8583a2d965d6159edbf65c82d871fa3e', '编辑', 'MZTe7Qwf9QgXBXrZzTIqJQ==');
+INSERT INTO `user` VALUES ('1', 'admin', '35b9529f89cfb9b848060ca576237e17', '8O+vDNr2sI3N82BI31fu1A==', '管理员', '11122223333', 'evan_nightly@163.com', '1');
+INSERT INTO `user` VALUES ('2', 'test', '07dc769da966d78e4a9c61556ca3a556', 'Iv0xgP00bfJV3OFRFJSKLg==', '测试', '44455556666', null, '0');
+INSERT INTO `user` VALUES ('3', 'editor', '8583a2d965d6159edbf65c82d871fa3e', 'MZTe7Qwf9QgXBXrZzTIqJQ==', '编辑', null, null, '1');
