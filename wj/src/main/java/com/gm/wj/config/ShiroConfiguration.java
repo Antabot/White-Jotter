@@ -1,5 +1,6 @@
 package com.gm.wj.config;
 
+import com.gm.wj.filter.URLPathMatchingFilter;
 import com.gm.wj.realm.WJRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
@@ -12,6 +13,11 @@ import org.apache.shiro.web.servlet.SimpleCookie;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.servlet.Filter;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 @Configuration
 public class ShiroConfiguration {
     @Bean
@@ -23,7 +29,31 @@ public class ShiroConfiguration {
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
+        shiroFilterFactoryBean.setLoginUrl("/nowhere");
+
+        Map<String, String > filterChainDefinitionMap = new LinkedHashMap<String, String>();
+        Map<String, Filter> customizedFilter = new HashMap<>();
+
+        // 设置过滤器名称
+        customizedFilter.put("url", getURLPathMatchingFilter());
+
+        // 设置过滤规则（示例，anon 代表可匿名，authc 代表需要认证，roles代表需要角色，perms代表需要权限）
+        // 通配符规则放在最后，否则会屏蔽其它规则
+//        filterChainDefinitionMap.put("/api/login", "anon");
+//        filterChainDefinitionMap.put("/api/logout", "anon");
+//        filterChainDefinitionMap.put("/**", "authc");
+        // 其实由于访问后台首先要调用菜单接口，该规则已失去作用
+        filterChainDefinitionMap.put("/api/authentication", "authc");
+
+        // 对管理接口的访问启用自定义拦截（url 规则），即执行 URLPathMatchingFilter 中定义的过滤方法
+        filterChainDefinitionMap.put("/api/admin/**", "url");
+        shiroFilterFactoryBean.setFilters(customizedFilter);
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
+    }
+
+    public URLPathMatchingFilter getURLPathMatchingFilter() {
+        return new URLPathMatchingFilter();
     }
 
     @Bean
