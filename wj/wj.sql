@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-12-01 09:58:13
+Date: 2019-12-01 22:10:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -52,11 +52,13 @@ CREATE TABLE `admin_permission` (
   `desc_` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin_permission
 -- ----------------------------
+INSERT INTO `admin_permission` VALUES ('1', 'users_management', '用户管理', '/api/admin/user');
+INSERT INTO `admin_permission` VALUES ('2', 'roles_management', '角色管理', '/api/admin/role');
 
 -- ----------------------------
 -- Table structure for admin_role
@@ -66,15 +68,16 @@ CREATE TABLE `admin_role` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `name_zh` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `enabled` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin_role
 -- ----------------------------
-INSERT INTO `admin_role` VALUES ('1', 'sysAdmin', '系统管理员');
-INSERT INTO `admin_role` VALUES ('2', 'contentManager', '内容管理员');
-INSERT INTO `admin_role` VALUES ('3', 'viewer', '用户');
+INSERT INTO `admin_role` VALUES ('1', 'sysAdmin', '系统管理员', '1');
+INSERT INTO `admin_role` VALUES ('2', 'contentManager', '内容管理员', '1');
+INSERT INTO `admin_role` VALUES ('3', 'visitor', '访客', '1');
 
 -- ----------------------------
 -- Table structure for admin_role_menu
@@ -85,7 +88,7 @@ CREATE TABLE `admin_role_menu` (
   `rid` int(11) DEFAULT NULL,
   `mid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of admin_role_menu
@@ -96,10 +99,12 @@ INSERT INTO `admin_role_menu` VALUES ('3', '1', '3');
 INSERT INTO `admin_role_menu` VALUES ('4', '1', '4');
 INSERT INTO `admin_role_menu` VALUES ('5', '1', '5');
 INSERT INTO `admin_role_menu` VALUES ('6', '1', '6');
-INSERT INTO `admin_role_menu` VALUES ('7', '2', '2');
-INSERT INTO `admin_role_menu` VALUES ('8', '2', '6');
+INSERT INTO `admin_role_menu` VALUES ('7', '2', '1');
+INSERT INTO `admin_role_menu` VALUES ('8', '2', '2');
 INSERT INTO `admin_role_menu` VALUES ('9', '1', '7');
 INSERT INTO `admin_role_menu` VALUES ('10', '1', '8');
+INSERT INTO `admin_role_menu` VALUES ('11', '2', '4');
+INSERT INTO `admin_role_menu` VALUES ('12', '2', '8');
 
 -- ----------------------------
 -- Table structure for admin_role_permission
@@ -112,11 +117,13 @@ CREATE TABLE `admin_role_permission` (
   PRIMARY KEY (`id`),
   KEY `fk_role_permission_role_1` (`rid`),
   KEY `fk_role_permission_permission_1` (`pid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin_role_permission
 -- ----------------------------
+INSERT INTO `admin_role_permission` VALUES ('1', '1', '1');
+INSERT INTO `admin_role_permission` VALUES ('2', '1', '2');
 
 -- ----------------------------
 -- Table structure for admin_user_role
@@ -220,5 +227,5 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'admin', '35b9529f89cfb9b848060ca576237e17', '8O+vDNr2sI3N82BI31fu1A==', '管理员', '11122223333', 'evan_nightly@163.com', '1');
-INSERT INTO `user` VALUES ('2', 'test', '07dc769da966d78e4a9c61556ca3a556', 'Iv0xgP00bfJV3OFRFJSKLg==', '测试', '44455556666', null, '0');
+INSERT INTO `user` VALUES ('2', 'test', '07dc769da966d78e4a9c61556ca3a556', 'Iv0xgP00bfJV3OFRFJSKLg==', '测试', '44455556666', null, '1');
 INSERT INTO `user` VALUES ('3', 'editor', '8583a2d965d6159edbf65c82d871fa3e', 'MZTe7Qwf9QgXBXrZzTIqJQ==', '编辑', null, null, '1');

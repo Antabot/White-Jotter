@@ -40,6 +40,12 @@ public class LoginController {
         }
     }
 
+    @GetMapping("/login")
+    public Result login() {
+        String message = "非法登录";
+        return ResultFactory.buildSuccessResult(message);
+    }
+
     @PostMapping("api/register")
     public Result register(@RequestBody User user) {
         String username = user.getUsername();

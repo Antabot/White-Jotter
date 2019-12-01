@@ -69,10 +69,7 @@ axios.interceptors.response.use(
   error => {
     console.log(error.response)
     if (error) {
-      router.replace({
-        path: 'login'
-        // query: {redirect: router.currentRoute.fullPath}
-      })
+      router.replace('/login')
     }
     // 返回接口返回的错误信息
     return Promise.reject(error.response.data)
