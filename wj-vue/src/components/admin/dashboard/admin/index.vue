@@ -101,6 +101,7 @@ export default {
   padding: 32px;
   background-color: #f6f6f6;
   position: relative;
+  margin: -20px 0 0 -10px;
 
   .github-corner {
     position: absolute;

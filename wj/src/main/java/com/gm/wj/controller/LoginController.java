@@ -32,7 +32,7 @@ public class LoginController {
         try {
             subject.login(usernamePasswordToken);
             // 生成随机 token 并存储在 session 中
-            User user = userService.getByUserName(username);
+            User user = userService.findByUserName(username);
             return ResultFactory.buildSuccessResult(usernamePasswordToken);
         } catch (AuthenticationException e) {
             String message = "账号密码错误";

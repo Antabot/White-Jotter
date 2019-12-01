@@ -5,7 +5,8 @@
         :checked="todo.done"
         class="toggle"
         type="checkbox"
-        @change="toggleTodo( todo)"
+        @change="toggleTodo(todo)"
+        style="left: 0px;"
       >
       <label @dblclick="editing = true" v-text="todo.text" />
       <button class="destroy" @click="deleteTodo( todo )" />

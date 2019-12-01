@@ -9,7 +9,7 @@
           <div class="card-panel-text">
             New Visits
           </div>
-          <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="3734" :duration="2600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -22,33 +22,33 @@
           <div class="card-panel-text">
             Messages
           </div>
-          <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="676" :duration="3000" class="card-panel-num" />
         </div>
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('purchases')">
         <div class="card-panel-icon-wrapper icon-money">
-          <i class="el-icon-money" style="font-size: 50px"></i>
+          <i class="el-icon-star-on" style="font-size: 50px"></i>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            Purchases
+            Stars
           </div>
-          <count-to :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="292" :duration="3200" class="card-panel-num" />
         </div>
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('shoppings')">
         <div class="card-panel-icon-wrapper icon-shopping">
-          <i class="el-icon-shopping-cart-2" style="font-size: 50px"></i>
+          <i class="el-icon-money" style="font-size: 50px"></i>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            Shoppings
+            Donations
           </div>
-          <count-to :start-val="0" :end-val="13600" :duration="3600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="7690" :duration="3600" class="card-panel-num" />
         </div>
       </div>
     </el-col>

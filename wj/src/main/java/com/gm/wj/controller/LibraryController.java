@@ -19,19 +19,19 @@ public class LibraryController {
     BookService bookService;
 
     @GetMapping("/api/books")
-    public List<Book> list() throws Exception {
+    public List<Book> listBooks() throws Exception {
         return bookService.list();
     }
 
     @PostMapping("/api/books")
-    public Book addOrUpdate(@RequestBody Book book) throws Exception {
+    public Book addOrUpdateBooks(@RequestBody Book book) throws Exception {
         System.out.println(book.getCategory());
         bookService.addOrUpdate(book);
         return book;
     }
 
     @PostMapping("/api/delete")
-    public void delete(@RequestBody Book book) throws Exception {
+    public void deleteBook(@RequestBody Book book) throws Exception {
         bookService.deleteById(book.getId());
     }
 
@@ -49,7 +49,7 @@ public class LibraryController {
         if (0 != cid) {
             return bookService.listByCategory(cid);
         } else {
-            return list();
+            return listBooks();
         }
     }
 

@@ -34,7 +34,7 @@ public class MenuController {
 
     public List<AdminMenu> getMenuByCurrentUser() {
         String username = SecurityUtils.getSubject().getPrincipal().toString();
-        User user = userService.getByUserName(username);
+        User user = userService.findByUserName(username);
         List<AdminUserRole> userRoleList = adminUserRoleService.listAllByUid(user.getId());
         List<AdminMenu> menus = new ArrayList<>();
         for (AdminUserRole userRole : userRoleList) {
