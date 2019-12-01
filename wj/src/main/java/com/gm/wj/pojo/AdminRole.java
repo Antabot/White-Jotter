@@ -17,6 +17,8 @@ public class AdminRole {
     @Column(name = "name_zh")
     String nameZh;
 
+    boolean enabled;
+
     public int getId() {
         return id;
     }
@@ -39,5 +41,13 @@ public class AdminRole {
 
     public void setNameZh(String nameZh) {
         this.nameZh = nameZh;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

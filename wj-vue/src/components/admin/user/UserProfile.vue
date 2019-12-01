@@ -2,7 +2,7 @@
   <div>
     <el-row style="margin: 18px 0px 0px 18px ">
       <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/admin' }">管理中心</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/admin/dashboard' }">管理中心</el-breadcrumb-item>
         <el-breadcrumb-item>用户管理</el-breadcrumb-item>
         <el-breadcrumb-item>用户信息</el-breadcrumb-item>
       </el-breadcrumb>
@@ -51,7 +51,7 @@
               v-model="scope.row.enabled"
               active-color="#13ce66"
               inactive-color="#ff4949"
-              @change="(value) => commitChange(value, scope.row.username)">
+              @change="(value) => commitChange(value, scope.row)">
             </el-switch>
           </template>
         </el-table-column>
@@ -107,19 +107,24 @@
             }
           })
         },
-        commitChange (value, username) {
-          this.$axios.put('/admin/user', {
-            enabled: value,
-            username: username
-          }).then(resp => {
-            if (resp && resp.status === 200) {
-              if (value) {
-                this.$message('用户 [' + username + '] 已启用')
-              } else {
-                this.$message('用户 [' + username + '] 已禁用')
+        commitChange (value, user) {
+          if (user.username !== 'admin') {
+            this.$axios.put('/admin/user', {
+              enabled: value,
+              username: user.username
+            }).then(resp => {
+              if (resp && resp.status === 200) {
+                if (value) {
+                  this.$message('用户 [' + user.username + '] 已启用')
+                } else {
+                  this.$message('用户 [' + user.username + '] 已禁用')
+                }
               }
-            }
-          })
+            })
+          } else {
+            user.enabled = true
+            this.$alert('不能禁用管理员账户')
+          }
         }
       }
     }

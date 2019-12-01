@@ -5,11 +5,11 @@
     </el-header>
     <!--<el-row style="height: 100%;">-->
     <el-container>
-      <el-aside style="height: 112%;margin-top: -80px">
+      <el-aside style="height: 112%;margin-top: -80px;width: 250px">
         <admin-menu></admin-menu>
       </el-aside>
       <el-main>
-        <router-view style="margin: -30px 0 0 -20px"/>
+        <router-view/>
       </el-main>
     </el-container>
   </el-container>
@@ -28,7 +28,7 @@
       }
     },
     mounted () {
-      this.$router.replace('/admin/dashboard')
+      // this.$router.replace('/admin/dashboard')
     }
   }
 </script>

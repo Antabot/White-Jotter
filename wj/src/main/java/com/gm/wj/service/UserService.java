@@ -19,11 +19,11 @@ public class UserService {
     }
 
     public boolean isExist(String username) {
-        User user = getByUserName(username);
+        User user = findByUserName(username);
         return null!=user;
     }
 
-    public User getByUserName(String username) {
+    public User findByUserName(String username) {
         return userDAO.findByUsername(username);
     }
 

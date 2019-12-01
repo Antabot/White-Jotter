@@ -27,7 +27,7 @@ public class WJRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String userName = token.getPrincipal().toString();
-        User user = userService.getByUserName(userName);
+        User user = userService.findByUserName(userName);
         if (ObjectUtils.isEmpty(user)) {
             throw new UnknownAccountException();
         }
