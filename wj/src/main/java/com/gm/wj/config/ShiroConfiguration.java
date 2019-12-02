@@ -42,7 +42,7 @@ public class ShiroConfiguration {
 //        filterChainDefinitionMap.put("/api/login", "anon");
 //        filterChainDefinitionMap.put("/api/logout", "anon");
 //        filterChainDefinitionMap.put("/**", "authc");
-        // 其实由于访问后台首先要调用菜单接口，该规则已失去作用
+        // 防前端瞎登录接口，其实由于访问后台首先要调用菜单接口，该规则已失效
         filterChainDefinitionMap.put("/api/authentication", "authc");
 
         // 对管理接口的访问启用自定义拦截（url 规则），即执行 URLPathMatchingFilter 中定义的过滤方法
