@@ -1,6 +1,8 @@
 package com.gm.wj.realm;
 
 import com.gm.wj.pojo.User;
+import com.gm.wj.service.AdminPermissionService;
+import com.gm.wj.service.AdminRoleService;
 import com.gm.wj.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -11,15 +13,27 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 
+import java.util.Set;
+
 public class WJRealm extends AuthorizingRealm {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private AdminPermissionService adminPermissionService;
+    @Autowired
+    private AdminRoleService adminRoleService;
 
-    // 简单重写获取授权信息方法
+    // 重写获取授权信息方法
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        // 获取当前用户的所有权限
+        String username = principalCollection.getPrimaryPrincipal().toString();
+        Set<String> permissions = adminPermissionService.listPermissionURLsByUser(username);
+
+        // 将权限放入授权信息中
         SimpleAuthorizationInfo s = new SimpleAuthorizationInfo();
+        s.setStringPermissions(permissions);
         return s;
     }
 

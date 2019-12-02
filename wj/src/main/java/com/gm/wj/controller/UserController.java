@@ -6,6 +6,7 @@ import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.AdminRoleService;
 import com.gm.wj.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,7 @@ public class UserController {
     @Autowired
     AdminRoleService adminRoleService;
 
+    @RequiresPermissions("/api/admin/user")
     @GetMapping("/api/admin/user")
     public List<User> listUsers() throws Exception {
         return userService.list();
