@@ -35,7 +35,7 @@ public class ShiroConfiguration {
         Map<String, Filter> customizedFilter = new HashMap<>();
 
         // 设置过滤器名称
-        customizedFilter.put("url", getURLPathMatchingFilter());
+//        customizedFilter.put("url", getURLPathMatchingFilter());
 
         // 设置过滤规则（示例，anon 代表可匿名，authc 代表需要认证，roles代表需要角色，perms代表需要权限）
         // 通配符规则放在最后，否则会屏蔽其它规则
@@ -44,10 +44,11 @@ public class ShiroConfiguration {
 //        filterChainDefinitionMap.put("/**", "authc");
         // 防前端瞎登录接口，其实由于访问后台首先要调用菜单接口，该规则已失效
         filterChainDefinitionMap.put("/api/authentication", "authc");
+        filterChainDefinitionMap.put("/api/admin/**", "authc");
 
         // 对管理接口的访问启用自定义拦截（url 规则），即执行 URLPathMatchingFilter 中定义的过滤方法
-        filterChainDefinitionMap.put("/api/admin/**", "url");
-        shiroFilterFactoryBean.setFilters(customizedFilter);
+//        filterChainDefinitionMap.put("/api/admin/**", "url");
+//        shiroFilterFactoryBean.setFilters(customizedFilter);
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
