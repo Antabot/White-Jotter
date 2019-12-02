@@ -8,9 +8,7 @@ import Login from '../components/Login'
 import Home from '../components/Home'
 import AdminIndex from '../components/admin/AdminIndex'
 import Register from '../components/Register'
-// import UserProfile from '../components/admin/user/UserProfile'
-// import UserRole from '../components/admin/user/UserRole'
-// import UserBasic from '../components/admin/user/UserBasic'
+import DashBoard from '../components/admin/dashboard/admin/index'
 
 Vue.use(Router)
 
@@ -71,19 +69,17 @@ export default new Router({
       component: AdminIndex,
       meta: {
         requireAuth: true
-      }
-      // children: [
-        // {
-        //   path: '/admin/profile',
-        //   name: 'basic',
-        //   component: UserProfile
-        // },
-        // {
-        //   path: '/admin/role',
-        //   name: 'basic',
-        //   component: UserRole
-        // }
-      // ]
+      },
+      children: [
+        {
+          path: '/admin/dashboard',
+          name: 'dashboard',
+          component: DashBoard,
+          meta: {
+            requireAuth: true
+          }
+        }
+      ]
     }
   ]
 })
