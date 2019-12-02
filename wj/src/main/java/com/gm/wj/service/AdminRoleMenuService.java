@@ -12,7 +12,7 @@ public class AdminRoleMenuService {
     @Autowired
     AdminRoleMenuDAO adminRoleMenuDAO;
 
-    public List<AdminRoleMenu> listAllByRid(int rid) {
+    public List<AdminRoleMenu> findAllByRid(int rid) {
         return adminRoleMenuDAO.findAllByRid(rid);
     }
 }

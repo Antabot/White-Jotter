@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-12-02 19:28:22
+Date: 2019-12-02 22:45:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,7 +47,7 @@ INSERT INTO `admin_menu` VALUES ('8', '/admin/content/book', 'BookManagement', '
 -- ----------------------------
 DROP TABLE IF EXISTS `admin_permission`;
 CREATE TABLE `admin_permission` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `desc_` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
@@ -65,7 +65,7 @@ INSERT INTO `admin_permission` VALUES ('2', 'roles_management', '角色管理', 
 -- ----------------------------
 DROP TABLE IF EXISTS `admin_role`;
 CREATE TABLE `admin_role` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `name_zh` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `enabled` tinyint(1) DEFAULT NULL,
@@ -111,9 +111,9 @@ INSERT INTO `admin_role_menu` VALUES ('12', '2', '8');
 -- ----------------------------
 DROP TABLE IF EXISTS `admin_role_permission`;
 CREATE TABLE `admin_role_permission` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `rid` bigint(20) DEFAULT NULL,
-  `pid` bigint(20) DEFAULT NULL,
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `rid` int(20) DEFAULT NULL,
+  `pid` int(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_role_permission_role_1` (`rid`),
   KEY `fk_role_permission_permission_1` (`pid`)
@@ -130,9 +130,9 @@ INSERT INTO `admin_role_permission` VALUES ('2', '1', '2');
 -- ----------------------------
 DROP TABLE IF EXISTS `admin_user_role`;
 CREATE TABLE `admin_user_role` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `uid` bigint(20) DEFAULT NULL,
-  `rid` bigint(20) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL,
+  `rid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_operator_role_operator_1` (`uid`),
   KEY `fk_operator_role_role_1` (`rid`)
