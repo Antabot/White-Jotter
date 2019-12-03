@@ -32,23 +32,16 @@ public class ShiroConfiguration {
         shiroFilterFactoryBean.setLoginUrl("/nowhere");
 
         Map<String, String > filterChainDefinitionMap = new LinkedHashMap<String, String>();
-        Map<String, Filter> customizedFilter = new HashMap<>();
+//        Map<String, Filter> customizedFilter = new HashMap<>();  // 自定义过滤器设置 1
 
-        // 设置过滤器名称
-//        customizedFilter.put("url", getURLPathMatchingFilter());
+//        customizedFilter.put("url", getURLPathMatchingFilter()); // 自定义过滤器设置 2，命名，需在设置过滤路径前
 
-        // 设置过滤规则（示例，anon 代表可匿名，authc 代表需要认证，roles代表需要角色，perms代表需要权限）
-        // 通配符规则放在最后，否则会屏蔽其它规则
-//        filterChainDefinitionMap.put("/api/login", "anon");
-//        filterChainDefinitionMap.put("/api/logout", "anon");
-//        filterChainDefinitionMap.put("/**", "authc");
-        // 防前端瞎登录接口，其实由于访问后台首先要调用菜单接口，该规则已失效
-        filterChainDefinitionMap.put("/api/authentication", "authc");
+//        filterChainDefinitionMap.put("/api/authentication", "authc"); // 防鸡贼登录，暂时不需要
         filterChainDefinitionMap.put("/api/admin/**", "authc");
 
-        // 对管理接口的访问启用自定义拦截（url 规则），即执行 URLPathMatchingFilter 中定义的过滤方法
-//        filterChainDefinitionMap.put("/api/admin/**", "url");
-//        shiroFilterFactoryBean.setFilters(customizedFilter);
+//        filterChainDefinitionMap.put("/api/admin/**", "url");  // 自定义过滤器设置 3，设置过滤路径
+
+//        shiroFilterFactoryBean.setFilters(customizedFilter); // 自定义过滤器设置 4，启用
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
