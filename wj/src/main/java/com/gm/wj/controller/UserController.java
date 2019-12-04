@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     AdminRoleService adminRoleService;
 
-    @RequiresPermissions("/api/admin/user")
+//    @RequiresPermissions("/api/admin/user")
     @GetMapping("/api/admin/user")
     public List<User> listUsers() throws Exception {
         return userService.list();
