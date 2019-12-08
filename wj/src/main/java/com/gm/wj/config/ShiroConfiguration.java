@@ -31,7 +31,7 @@ public class ShiroConfiguration {
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         shiroFilterFactoryBean.setLoginUrl("/nowhere");
 
-        Map<String, String > filterChainDefinitionMap = new LinkedHashMap<String, String>();
+        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         Map<String, Filter> customizedFilter = new HashMap<>();  // 自定义过滤器设置 1
 
         customizedFilter.put("url", getURLPathMatchingFilter()); // 自定义过滤器设置 2，命名，需在设置过滤路径前

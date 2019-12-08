@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @ControllerAdvice
 public class DefaultExceptionHandler {
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(UnauthorizedException.class)
     @ResponseBody
     public Result handleAuthorizationException(UnauthorizedException e) {
         String message = "权限认证失败";

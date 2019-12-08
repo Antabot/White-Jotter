@@ -1,5 +1,30 @@
 <template>
   <div>
+    <el-dialog
+      title="修改用户信息"
+      :visible.sync="dialogFormVisible">
+      <el-form v-model="selectedUser" style="text-align: left" ref="dataForm">
+        <el-form-item label="用户名" label-width="120px" prop="username">
+          <label>{{selectedUser.username}}</label>
+        </el-form-item>
+        <el-form-item label="真实姓名" label-width="120px" prop="name">
+          <el-input v-model="selectedUser.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="手机号" label-width="120px" prop="phone">
+          <el-input v-model="selectedUser.phone" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱" label-width="120px" prop="email">
+          <el-input v-model="selectedUser.email" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" label-width="120px" prop="password">
+          <el-button type="warning" @click="resetPassword(selectedUser.username)">重置密码</el-button>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="onSubmit(selectedUser)">确 定</el-button>
+      </div>
+    </el-dialog>
     <el-row style="margin: 18px 0px 0px 18px ">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/admin/dashboard' }">管理中心</el-breadcrumb-item>
@@ -51,7 +76,7 @@
               v-model="scope.row.enabled"
               active-color="#13ce66"
               inactive-color="#ff4949"
-              @change="(value) => commitChange(value, scope.row)">
+              @change="(value) => commitStatusChange(value, scope.row)">
             </el-switch>
           </template>
         </el-table-column>
@@ -60,7 +85,7 @@
           width="120">
           <template slot-scope="scope">
             <el-button
-              @click.native.prevent="editBook(scope.row)"
+              @click="editUser(scope.row)"
               type="text"
               size="small">
               编辑
@@ -87,7 +112,9 @@
         name: 'UserProfile',
       data () {
           return {
-            users: []
+            users: [],
+            dialogFormVisible: false,
+            selectedUser: []
           }
       },
       mounted () {
@@ -107,9 +134,9 @@
             }
           })
         },
-        commitChange (value, user) {
+        commitStatusChange (value, user) {
           if (user.username !== 'admin') {
-            this.$axios.put('/admin/user', {
+            this.$axios.put('/admin/user-status', {
               enabled: value,
               username: user.username
             }).then(resp => {
@@ -125,6 +152,32 @@
             user.enabled = true
             this.$alert('不能禁用管理员账户')
           }
+        },
+        onSubmit (user) {
+          this.$axios.put('/admin/user', {
+            username: user.username,
+            name: user.name,
+            phone: user.phone,
+            email: user.email
+          }).then(resp => {
+            if (resp && resp.status === 200) {
+              this.$alert('用户信息修改成功')
+              this.dialogFormVisible = false
+            }
+          })
+        },
+        editUser (user) {
+          this.dialogFormVisible = true
+          this.selectedUser = user
+        },
+        resetPassword (username) {
+          this.$axios.put('/password', {
+            username: username
+          }).then(resp => {
+            if (resp && resp.status === 200) {
+              this.$alert('密码已重置为 123')
+          }
+          })
         }
       }
     }

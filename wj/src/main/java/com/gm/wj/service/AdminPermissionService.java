@@ -38,15 +38,14 @@ public class AdminPermissionService {
     }
 
     public Set<String> listPermissionURLsByUser(String username) {
-        int uid =  userService.findByUserName(username).getId();
-        List<AdminRole> roles = new ArrayList<>();
-        List<AdminPermission> permissions = new ArrayList<>();
+        List<AdminRole> roles = adminRoleService.listRolesByUser(username);
+//        List<AdminPermission> permissions = new ArrayList<>();
         Set<String> URLs = new HashSet<>();
 
-        List<AdminUserRole> urs = adminUserRoleService.listAllByUid(uid);
-        for (AdminUserRole ur: urs) {
-            roles.add(adminRoleService.findById(ur.getRid()));
-        }
+//        List<AdminUserRole> urs = adminUserRoleService.listAllByUid(uid);
+//        for (AdminUserRole ur: urs) {
+//            roles.add(adminRoleService.findById(ur.getRid()));
+//        }
 
         for (AdminRole role : roles) {
             List<AdminRolePermission> rps = adminRolePermissionService.findAllByRid(role.getId());
