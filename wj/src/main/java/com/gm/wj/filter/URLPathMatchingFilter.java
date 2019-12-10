@@ -34,7 +34,6 @@ public class URLPathMatchingFilter extends PathMatchingFilter {
         }
 
         String requestAPI = getPathWithinApplication(request);
-        System.out.println("访问接口：" + requestAPI);
 
         Subject subject = SecurityUtils.getSubject();
 
@@ -49,7 +48,6 @@ public class URLPathMatchingFilter extends PathMatchingFilter {
             System.out.println("接口：" + requestAPI + "无需权限");
             return true;
         } else {
-            System.out.println("验证访问权限：" + requestAPI);
             // 判断当前用户是否有相应权限
             boolean hasPermission = false;
             String username = subject.getPrincipal().toString();
