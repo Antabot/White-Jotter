@@ -6,13 +6,11 @@ import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.AdminRoleService;
 import com.gm.wj.service.UserService;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,22 +23,9 @@ public class UserController {
     @Autowired
     AdminRoleService adminRoleService;
 
-    //    @RequiresPermissions("/api/admin/user")
     @GetMapping("/api/admin/user")
     public List<User> listUsers() throws Exception {
         return userService.list();
-    }
-
-    @GetMapping("/api/admin/user-role")
-    public Map listUsersAndRoles() throws Exception {
-        Map<String, List<AdminRole>>  usersWithRoles = new HashMap<>();
-        List<User> users = userService.list();
-        List<AdminRole> roles = new ArrayList<>();
-        for (User user : users) {
-            roles = adminRoleService.listRolesByUser(user.getUsername());
-            usersWithRoles.put(user.getUsername(), roles);
-        }
-        return usersWithRoles;
     }
 
     @PutMapping("/api/admin/user-status")
