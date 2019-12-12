@@ -1,21 +1,32 @@
 package com.gm.wj.service;
 
 import com.gm.wj.dao.UserDAO;
+import com.gm.wj.pojo.AdminRole;
 import com.gm.wj.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UserService {
     @Autowired
     UserDAO userDAO;
+    @Autowired
+    AdminRoleService adminRoleService;
 
     public List<User> list() {
         Sort sort = new Sort(Sort.Direction.ASC, "id");
-        return userDAO.findAll(sort);
+        List<User> users =  userDAO.list();
+        List<AdminRole> roles = new ArrayList<>();
+        for (User user : users) {
+            roles = adminRoleService.listRolesByUser(user.getUsername());
+            user.setRoles(roles);
+        }
+
+        return users;
     }
 
     public boolean isExist(String username) {

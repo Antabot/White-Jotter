@@ -19,6 +19,11 @@
         <el-form-item label="密码" label-width="120px" prop="password">
           <el-button type="warning" @click="resetPassword(selectedUser.username)">重置密码</el-button>
         </el-form-item>
+        <el-form-item label="角色" label-width="120px" prop="roles">
+          <el-checkbox-group v-model="selectedRoles">
+              <el-checkbox v-for="(role,i) in roles" :key="i" :label="role.id">{{role.nameZh}}</el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -113,12 +118,15 @@
       data () {
           return {
             users: [],
+            roles: [],
             dialogFormVisible: false,
-            selectedUser: []
+            selectedUser: [],
+            selectedRoles: []
           }
       },
       mounted () {
         this.listUsers()
+        this.listRoles()
       },
       computed: {
         tableHeight () {
@@ -131,6 +139,14 @@
           this.$axios.get('/admin/user').then(resp => {
             if (resp && resp.status === 200) {
               _this.users = resp.data
+            }
+          })
+        },
+        listRoles () {
+          var _this = this
+          this.$axios.get('/admin/role').then(resp => {
+            if (resp && resp.status === 200) {
+              _this.roles = resp.data
             }
           })
         },
@@ -158,7 +174,8 @@
             username: user.username,
             name: user.name,
             phone: user.phone,
-            email: user.email
+            email: user.email,
+            roleIds: this.selectedRoles
           }).then(resp => {
             if (resp && resp.status === 200) {
               this.$alert('用户信息修改成功')
@@ -169,6 +186,11 @@
         editUser (user) {
           this.dialogFormVisible = true
           this.selectedUser = user
+          let roleIds = []
+          for (let i = 0; i < user.roles.length; i++) {
+            roleIds.push(user.roles[i].id)
+          }
+          this.selectedRoles = roleIds
         },
         resetPassword (username) {
           this.$axios.put('/password', {

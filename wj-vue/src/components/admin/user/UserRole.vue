@@ -81,7 +81,7 @@
       }
     },
     mounted () {
-      this.listUsers()
+      this.listRoles()
     },
     computed: {
       tableHeight () {
@@ -89,7 +89,7 @@
       }
     },
     methods: {
-      listUsers () {
+      listRoles () {
         var _this = this
         this.$axios.get('/admin/role').then(resp => {
           if (resp && resp.status === 200) {
