@@ -5,6 +5,7 @@ import com.gm.wj.pojo.User;
 import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.AdminRoleService;
+import com.gm.wj.service.AdminUserRoleService;
 import com.gm.wj.service.UserService;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
@@ -22,6 +23,8 @@ public class UserController {
     UserService userService;
     @Autowired
     AdminRoleService adminRoleService;
+    @Autowired
+    AdminUserRoleService adminUserRoleService;
 
     @GetMapping("/api/admin/user")
     public List<User> listUsers() throws Exception {
@@ -62,6 +65,7 @@ public class UserController {
         user.setPhone(requestUser.getPhone());
         user.setEmail(requestUser.getEmail());
         userService.addOrUpdate(user);
+        adminUserRoleService.saveRoleChanges(user.getId(),requestUser.getRoles());
         String message = "修改用户信息成功";
         return ResultFactory.buildSuccessResult(message);
     }
