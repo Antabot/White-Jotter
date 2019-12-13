@@ -170,16 +170,28 @@
           }
         },
         onSubmit (user) {
+          let _this = this
+          // 根据视图绑定的角色 id 向后端传送角色信息
+          let roles = []
+          for (let i = 0; i < _this.selectedRoles.length; i++) {
+            for (let j = 0; j < _this.roles.length; j++) {
+              if (_this.selectedRoles[i] === _this.roles[j].id) {
+                roles.push(_this.roles[j])
+              }
+            }
+          }
           this.$axios.put('/admin/user', {
             username: user.username,
             name: user.name,
             phone: user.phone,
             email: user.email,
-            roleIds: this.selectedRoles
+            roles: roles
           }).then(resp => {
             if (resp && resp.status === 200) {
               this.$alert('用户信息修改成功')
               this.dialogFormVisible = false
+              // 主要是修改角色后与视图联动
+              this.listUsers()
             }
           })
         },
