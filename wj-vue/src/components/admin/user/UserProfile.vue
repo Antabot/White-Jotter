@@ -100,7 +100,6 @@
               编辑
             </el-button>
             <el-button
-              @click.native.prevent="deleteBook(scope.row.id)"
               type="text"
               size="small">
               移除
@@ -158,7 +157,7 @@
         },
         commitStatusChange (value, user) {
           if (user.username !== 'admin') {
-            this.$axios.put('/admin/user-status', {
+            this.$axios.put('/admin/user/status', {
               enabled: value,
               username: user.username
             }).then(resp => {
@@ -211,7 +210,7 @@
           this.selectedRoles = roleIds
         },
         resetPassword (username) {
-          this.$axios.put('/admin/password', {
+          this.$axios.put('/admin/user/password', {
             username: username
           }).then(resp => {
             if (resp && resp.status === 200) {

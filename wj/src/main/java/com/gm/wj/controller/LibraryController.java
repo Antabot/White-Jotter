@@ -19,24 +19,23 @@ public class LibraryController {
     BookService bookService;
 
     @GetMapping("/api/books")
-    public List<Book> listBooks() throws Exception {
+    public List<Book> listBooks() {
         return bookService.list();
     }
 
-    @PostMapping("/api/books")
-    public Book addOrUpdateBooks(@RequestBody Book book) throws Exception {
-        System.out.println(book.getCategory());
+    @PostMapping("/api/admin/content/books")
+    public Book addOrUpdateBooks(@RequestBody Book book) {
         bookService.addOrUpdate(book);
         return book;
     }
 
-    @PostMapping("/api/delete")
-    public void deleteBook(@RequestBody Book book) throws Exception {
+    @PostMapping("/api/admin/content/books/delete")
+    public void deleteBook(@RequestBody Book book) {
         bookService.deleteById(book.getId());
     }
 
     @PostMapping("/api/search")
-    public List<Book> searchResult(@RequestBody Search s) throws Exception {
+    public List<Book> searchResult(@RequestBody Search s) {
         if ("".equals(s.getKeywords())) {
             return bookService.list();
         } else {
@@ -45,7 +44,7 @@ public class LibraryController {
     }
 
     @GetMapping("/api/categories/{cid}/books")
-    public List<Book> listByCategory(@PathVariable("cid") int cid) throws Exception {
+    public List<Book> listByCategory(@PathVariable("cid") int cid) {
         if (0 != cid) {
             return bookService.listByCategory(cid);
         } else {
@@ -53,8 +52,8 @@ public class LibraryController {
         }
     }
 
-    @PostMapping("/api/covers")
-    public String coversUpload(MultipartFile file) throws Exception {
+    @PostMapping("/api/admin/content/books/covers")
+    public String coversUpload(MultipartFile file) {
         String folder = "D:/workspace/img";
         File imageFolder = new File(folder);
         File f = new File(imageFolder, getRandomString(6) + file.getOriginalFilename()

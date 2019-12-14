@@ -112,7 +112,7 @@
           type: 'warning'
         }).then(() => {
             this.$axios
-              .post('/delete', {id: id}).then(resp => {
+              .post('/admin/content/books/delete', {id: id}).then(resp => {
               if (resp && resp.status === 200) {
                 this.loadBooks()
               }

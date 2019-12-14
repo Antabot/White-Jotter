@@ -27,25 +27,31 @@ public class AdminPermissionService {
         return adminPermissionDAO.findById(id);
     }
 
+    public List<AdminPermission> list() {return adminPermissionDAO.findAll();}
+
     public boolean needFilter(String requestAPI) {
         List<AdminPermission> ps = adminPermissionDAO.findAll();
         for (AdminPermission p: ps) {
-            if (p.getUrl().equals(requestAPI)) {
+            // 这里我们进行前缀匹配，拥有父权限就拥有所有子权限
+            if (requestAPI.startsWith(p.getUrl())) {
                 return true;
             }
         }
         return false;
     }
 
+    public List<AdminPermission> listPermsByRole(int rid) {
+        List<AdminRolePermission> rps = adminRolePermissionService.findAllByRid(rid);
+        List<AdminPermission> perms = new ArrayList<>();
+        for (AdminRolePermission rp : rps) {
+            perms.add(adminPermissionDAO.findById(rp.getPid()));
+        }
+        return perms;
+    }
+
     public Set<String> listPermissionURLsByUser(String username) {
         List<AdminRole> roles = adminRoleService.listRolesByUser(username);
-//        List<AdminPermission> permissions = new ArrayList<>();
         Set<String> URLs = new HashSet<>();
-
-//        List<AdminUserRole> urs = adminUserRoleService.listAllByUid(uid);
-//        for (AdminUserRole ur: urs) {
-//            roles.add(adminRoleService.findById(ur.getRid()));
-//        }
 
         for (AdminRole role : roles) {
             List<AdminRolePermission> rps = adminRolePermissionService.findAllByRid(role.getId());

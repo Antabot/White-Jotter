@@ -88,7 +88,7 @@
       },
       onSubmit () {
         this.$axios
-          .post('/books', {
+          .post('/admin/content/books', {
             id: this.form.id,
             cover: this.form.cover,
             title: this.form.title,

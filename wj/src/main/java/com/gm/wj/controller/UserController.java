@@ -1,12 +1,11 @@
 package com.gm.wj.controller;
 
+import com.gm.wj.pojo.AdminPermission;
 import com.gm.wj.pojo.AdminRole;
 import com.gm.wj.pojo.User;
 import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
-import com.gm.wj.service.AdminRoleService;
-import com.gm.wj.service.AdminUserRoleService;
-import com.gm.wj.service.UserService;
+import com.gm.wj.service.*;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +24,17 @@ public class UserController {
     AdminRoleService adminRoleService;
     @Autowired
     AdminUserRoleService adminUserRoleService;
+    @Autowired
+    AdminPermissionService adminPermissionService;
+    @Autowired
+    AdminRolePermissionService adminRolePermissionService;
 
     @GetMapping("/api/admin/user")
     public List<User> listUsers() throws Exception {
         return userService.list();
     }
 
-    @PutMapping("/api/admin/user-status")
+    @PutMapping("/api/admin/user/status")
     public Result updateUserStatus(@RequestBody User requestUser) {
         User user = userService.findByUserName(requestUser.getUsername());
         user.setEnabled(requestUser.isEnabled());
@@ -40,21 +43,16 @@ public class UserController {
         return ResultFactory.buildSuccessResult(message);
     }
 
-    @PutMapping("/api/admin/password")
+    @PutMapping("/api/admin/user/password")
     public Result resetPassword(@RequestBody User requestUser) {
         User user = userService.findByUserName(requestUser.getUsername());
         String salt = new SecureRandomNumberGenerator().nextBytes().toString();
         int times = 2;
         user.setSalt(salt);
-        if (requestUser.getPassword() == null) {
-            String encodedPassword = new SimpleHash("md5", "123", salt, times).toString();
-            user.setPassword(encodedPassword);
-        } else {
-            String encodedPassword = new SimpleHash("md5", requestUser.getPassword(), salt, times).toString();
-            user.setPassword(encodedPassword);
-        }
+        String encodedPassword = new SimpleHash("md5", "123", salt, times).toString();
+        user.setPassword(encodedPassword);
         userService.addOrUpdate(user);
-        String message = "修改密码成功";
+        String message = "重置密码成功";
         return ResultFactory.buildSuccessResult(message);
     }
 
@@ -71,16 +69,29 @@ public class UserController {
     }
 
     @GetMapping("/api/admin/role")
-    public List<AdminRole> listRoles() throws Exception {
+    public List<AdminRole> listRoles(){
         return adminRoleService.list();
     }
 
-    @PutMapping("/api/admin/role")
+    @PutMapping("/api/admin/role/status")
     public Result updateRoleStatus(@RequestBody AdminRole requestRole) {
         AdminRole adminRole = adminRoleService.findById(requestRole.getId());
         adminRole.setEnabled(requestRole.isEnabled());
         adminRoleService.addOrUpdate(adminRole);
         String message = "用户" + adminRole.getNameZh() + "状态更新成功";
         return ResultFactory.buildSuccessResult(message);
+    }
+
+    @PutMapping("/api/admin/role")
+    public Result editRole(@RequestBody AdminRole requestRole) {
+        adminRoleService.addOrUpdate(requestRole);
+        adminRolePermissionService.savePermChanges(requestRole.getId(), requestRole.getPerms());
+        String message = "修改角色信息成功";
+        return ResultFactory.buildSuccessResult(message);
+    }
+
+    @GetMapping("/api/admin/perm")
+    public List<AdminPermission> listPerms() {
+        return adminPermissionService.list();
     }
 }
