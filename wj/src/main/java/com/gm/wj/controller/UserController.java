@@ -40,7 +40,7 @@ public class UserController {
         return ResultFactory.buildSuccessResult(message);
     }
 
-    @PutMapping("api/password")
+    @PutMapping("/api/admin/password")
     public Result resetPassword(@RequestBody User requestUser) {
         User user = userService.findByUserName(requestUser.getUsername());
         String salt = new SecureRandomNumberGenerator().nextBytes().toString();
@@ -58,7 +58,7 @@ public class UserController {
         return ResultFactory.buildSuccessResult(message);
     }
 
-    @PutMapping("api/admin/user")
+    @PutMapping("/api/admin/user")
     public Result editUser(@RequestBody User requestUser) {
         User user = userService.findByUserName(requestUser.getUsername());
         user.setName(requestUser.getName());

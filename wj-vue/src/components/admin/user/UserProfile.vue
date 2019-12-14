@@ -19,7 +19,7 @@
         <el-form-item label="密码" label-width="120px" prop="password">
           <el-button type="warning" @click="resetPassword(selectedUser.username)">重置密码</el-button>
         </el-form-item>
-        <el-form-item label="角色" label-width="120px" prop="roles">
+        <el-form-item label="角色分配" label-width="120px" prop="roles">
           <el-checkbox-group v-model="selectedRoles">
               <el-checkbox v-for="(role,i) in roles" :key="i" :label="role.id">{{role.nameZh}}</el-checkbox>
           </el-checkbox-group>
@@ -37,10 +37,12 @@
         <el-breadcrumb-item>用户信息</el-breadcrumb-item>
       </el-breadcrumb>
     </el-row>
+    <bulk-registration @onSubmit="listUsers()"></bulk-registration>
     <el-card style="margin: 18px 2%;width: 95%">
       <el-table
         :data="users"
         stripe
+        :default-sort = "{prop: 'id', order: 'ascending'}"
         style="width: 100%"
         :max-height="tableHeight">
         <el-table-column
@@ -50,6 +52,7 @@
         <el-table-column
           prop="id"
           label="id"
+          sortable
           width="100">
         </el-table-column>
         <el-table-column
@@ -75,6 +78,7 @@
         </el-table-column>
         <el-table-column
           label="状态"
+          sortable
           width="100">
           <template slot-scope="scope">
             <el-switch
@@ -113,8 +117,10 @@
 </template>
 
 <script>
+  import BulkRegistration from './BulkRegistration'
     export default {
-        name: 'UserProfile',
+      name: 'UserProfile',
+      components: {BulkRegistration},
       data () {
           return {
             users: [],
@@ -205,7 +211,7 @@
           this.selectedRoles = roleIds
         },
         resetPassword (username) {
-          this.$axios.put('/password', {
+          this.$axios.put('/admin/password', {
             username: username
           }).then(resp => {
             if (resp && resp.status === 200) {
