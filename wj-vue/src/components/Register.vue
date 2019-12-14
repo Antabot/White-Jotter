@@ -1,15 +1,27 @@
 <template>
   <body id="paper">
-  <el-form class="login-container" label-position="left"
+  <el-form :model="loginForm" :rules="rules" class="login-container" label-position="left"
            label-width="0px" v-loading="loading">
     <h3 class="login_title">用户注册</h3>
-    <el-form-item>
+    <el-form-item prop="username">
       <el-input type="text" v-model="loginForm.username"
                 auto-complete="off" placeholder="账号"></el-input>
     </el-form-item>
-    <el-form-item>
+    <el-form-item prop="password">
       <el-input type="password" v-model="loginForm.password"
                 auto-complete="off" placeholder="密码"></el-input>
+    </el-form-item>
+    <el-form-item>
+      <el-input type="text" v-model="loginForm.name"
+                auto-complete="off" placeholder="真实姓名"></el-input>
+    </el-form-item>
+    <el-form-item>
+      <el-input type="text" v-model="loginForm.phone"
+                auto-complete="off" placeholder="电话号码"></el-input>
+    </el-form-item>
+    <el-form-item>
+      <el-input type="text" v-model="loginForm.email"
+                auto-complete="off" placeholder="E-Mail"></el-input>
     </el-form-item>
     <el-form-item style="width: 100%">
       <el-button type="primary" style="width: 40%;background: #505458;border: none" v-on:click="register">注册</el-button>
@@ -21,10 +33,17 @@
   export default{
     data () {
       return {
+        rules: {
+          username: [{required: true, message: '用户名不能为空', trigger: 'blur'}],
+          password: [{required: true, message: '密码不能为空', trigger: 'blur'}]
+        },
         checked: true,
         loginForm: {
           username: '',
-          password: ''
+          password: '',
+          name: '',
+          phone: '',
+          email: ''
         },
         loading: false
       }
@@ -35,7 +54,10 @@
         this.$axios
           .post('/register', {
             username: this.loginForm.username,
-            password: this.loginForm.password
+            password: this.loginForm.password,
+            name: this.loginForm.name,
+            phone: this.loginForm.phone,
+            email: this.loginForm.email
           })
           .then(resp => {
             if (resp.data.code === 200) {

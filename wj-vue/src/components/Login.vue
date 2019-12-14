@@ -50,6 +50,10 @@
               _this.$store.commit('login', data)
               var path = _this.$route.query.redirect
               _this.$router.replace({path: path === '/' || path === undefined ? '/admin/dashboard' : path})
+            } else {
+              this.$alert(resp.data.message, '提示', {
+                confirmButtonText: '确定'
+              })
             }
           })
           .catch(failResponse => {})
