@@ -53,7 +53,8 @@ public class URLPathMatchingFilter extends PathMatchingFilter {
             String username = subject.getPrincipal().toString();
             Set<String> permissionAPIs = adminPermissionService.listPermissionURLsByUser(username);
             for (String api : permissionAPIs) {
-                if (api.equals(requestAPI)) {
+                // 匹配前缀
+                if (requestAPI.startsWith(api)) {
                     hasPermission = true;
                     break;
                 }

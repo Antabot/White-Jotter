@@ -4,10 +4,8 @@ import com.gm.wj.dao.UserDAO;
 import com.gm.wj.pojo.AdminRole;
 import com.gm.wj.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,14 +16,12 @@ public class UserService {
     AdminRoleService adminRoleService;
 
     public List<User> list() {
-        Sort sort = new Sort(Sort.Direction.ASC, "id");
         List<User> users =  userDAO.list();
-        List<AdminRole> roles = new ArrayList<>();
+        List<AdminRole> roles;
         for (User user : users) {
             roles = adminRoleService.listRolesByUser(user.getUsername());
             user.setRoles(roles);
         }
-
         return users;
     }
 

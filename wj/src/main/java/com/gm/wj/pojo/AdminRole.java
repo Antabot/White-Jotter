@@ -3,6 +3,7 @@ package com.gm.wj.pojo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "admin_role")
@@ -12,12 +13,12 @@ public class AdminRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     int id;
-
     String name;
     @Column(name = "name_zh")
     String nameZh;
-
     boolean enabled;
+    @Transient
+    List<AdminPermission> perms;
 
     public int getId() {
         return id;
@@ -49,5 +50,13 @@ public class AdminRole {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public List<AdminPermission> getPerms() {
+        return perms;
+    }
+
+    public void setPerms(List<AdminPermission> perms) {
+        this.perms = perms;
     }
 }

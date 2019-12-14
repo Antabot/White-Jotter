@@ -5,13 +5,10 @@ import com.gm.wj.pojo.AdminPermission;
 import com.gm.wj.pojo.AdminRole;
 import com.gm.wj.pojo.AdminUserRole;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class AdminRoleService {
@@ -21,10 +18,17 @@ public class AdminRoleService {
     UserService userService;
     @Autowired
     AdminUserRoleService adminUserRoleService;
+    @Autowired
+    AdminPermissionService adminPermissionService;
 
     public List<AdminRole> list() {
-        Sort sort = new Sort(Sort.Direction.ASC, "id");
-        return adminRoleDAO.findAll(sort);
+        List<AdminRole> roles = adminRoleDAO.findAll();
+        List<AdminPermission> perms;
+        for (AdminRole role : roles) {
+            perms = adminPermissionService.listPermsByRole(role.getId());
+            role.setPerms(perms);
+        }
+        return roles;
     }
 
     public AdminRole findById(int id) {
