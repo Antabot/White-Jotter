@@ -1,12 +1,17 @@
-白卷是一个前后端分离的 Java Web 项目，采用 SpringBoot + Vue.js 开发。  
+<a href="https://sm.ms/image/8TFNqWjKLXhvHiw" target="_blank"><img src="https://i.loli.net/2019/12/15/8TFNqWjKLXhvHiw.png" style="width:80px"></a>
+<b style="font-size:30px;font-weight">白卷</b>
 
-# 前言 
+---
 
-这是一个简单的小项目，包含前台信息展示与后台内容管理、权限管理等模块，旨在帮助大家熟悉 Java Web 项目开发流程。
+![lisense](https://img.shields.io/github/license/Antabot/White-Jotter)
+![tag](https://img.shields.io/github/v/tag/Antabot/White-Jotter)
+
+
+这是一个简单的前后端分离项目，主要采用 Vue.js + SpringBoot 技术栈开发。
 
 除了用作入门练习，我还希望该项目可以作为一些常见 Web 项目的脚手架，帮助大家简化搭建网站的流程。之所以叫白卷，是因为它从 0 开始，会随着时间的推移逐渐完善。
 
-# 一、整体效果
+# 整体效果
 
 ## 1.首页
 
@@ -30,7 +35,7 @@
 
 ![后台](https://img-blog.csdnimg.cn/20191202200516251.png)
 
-# 二、技术栈
+# 技术栈
 
 ## 1.前端技术栈
 
@@ -47,7 +52,7 @@
   
 在开发过程中还会不断用到一些细碎的技术，有必要的我会增添上去
 
-# 三、部署方法
+# 部署方法
 
 1.clone 项目到本地
 
@@ -71,6 +76,7 @@ npm install
 
 # 在 localhost:8080 启动项目
 npm run dev
+
 ```  
 
 由于在 `wj-vue` 项目中已经配置了端口转发，将数据转发到SpringBoot上，因此项目启动之后，在浏览器中输入 `http://localhost:8080` 就可以访问我们的前端项目了，所有的请求通过端口转发将数据传到 SpringBoot 中（注意此时不要关闭 SpringBoot 项目）。
