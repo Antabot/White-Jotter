@@ -1,8 +1,13 @@
-白卷是一个前后端分离的 Java Web 项目，采用 SpringBoot + Vue.js 开发。  
+#白卷
+
+---
+
+![lisense](https://img.shields.io/github/license/Antabot/White-Jotter)
+![tag](https://img.shields.io/github/v/tag/Antabot/White-Jotter)
 
 # 前言 
 
-这是一个简单的小项目，包含前台信息展示与后台内容管理、权限管理等模块，旨在帮助大家熟悉 Java Web 项目开发流程。
+这是一个简单的前后端分离项目，主要采用 Vue.js + SpringBoot 技术栈开发。
 
 除了用作入门练习，我还希望该项目可以作为一些常见 Web 项目的脚手架，帮助大家简化搭建网站的流程。之所以叫白卷，是因为它从 0 开始，会随着时间的推移逐渐完善。
 
