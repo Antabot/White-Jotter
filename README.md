@@ -1,7 +1,9 @@
-# 白卷
+![wjlogo.png](https://i.loli.net/2019/12/15/sYnuTIrDUwAfGgo.png)
+
+---
 
 ![lisense](https://img.shields.io/github/license/Antabot/White-Jotter)
-![tag](https://img.shields.io/github/v/tag/Antabot/White-Jotter)
+![release](https://img.shields.io/github/v/release/Antabot/White-Jotter)
 
 
 这是一个简单的前后端分离项目，主要采用 Vue.js + SpringBoot 技术栈开发。
@@ -137,26 +139,3 @@ npm run build
 04-05 完成图书修改功能  
 04-04 完成图书删除功能  
 04-03 完成图书新增功能
-
-# 功能实现情况
-
-### 1.图书展示
-
-功能描述 | 实现情况
----|---
-基本信息 | 完成
-
-### 2.后台管理
-
-功能描述 | 实现情况
----|---
-菜单控制 | 基本完成
-内容管理 | 基本完成
-功能控制 | 基本完成
-数据控制 | 未完成
-
-### 3.信息查询
-
-功能描述 | 实现情况
----|---
-图书检索 | 基本完成
