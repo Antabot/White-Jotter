@@ -1,7 +1,5 @@
 # 白卷
 
----
-
 ![lisense](https://img.shields.io/github/license/Antabot/White-Jotter)
 ![tag](https://img.shields.io/github/v/tag/Antabot/White-Jotter)
 
@@ -162,9 +160,3 @@ npm run build
 功能描述 | 实现情况
 ---|---
 图书检索 | 基本完成
-
-### 4.其它功能
-
-功能描述 | 实现情况
----|---
-阅读标注 | 未完成
