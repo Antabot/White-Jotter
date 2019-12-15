@@ -1,5 +1,4 @@
-<a href="https://sm.ms/image/8TFNqWjKLXhvHiw" target="_blank"><img src="https://i.loli.net/2019/12/15/8TFNqWjKLXhvHiw.png" style="width:80px"></a>
-<b style="font-size:30px;font-weight">白卷</b>
+# 白卷
 
 ---
 
