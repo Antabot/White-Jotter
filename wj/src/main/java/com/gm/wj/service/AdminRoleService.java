@@ -1,6 +1,7 @@
 package com.gm.wj.service;
 
 import com.gm.wj.dao.AdminRoleDAO;
+import com.gm.wj.pojo.AdminMenu;
 import com.gm.wj.pojo.AdminPermission;
 import com.gm.wj.pojo.AdminRole;
 import com.gm.wj.pojo.AdminUserRole;
@@ -20,13 +21,18 @@ public class AdminRoleService {
     AdminUserRoleService adminUserRoleService;
     @Autowired
     AdminPermissionService adminPermissionService;
+    @Autowired
+    AdminMenuService adminMenuService;
 
     public List<AdminRole> list() {
         List<AdminRole> roles = adminRoleDAO.findAll();
         List<AdminPermission> perms;
+        List<AdminMenu> menus;
         for (AdminRole role : roles) {
-            perms = adminPermissionService.listPermsByRole(role.getId());
+            perms = adminPermissionService.listPermsByRoleId(role.getId());
+            menus = adminMenuService.getMenusByRoleId(role.getId());
             role.setPerms(perms);
+            role.setMenus(menus);
         }
         return roles;
     }

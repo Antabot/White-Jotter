@@ -40,7 +40,7 @@ public class AdminPermissionService {
         return false;
     }
 
-    public List<AdminPermission> listPermsByRole(int rid) {
+    public List<AdminPermission> listPermsByRoleId(int rid) {
         List<AdminRolePermission> rps = adminRolePermissionService.findAllByRid(rid);
         List<AdminPermission> perms = new ArrayList<>();
         for (AdminRolePermission rp : rps) {
