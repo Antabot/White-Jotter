@@ -20,7 +20,7 @@
           <el-button type="warning" @click="resetPassword(selectedUser.username)">重置密码</el-button>
         </el-form-item>
         <el-form-item label="角色分配" label-width="120px" prop="roles">
-          <el-checkbox-group v-model="selectedRoles">
+          <el-checkbox-group v-model="selectedRolesIds">
               <el-checkbox v-for="(role,i) in roles" :key="i" :label="role.id">{{role.nameZh}}</el-checkbox>
           </el-checkbox-group>
         </el-form-item>
@@ -126,7 +126,7 @@
             roles: [],
             dialogFormVisible: false,
             selectedUser: [],
-            selectedRoles: []
+            selectedRolesIds: []
           }
       },
       mounted () {
@@ -178,9 +178,9 @@
           let _this = this
           // 根据视图绑定的角色 id 向后端传送角色信息
           let roles = []
-          for (let i = 0; i < _this.selectedRoles.length; i++) {
+          for (let i = 0; i < _this.selectedRolesIds.length; i++) {
             for (let j = 0; j < _this.roles.length; j++) {
-              if (_this.selectedRoles[i] === _this.roles[j].id) {
+              if (_this.selectedRolesIds[i] === _this.roles[j].id) {
                 roles.push(_this.roles[j])
               }
             }
@@ -207,7 +207,7 @@
           for (let i = 0; i < user.roles.length; i++) {
             roleIds.push(user.roles[i].id)
           }
-          this.selectedRoles = roleIds
+          this.selectedRolesIds = roleIds
         },
         resetPassword (username) {
           this.$axios.put('/admin/user/password', {

@@ -2,6 +2,7 @@
   <div>
     <el-dialog
       title="修改角色信息"
+      @close="clear"
       :visible.sync="dialogFormVisible">
       <el-form v-model="selectedRole" style="text-align: left" ref="dataForm">
         <el-form-item label="角色名" label-width="120px" prop="username">
@@ -11,14 +12,19 @@
           <el-input v-model="selectedRole.nameZh" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="功能配置" label-width="120px" prop="perms">
-          <el-checkbox-group v-model="selectedPerms">
+          <el-checkbox-group v-model="selectedPermsIds">
             <el-checkbox v-for="(perm,i) in perms" :key="i" :label="perm.id">{{perm.desc_}}</el-checkbox>
           </el-checkbox-group>
         </el-form-item>
         <el-form-item label="菜单配置" label-width="120px" prop="menus">
-          <el-checkbox-group v-model="selectedMenus">
-            <el-checkbox v-for="(menu,i) in menus" :key="i" :label="perm.id">{{menu.nameZh}}</el-checkbox>
-          </el-checkbox-group>
+          <el-tree
+            :data="menus"
+            :props="props"
+            show-checkbox
+            :default-checked-keys="selectedMenusIds"
+            node-key="id"
+            ref="tree">
+          </el-tree>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -107,13 +113,19 @@
         perms: [],
         menus: [],
         selectedRole: [],
-        selectedPerms: [],
-        selectedMenus: []
+        selectedPermsIds: [],
+        selectedMenusIds: [],
+        props: {
+          id: 'id',
+          label: 'nameZh',
+          children: 'children'
+        }
       }
     },
     mounted () {
       this.listRoles()
       this.listPerms()
+      this.listMenus()
     },
     computed: {
       tableHeight () {
@@ -121,6 +133,9 @@
       }
     },
     methods: {
+      clear () {
+        this.selectedMenusIds = []
+      },
       listRoles () {
         var _this = this
         this.$axios.get('/admin/role').then(resp => {
@@ -134,6 +149,14 @@
         this.$axios.get('/admin/perm').then(resp => {
           if (resp && resp.status === 200) {
             _this.perms = resp.data
+          }
+        })
+      },
+      listMenus () {
+        var _this = this
+        this.$axios.get('/admin/role/menu').then(resp => {
+          if (resp && resp.status === 200) {
+            _this.menus = resp.data
           }
         })
       },
@@ -168,13 +191,33 @@
           this.$alert('无法禁用系统管理员！')
         }
       },
+    editRole (role) {
+      this.dialogFormVisible = true
+      this.selectedRole = role
+      let permIds = []
+      for (let i = 0; i < role.perms.length; i++) {
+        permIds.push(role.perms[i].id)
+      }
+      this.selectedPermsIds = permIds
+      let menuIds = []
+      for (let i = 0; i < role.menus.length; i++) {
+        menuIds.push(role.menus[i].id)
+        for (let j = 0; j < role.menus[i].children.length; j++) {
+          menuIds.push(role.menus[i].children[j].id)
+        }
+      }
+      this.selectedMenusIds = menuIds
+      if (this.$refs.tree) {
+        this.$refs.tree.setCheckedKeys(menuIds)
+      }
+    },
       onSubmit (role) {
         let _this = this
         // 根据视图绑定的角色 id 向后端传送角色信息
         let perms = []
-        for (let i = 0; i < _this.selectedPerms.length; i++) {
+        for (let i = 0; i < _this.selectedPermsIds.length; i++) {
           for (let j = 0; j < _this.perms.length; j++) {
-            if (_this.selectedPerms[i] === _this.perms[j].id) {
+            if (_this.selectedPermsIds[i] === _this.perms[j].id) {
               perms.push(_this.perms[j])
             }
           }
@@ -192,15 +235,13 @@
             this.listRoles()
           }
         })
-      },
-      editRole (role) {
-        this.dialogFormVisible = true
-        this.selectedRole = role
-        let permIds = []
-        for (let i = 0; i < role.perms.length; i++) {
-          permIds.push(role.perms[i].id)
-        }
-        this.selectedPerms = permIds
+        this.$axios.put('/admin/role/menu?rid=' + role.id, {
+          menusIds: this.$refs.tree.getCheckedKeys()
+        }).then(resp => {
+          if (resp && resp.status === 200) {
+            console.log(resp.data.data)
+          }
+        })
       }
     }
   }

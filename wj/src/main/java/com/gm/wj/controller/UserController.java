@@ -1,5 +1,6 @@
 package com.gm.wj.controller;
 
+import com.gm.wj.pojo.AdminMenu;
 import com.gm.wj.pojo.AdminPermission;
 import com.gm.wj.pojo.AdminRole;
 import com.gm.wj.pojo.User;
@@ -30,7 +31,7 @@ public class UserController {
     AdminRolePermissionService adminRolePermissionService;
 
     @GetMapping("/api/admin/user")
-    public List<User> listUsers() throws Exception {
+    public List<User> listUsers() {
         return userService.list();
     }
 
@@ -93,5 +94,10 @@ public class UserController {
     @GetMapping("/api/admin/perm")
     public List<AdminPermission> listPerms() {
         return adminPermissionService.list();
+    }
+
+    @PutMapping("/api/admin/role/menu")
+    public void updateRoleMenu(@RequestParam int rid, @RequestBody Object menusIds) {
+        System.out.println(rid);
     }
 }

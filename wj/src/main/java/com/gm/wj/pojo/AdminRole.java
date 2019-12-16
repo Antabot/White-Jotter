@@ -19,6 +19,8 @@ public class AdminRole {
     boolean enabled;
     @Transient
     List<AdminPermission> perms;
+    @Transient
+    List<AdminMenu> menus;
 
     public int getId() {
         return id;
@@ -58,5 +60,13 @@ public class AdminRole {
 
     public void setPerms(List<AdminPermission> perms) {
         this.perms = perms;
+    }
+
+    public List<AdminMenu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<AdminMenu> menus) {
+        this.menus = menus;
     }
 }
