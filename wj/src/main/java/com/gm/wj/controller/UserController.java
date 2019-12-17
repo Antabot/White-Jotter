@@ -1,9 +1,6 @@
 package com.gm.wj.controller;
 
-import com.gm.wj.pojo.AdminMenu;
-import com.gm.wj.pojo.AdminPermission;
-import com.gm.wj.pojo.AdminRole;
-import com.gm.wj.pojo.User;
+import com.gm.wj.pojo.*;
 import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.*;
@@ -12,23 +9,14 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 public class UserController {
     @Autowired
     UserService userService;
     @Autowired
-    AdminRoleService adminRoleService;
-    @Autowired
     AdminUserRoleService adminUserRoleService;
-    @Autowired
-    AdminPermissionService adminPermissionService;
-    @Autowired
-    AdminRolePermissionService adminRolePermissionService;
 
     @GetMapping("/api/admin/user")
     public List<User> listUsers() {
@@ -69,35 +57,5 @@ public class UserController {
         return ResultFactory.buildSuccessResult(message);
     }
 
-    @GetMapping("/api/admin/role")
-    public List<AdminRole> listRoles(){
-        return adminRoleService.list();
-    }
 
-    @PutMapping("/api/admin/role/status")
-    public Result updateRoleStatus(@RequestBody AdminRole requestRole) {
-        AdminRole adminRole = adminRoleService.findById(requestRole.getId());
-        adminRole.setEnabled(requestRole.isEnabled());
-        adminRoleService.addOrUpdate(adminRole);
-        String message = "用户" + adminRole.getNameZh() + "状态更新成功";
-        return ResultFactory.buildSuccessResult(message);
-    }
-
-    @PutMapping("/api/admin/role")
-    public Result editRole(@RequestBody AdminRole requestRole) {
-        adminRoleService.addOrUpdate(requestRole);
-        adminRolePermissionService.savePermChanges(requestRole.getId(), requestRole.getPerms());
-        String message = "修改角色信息成功";
-        return ResultFactory.buildSuccessResult(message);
-    }
-
-    @GetMapping("/api/admin/perm")
-    public List<AdminPermission> listPerms() {
-        return adminPermissionService.list();
-    }
-
-    @PutMapping("/api/admin/role/menu")
-    public void updateRoleMenu(@RequestParam int rid, @RequestBody Object menusIds) {
-        System.out.println(rid);
-    }
 }

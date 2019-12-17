@@ -2,7 +2,6 @@
   <div>
     <el-dialog
       title="修改角色信息"
-      @close="clear"
       :visible.sync="dialogFormVisible">
       <el-form v-model="selectedRole" style="text-align: left" ref="dataForm">
         <el-form-item label="角色名" label-width="120px" prop="username">
@@ -39,6 +38,7 @@
         <el-breadcrumb-item>角色配置</el-breadcrumb-item>
       </el-breadcrumb>
     </el-row>
+    <role-create @onSubmit="listRoles()"></role-create>
     <el-card style="margin: 18px 2%;width: 95%">
       <el-table
         :data="roles"
@@ -72,7 +72,6 @@
               v-model="scope.row.enabled"
               active-color="#13ce66"
               inactive-color="#ff4949"
-              @click.native="beforeUpdate"
               @change="(value) => commitStatusChange(value, scope.row)">
             </el-switch>
           </template>
@@ -104,8 +103,10 @@
 </template>
 
 <script>
+  import RoleCreate from './RoleCreate'
   export default {
     name: 'UserRole',
+    components: {RoleCreate},
     data () {
       return {
         dialogFormVisible: false,
@@ -133,9 +134,6 @@
       }
     },
     methods: {
-      clear () {
-        this.selectedMenusIds = []
-      },
       listRoles () {
         var _this = this
         this.$axios.get('/admin/role').then(resp => {
@@ -146,7 +144,7 @@
       },
       listPerms () {
         var _this = this
-        this.$axios.get('/admin/perm').then(resp => {
+        this.$axios.get('/admin/role/perm').then(resp => {
           if (resp && resp.status === 200) {
             _this.perms = resp.data
           }
@@ -207,6 +205,7 @@
         }
       }
       this.selectedMenusIds = menuIds
+      // 判断树是否已经加载，第一次打开对话框前树不存在，会报错。所以需要设置 default-checked
       if (this.$refs.tree) {
         this.$refs.tree.setCheckedKeys(menuIds)
       }
@@ -248,5 +247,8 @@
 </script>
 
 <style scoped>
-
+  .add-button {
+    float: left;
+    margin: 18px 0 18px 10px;
+  }
 </style>
