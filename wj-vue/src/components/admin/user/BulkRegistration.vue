@@ -5,9 +5,9 @@
       title="添加用户"
       :visible.sync="dialogFormVisible"
       @close="clear"
-      width="20%">
+      width="25%">
       <el-form :model="loginForm" :rules="rules" label-position="left"
-               label-width="0px" v-loading="loading">
+               label-width="0px">
         <el-form-item prop="username">
           <el-input type="text" v-model="loginForm.username"
                     auto-complete="off" placeholder="账号"></el-input>
@@ -46,15 +46,13 @@
             username: [{required: true, message: '用户名不能为空', trigger: 'blur'}],
             password: [{required: true, message: '密码不能为空', trigger: 'blur'}]
           },
-          checked: true,
           loginForm: {
             username: '',
             password: '',
             name: '',
             phone: '',
             email: ''
-          },
-          loading: false
+          }
         }
       },
       methods: {
