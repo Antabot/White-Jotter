@@ -4,7 +4,6 @@ import com.gm.wj.dao.AdminUserRoleDAO;
 import com.gm.wj.pojo.AdminRole;
 import com.gm.wj.pojo.AdminUserRole;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +18,7 @@ public class AdminUserRoleService {
         return adminUserRoleDAO.findAllByUid(uid);
     }
 
-    @Modifying
+//    @Modifying
     @Transactional
     public void saveRoleChanges(int uid, List<AdminRole> roles) {
         adminUserRoleDAO.deleteAllByUid(uid);

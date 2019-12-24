@@ -195,7 +195,7 @@
             if (resp && resp.status === 200) {
               this.$alert('用户信息修改成功')
               this.dialogFormVisible = false
-              // 主要是修改角色后与视图联动
+              // 修改角色后重新请求用户信息，实现视图更新
               this.listUsers()
             }
           })
