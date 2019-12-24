@@ -21,7 +21,7 @@ public class AdminRolePermissionService {
         return adminRolePermissionDAO.findAllByRid(rid);
     }
 
-    @Modifying
+//    @Modifying
     @Transactional
     public void savePermChanges(int rid, List<AdminPermission> perms) {
         adminRolePermissionDAO.deleteAllByRid(rid);
