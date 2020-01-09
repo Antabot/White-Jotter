@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-12-02 22:45:46
+Date: 2020-01-09 21:28:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,14 +33,15 @@ CREATE TABLE `admin_menu` (
 -- ----------------------------
 -- Records of admin_menu
 -- ----------------------------
-INSERT INTO `admin_menu` VALUES ('1', '/admin', 'Admin', '首页', 'el-icon-s-home', 'AdminIndex', '0');
+INSERT INTO `admin_menu` VALUES ('1', '/admin', 'AdminIndex', '首页', 'el-icon-s-home', 'AdminIndex', '0');
 INSERT INTO `admin_menu` VALUES ('2', '/admin/dashboard', 'DashboardAdmin', '运行情况', null, 'dashboard/admin/index', '1');
 INSERT INTO `admin_menu` VALUES ('3', '/admin', 'User', '用户管理', 'el-icon-user', 'AdminIndex', '0');
 INSERT INTO `admin_menu` VALUES ('4', '/admin', 'Content', '内容管理', 'el-icon-tickets', 'AdminIndex', '0');
 INSERT INTO `admin_menu` VALUES ('5', '/admin', 'System', '系统配置', 'el-icon-s-tools', 'AdminIndex', '0');
 INSERT INTO `admin_menu` VALUES ('6', '/admin/user/profile', 'Profile', '用户信息', null, 'user/UserProfile', '3');
-INSERT INTO `admin_menu` VALUES ('7', '/admin/user/role', 'Role', '角色配置', null, 'user/UserRole', '3');
+INSERT INTO `admin_menu` VALUES ('7', '/admin/user/role', 'Role', '角色配置', null, 'user/Role', '3');
 INSERT INTO `admin_menu` VALUES ('8', '/admin/content/book', 'BookManagement', '图书管理', null, 'content/BookManagement', '4');
+INSERT INTO `admin_menu` VALUES ('9', '/admin/content/banner', 'BannerManagement', '广告管理', null, 'content/BannerManagement', '4');
 
 -- ----------------------------
 -- Table structure for admin_permission
@@ -52,13 +53,14 @@ CREATE TABLE `admin_permission` (
   `desc_` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin_permission
 -- ----------------------------
 INSERT INTO `admin_permission` VALUES ('1', 'users_management', '用户管理', '/api/admin/user');
 INSERT INTO `admin_permission` VALUES ('2', 'roles_management', '角色管理', '/api/admin/role');
+INSERT INTO `admin_permission` VALUES ('3', 'content_management', '内容管理', '/api/admin/content');
 
 -- ----------------------------
 -- Table structure for admin_role
@@ -70,7 +72,7 @@ CREATE TABLE `admin_role` (
   `name_zh` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `enabled` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin_role
@@ -78,6 +80,7 @@ CREATE TABLE `admin_role` (
 INSERT INTO `admin_role` VALUES ('1', 'sysAdmin', '系统管理员', '1');
 INSERT INTO `admin_role` VALUES ('2', 'contentManager', '内容管理员', '1');
 INSERT INTO `admin_role` VALUES ('3', 'visitor', '访客', '1');
+INSERT INTO `admin_role` VALUES ('9', 'test', '测试角色', '1');
 
 -- ----------------------------
 -- Table structure for admin_role_menu
@@ -88,7 +91,7 @@ CREATE TABLE `admin_role_menu` (
   `rid` int(11) DEFAULT NULL,
   `mid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of admin_role_menu
@@ -105,6 +108,12 @@ INSERT INTO `admin_role_menu` VALUES ('9', '1', '7');
 INSERT INTO `admin_role_menu` VALUES ('10', '1', '8');
 INSERT INTO `admin_role_menu` VALUES ('11', '2', '4');
 INSERT INTO `admin_role_menu` VALUES ('12', '2', '8');
+INSERT INTO `admin_role_menu` VALUES ('19', '4', '1');
+INSERT INTO `admin_role_menu` VALUES ('20', '4', '2');
+INSERT INTO `admin_role_menu` VALUES ('21', '3', '1');
+INSERT INTO `admin_role_menu` VALUES ('22', '3', '2');
+INSERT INTO `admin_role_menu` VALUES ('23', '9', '1');
+INSERT INTO `admin_role_menu` VALUES ('24', '9', '2');
 
 -- ----------------------------
 -- Table structure for admin_role_permission
@@ -117,13 +126,16 @@ CREATE TABLE `admin_role_permission` (
   PRIMARY KEY (`id`),
   KEY `fk_role_permission_role_1` (`rid`),
   KEY `fk_role_permission_permission_1` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin_role_permission
 -- ----------------------------
-INSERT INTO `admin_role_permission` VALUES ('1', '1', '1');
-INSERT INTO `admin_role_permission` VALUES ('2', '1', '2');
+INSERT INTO `admin_role_permission` VALUES ('6', '2', '3');
+INSERT INTO `admin_role_permission` VALUES ('80', '1', '1');
+INSERT INTO `admin_role_permission` VALUES ('81', '1', '2');
+INSERT INTO `admin_role_permission` VALUES ('82', '1', '3');
+INSERT INTO `admin_role_permission` VALUES ('83', '5', '3');
 
 -- ----------------------------
 -- Table structure for admin_user_role
@@ -136,14 +148,15 @@ CREATE TABLE `admin_user_role` (
   PRIMARY KEY (`id`),
   KEY `fk_operator_role_operator_1` (`uid`),
   KEY `fk_operator_role_role_1` (`rid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin_user_role
 -- ----------------------------
-INSERT INTO `admin_user_role` VALUES ('1', '1', '1');
-INSERT INTO `admin_user_role` VALUES ('2', '2', '3');
 INSERT INTO `admin_user_role` VALUES ('3', '3', '2');
+INSERT INTO `admin_user_role` VALUES ('28', '1', '1');
+INSERT INTO `admin_user_role` VALUES ('36', '2', '3');
+INSERT INTO `admin_user_role` VALUES ('37', '2', '9');
 
 -- ----------------------------
 -- Table structure for book
@@ -221,11 +234,11 @@ CREATE TABLE `user` (
   `email` varchar(255) DEFAULT NULL,
   `enabled` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '35b9529f89cfb9b848060ca576237e17', '8O+vDNr2sI3N82BI31fu1A==', '管理员', '11122223333', 'evan_nightly@163.com', '1');
-INSERT INTO `user` VALUES ('2', 'test', '07dc769da966d78e4a9c61556ca3a556', 'Iv0xgP00bfJV3OFRFJSKLg==', '测试', '44455556666', null, '1');
+INSERT INTO `user` VALUES ('1', 'admin', '35b9529f89cfb9b848060ca576237e17', '8O+vDNr2sI3N82BI31fu1A==', '管理员', '11122223333123', 'evan_nightly@163.com', '1');
+INSERT INTO `user` VALUES ('2', 'test', '85087738b6c1e1d212683bfafc163853', 'JBba3j5qRykIPJQYTNNH9A==', '测试', '44455556666', null, '1');
 INSERT INTO `user` VALUES ('3', 'editor', '8583a2d965d6159edbf65c82d871fa3e', 'MZTe7Qwf9QgXBXrZzTIqJQ==', '编辑', null, null, '1');
