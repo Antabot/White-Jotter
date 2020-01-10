@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * @author Evan
+ * @date 2019/11
+ */
+
 @ControllerAdvice
 public class DefaultExceptionHandler {
     @ExceptionHandler(UnauthorizedException.class)

@@ -15,6 +15,11 @@ import org.springframework.util.ObjectUtils;
 
 import java.util.Set;
 
+/**
+ * @author Evan
+ * @date 2019/10
+ */
+
 public class WJRealm extends AuthorizingRealm {
 
     @Autowired
