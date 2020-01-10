@@ -2,10 +2,14 @@ package com.gm.wj.dao;
 
 import com.gm.wj.pojo.Book;
 import com.gm.wj.pojo.Category;
-import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+
+/**
+ * @author Evan
+ * @date 2019/4
+ */
 
 public interface BookDAO extends JpaRepository<Book,Integer> {
     List<Book> findAllByCategory(Category category);

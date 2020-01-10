@@ -5,6 +5,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
+/**
+ * @author Evan
+ * @date 2019/11
+ */
+
 @Entity
 @Table(name = "admin_role_menu")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})

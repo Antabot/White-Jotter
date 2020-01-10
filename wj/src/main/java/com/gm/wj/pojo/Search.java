@@ -1,5 +1,10 @@
 package com.gm.wj.pojo;
 
+/**
+ * @author Evan
+ * @date 2019/4
+ */
+
 public class Search {
     String keywords;
 

@@ -1,5 +1,10 @@
 package com.gm.wj.result;
 
+/**
+ * @author Evan
+ * @date 2019/4
+ */
+
 public class ResultFactory {
 
     public static Result buildSuccessResult(Object data) {
