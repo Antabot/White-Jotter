@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import AppIndex from '../components/home/AppIndex'
-import JotterIndex from '../components/jotter/JotterIndex'
+import Articles from '../components/jotter/Articles'
 import Editor from '../components/jotter/Editor'
 import LibraryIndex from '../components/library/LibraryIndex'
 import Login from '../components/Login'
@@ -36,7 +36,7 @@ export default new Router({
         {
           path: '/jotter',
           name: 'Jotter',
-          component: JotterIndex
+          component: Articles
         },
         {
           path: '/editor',
@@ -109,7 +109,7 @@ export const createRouter = routes => new Router({
         {
           path: '/jotter',
           name: 'Jotter',
-          component: JotterIndex
+          component: Articles
         },
         {
           path: '/editor',
