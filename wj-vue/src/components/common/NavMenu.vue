@@ -4,7 +4,6 @@
       :default-active="this.$route.path"
       router
       mode="horizontal"
-      @select="handleSelect"
       background-color="white"
       text-color="#222"
       active-text-color="red"
@@ -44,11 +43,6 @@
       }
     },
     methods: {
-      handleSelect (key, keyPath) {
-        console.log(key)
-        console.log('...')
-        console.log(keyPath)
-      }
     }
   }
 </script>

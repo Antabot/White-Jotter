@@ -19,16 +19,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    int id;
-    String username;
-    String password;
-    String salt;
-    String name;
-    String phone;
-    String email;
-    boolean enabled;
+    private int id;
+    private String username;
+    private String password;
+    private String salt;
+    private String name;
+    private String phone;
+    private String email;
+    private boolean enabled;
     @Transient
-    List<AdminRole> roles;
+    private List<AdminRole> roles;
 
     // 默认构造函数
     public User() {}

@@ -17,15 +17,15 @@ public class AdminRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    int id;
-    String name;
+    private int id;
+    private String name;
     @Column(name = "name_zh")
-    String nameZh;
-    boolean enabled;
+    private String nameZh;
+    private boolean enabled;
     @Transient
-    List<AdminPermission> perms;
+    private List<AdminPermission> perms;
     @Transient
-    List<AdminMenu> menus;
+    private List<AdminMenu> menus;
 
     public int getId() {
         return id;

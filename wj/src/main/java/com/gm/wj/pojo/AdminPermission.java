@@ -16,11 +16,11 @@ public class AdminPermission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    int id;
+    private int id;
 
-    String name;
-    String desc_;
-    String url;
+    private String name;
+    private String desc_;
+    private String url;
 
     public int getId() {
         return id;
