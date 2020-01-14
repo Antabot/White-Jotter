@@ -16,10 +16,10 @@ public class AdminRolePermission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    int id;
+    private int id;
 
-    int rid;
-    int pid;
+    private int rid;
+    private int pid;
 
     public int getId() {
         return id;

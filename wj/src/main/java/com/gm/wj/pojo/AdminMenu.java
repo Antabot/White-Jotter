@@ -17,15 +17,15 @@ public class AdminMenu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    int id;
-    String path;
-    String name;
-    String nameZh;
-    String iconCls;
-    String component;
-    int parentId;
+    private int id;
+    private String path;
+    private String name;
+    private String nameZh;
+    private String iconCls;
+    private String component;
+    private int parentId;
     @Transient
-    List<AdminMenu> children;
+    private List<AdminMenu> children;
 
     public int getId() {
         return id;

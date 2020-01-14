@@ -6,7 +6,7 @@ package com.gm.wj.pojo;
  */
 
 public class Search {
-    String keywords;
+    private String keywords;
 
     public String getKeywords() {
         return keywords;

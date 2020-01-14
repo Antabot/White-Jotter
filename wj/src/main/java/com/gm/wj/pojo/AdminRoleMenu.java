@@ -17,9 +17,9 @@ public class AdminRoleMenu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    int id;
-    int rid;
-    int mid;
+    private int id;
+    private int rid;
+    private int mid;
 
     public int getId() {
         return id;

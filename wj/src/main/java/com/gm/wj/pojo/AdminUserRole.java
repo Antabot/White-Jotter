@@ -16,10 +16,10 @@ public class AdminUserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    int id;
+    private int id;
 
-    int uid;
-    int rid;
+    private int uid;
+    private int rid;
 
     public int getId() {
         return id;

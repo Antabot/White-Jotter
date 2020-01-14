@@ -124,7 +124,6 @@
             message: '已取消删除'
           })
         })
-        // alert(id)
       },
       editBook (item) {
         this.$refs.edit.dialogFormVisible = true
