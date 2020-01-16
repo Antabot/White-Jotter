@@ -20,6 +20,8 @@ public class JotterArticle {
     private String articleTitle;
     private String articleContentHtml;
     private String articleContentMd;
+    private String articleAbstract;
+    private String articleCover;
     private Date articleDate;
 
     public int getId() {
@@ -52,6 +54,22 @@ public class JotterArticle {
 
     public void setArticleContentMd(String articleContentMd) {
         this.articleContentMd = articleContentMd;
+    }
+
+    public String getArticleAbstract() {
+        return articleAbstract;
+    }
+
+    public void setArticleAbstract(String articleAbstract) {
+        this.articleAbstract = articleAbstract;
+    }
+
+    public String getArticleCover() {
+        return articleCover;
+    }
+
+    public void setArticleCover(String articleCover) {
+        this.articleCover = articleCover;
     }
 
     public Date getArticleDate() {

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2020-01-09 21:28:07
+Date: 2020-01-16 21:59:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -174,7 +174,7 @@ CREATE TABLE `book` (
   PRIMARY KEY (`id`),
   KEY `fk_book_category_on_cid` (`cid`),
   CONSTRAINT `fk_book_category_on_cid` FOREIGN KEY (`cid`) REFERENCES `category` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of book
@@ -219,6 +219,27 @@ INSERT INTO `category` VALUES ('3', '文化');
 INSERT INTO `category` VALUES ('4', '生活');
 INSERT INTO `category` VALUES ('5', '经管');
 INSERT INTO `category` VALUES ('6', '科技');
+
+-- ----------------------------
+-- Table structure for jotter_article
+-- ----------------------------
+DROP TABLE IF EXISTS `jotter_article`;
+CREATE TABLE `jotter_article` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `article_title` varchar(255) DEFAULT NULL,
+  `article_content_html` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `article_content_md` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `article_abstract` varchar(255) DEFAULT NULL,
+  `article_cover` varchar(255) DEFAULT NULL,
+  `article_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of jotter_article
+-- ----------------------------
+INSERT INTO `jotter_article` VALUES ('1', '凉风有兴', '凉风有兴，秋月无边，而我思乡的情绪好比度日如年。虽然我风流倜傥玉树临风，但我还是有聪明的头脑和强健的臂腕。', '凉风有兴，秋月无边，而我思乡的情绪好比度日如年。虽然我风流倜傥玉树临风，但我还是有聪明的头脑和强健的臂腕。', '凉风有兴，秋月无边，而我思乡的情绪好比度日如年。', 'https://i.loli.net/2020/01/16/d2ZlKI1WRE4p7XB.png', '2020-01-13 21:14:27');
+INSERT INTO `jotter_article` VALUES ('2', '爱你一万年', '曾经有份真挚的爱情摆在我的面前，我没有珍惜，等到失去的时候才后悔莫急，人世间最痛苦的事莫过余此，如果上天在给我一次机会，我会对那个女孩说我爱你，如果要在这份爱上加个期限，我希望是一万年', '曾经有份真挚的爱情摆在我的面前，我没有珍惜，等到失去的时候才后悔莫急，人世间最痛苦的事莫过余此，如果上天在给我一次机会，我会对那个女孩说我爱你，如果要在这份爱上加个期限，我希望是一万年', '曾经有份真挚的爱情摆在我的面前，我没有珍惜，等到失去的时候才后悔莫及，人世间最痛苦的事莫过于此。', 'https://i.loli.net/2020/01/16/DdGBk1R3mj5er6v.png', '2020-01-16 21:10:11');
 
 -- ----------------------------
 -- Table structure for user
