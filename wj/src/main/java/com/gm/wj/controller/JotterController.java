@@ -30,11 +30,7 @@ public class JotterController {
 
     @GetMapping("/api/article")
     public Page listArticles() {
-        return jotterArticleService.list(1, 10);
+        return jotterArticleService.list(0, 10);
     }
 
-    @GetMapping("/api/article-test")
-    public JotterArticle getOne() {
-        return jotterArticleService.getOne();
-    }
 }
