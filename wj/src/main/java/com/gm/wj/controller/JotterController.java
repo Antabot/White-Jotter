@@ -6,10 +6,7 @@ import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.JotterArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +28,11 @@ public class JotterController {
     @GetMapping("/api/article")
     public Page listArticles() {
         return jotterArticleService.list(0, 10);
+    }
+
+    @GetMapping("/api/article/{id}")
+    public JotterArticle getOneArticle(@PathVariable("id") int id) {
+        return jotterArticleService.findById(id);
     }
 
 }

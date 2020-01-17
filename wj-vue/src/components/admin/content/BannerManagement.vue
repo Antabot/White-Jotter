@@ -7,7 +7,6 @@
         <el-breadcrumb-item>图书管理</el-breadcrumb-item>
       </el-breadcrumb>
     </el-row>
-    <edit-form @onSubmit="loadBooks()" ref="edit"></edit-form>
     <el-card style="margin: 18px 2%;width: 95%">
       <el-table
         stripe

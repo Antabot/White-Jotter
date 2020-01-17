@@ -2,13 +2,14 @@
   <div>
     <el-row>
       <el-input
-        v-model="title"
+        v-model="article.articleTitle"
         style="margin: 10px 0px;font-size: 18px;"
         placeholder="请输入标题"></el-input>
     </el-row>
     <el-row style="height: calc(100vh - 140px);">
       <mavon-editor
-        v-model="value"
+        v-model="article.articleContentMd"
+        :value=this.article.articleContentMd
         style="height: 100%;"
         ref=md
         @save="saveArticles(value, render)"
@@ -22,8 +23,17 @@
     name: 'Editor',
     data () {
       return {
+        article: {
+          articleTitle: '',
+          articleContentMd: ''
+        },
         title: '',
         value: ''
+      }
+    },
+    mounted () {
+      if (this.$route.params.article) {
+        this.article = this.$route.params.article
       }
     },
     methods: {
