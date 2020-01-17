@@ -1,15 +1,11 @@
 <template>
   <div class="articles-area">
-    <el-card style="text-align: left">
-      <div style="float:left;width:85%;height: 150px;">
+    <el-card style="text-align: left;width: 990px;margin: 35px auto 0 auto">
+      <div>
         <span style="font-size: 20px"><strong>{{article.articleTitle}}</strong></span>
         <el-divider content-position="left">{{article.articleDate}}</el-divider>
-        {{article.articleHtml}}
+        <p v-html="article.articleContentHtml"></p>
       </div>
-      <el-image
-        style="margin:18px 0 0 30px;width:100px;height: 100px"
-        :src="article.articleCover"
-        :fit="cover"></el-image>
     </el-card>
   </div>
 </template>
@@ -20,6 +16,19 @@
     data () {
       return {
         article: []
+      }
+    },
+    mounted () {
+      this.loadArticle()
+    },
+    methods: {
+      loadArticle () {
+        var _this = this
+        this.$axios.get('/article/' + this.$route.query.id).then(resp => {
+          if (resp && resp.status === 200) {
+            _this.article = resp.data
+          }
+        })
       }
     }
   }

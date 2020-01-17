@@ -24,4 +24,8 @@ public class JotterArticleService {
         return  jotterArticleDAO.findAll(PageRequest.of(page, size, sort));
     }
 
+    public JotterArticle findById(int id) {
+        return jotterArticleDAO.findById(id);
+    }
+
 }

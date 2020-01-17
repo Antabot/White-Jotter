@@ -9,6 +9,7 @@ import Home from '../components/Home'
 import AdminIndex from '../components/admin/AdminIndex'
 import Register from '../components/Register'
 import DashBoard from '../components/admin/dashboard/admin/index'
+import ArticleDetails from '../components/jotter/ArticleDetails'
 
 Vue.use(Router)
 
@@ -39,7 +40,12 @@ export default new Router({
           component: Articles
         },
         {
-          path: '/editor',
+          path: '/jotter/article',
+          name: 'Article',
+          component: ArticleDetails
+        },
+        {
+          path: '/admin/editor',
           name: 'Editor',
           component: Editor,
           meta: {
@@ -112,7 +118,12 @@ export const createRouter = routes => new Router({
           component: Articles
         },
         {
-          path: '/editor',
+          path: '/jotter/article',
+          name: 'Article',
+          component: ArticleDetails
+        },
+        {
+          path: '/admin/editor',
           name: 'Editor',
           component: Editor,
           meta: {

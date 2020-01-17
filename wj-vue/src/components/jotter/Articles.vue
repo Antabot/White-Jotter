@@ -5,9 +5,9 @@
       <el-card style="text-align: left">
         <div v-for="article in articles" :key="article.id">
           <div style="float:left;width:85%;height: 150px;">
-            <el-link href=""><span style="font-size: 20px"><strong>{{article.articleTitle}}</strong></span></el-link>
+            <router-link class="article-link" :to="{path:'jotter/article',query:{id: article.id}}"><span style="font-size: 20px"><strong>{{article.articleTitle}}</strong></span></router-link>
             <el-divider content-position="left">{{article.articleDate}}</el-divider>
-            <el-link :underline="false" href=""><p>{{article.articleAbstract}}</p></el-link>
+            <router-link class="article-link" :to="{path:'jotter/article',query:{id: article.id}}"><p>{{article.articleAbstract}}</p></router-link>
           </div>
           <el-image
             style="margin:18px 0 0 30px;width:100px;height: 100px"
@@ -29,13 +29,10 @@
         articles: []
       }
     },
-    mounted: function () {
+    mounted () {
       this.loadArticles()
     },
     methods: {
-      addArticle () {
-        this.$router.push('/editor')
-      },
       loadArticles () {
         var _this = this
         this.$axios.get('/article').then(resp => {
@@ -55,5 +52,14 @@
     margin-right: auto;
     /*margin-top: -20px;*/
     background-color: white;
+  }
+
+  .article-link {
+    text-decoration: none;
+    color: #606266;
+  }
+
+  .article-link:hover {
+    color: #409EFF;
   }
 </style>
