@@ -57,7 +57,7 @@
               编辑
             </el-button>
             <el-button
-              @click.native.prevent=""
+              @click.native.prevent="deleteArticle(scope.row.id)"
               type="text"
               size="small">
               移除
@@ -118,6 +118,26 @@
             }
           }
         )
+      },
+      deleteArticle (id) {
+        this.$confirm('此操作将永久删除该文章, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+            this.$axios
+              .delete('/admin/content/article/' + id).then(resp => {
+              if (resp && resp.status === 200) {
+                this.loadArticles()
+              }
+            })
+          }
+        ).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          })
+        })
       }
     }
   }

@@ -12,7 +12,7 @@
         :value=this.article.articleContentMd
         style="height: 100%;"
         ref=md
-        @save="saveArticles(value, render)"
+        @save="saveArticles"
         fontSize="16px"/>
     </el-row>
   </div>
@@ -23,12 +23,7 @@
     name: 'Editor',
     data () {
       return {
-        article: {
-          articleTitle: '',
-          articleContentMd: ''
-        },
-        title: '',
-        value: ''
+        article: {}
       }
     },
     mounted () {
@@ -45,8 +40,20 @@
           type: 'warning'
         }).then(() => {
             this.$axios
-              .post('/admin/content/articles/save', {value: value}).then(resp => {
+              .post('/admin/content/article', {
+                id: this.article.id,
+                articleTitle: this.article.articleTitle,
+                articleContentMd: value,
+                articleContentHtml: render,
+                articleAbstract: this.article.articleAbstract,
+                articleCover: this.article.articleCover,
+                articleDate: this.article.articleDate
+              }).then(resp => {
               if (resp && resp.status === 200) {
+                this.$message({
+                  type: 'info',
+                  message: '已保存成功'
+                })
               }
             })
           }

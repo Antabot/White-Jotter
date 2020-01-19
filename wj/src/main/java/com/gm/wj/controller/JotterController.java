@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 /**
  * @author Evan
  * @date 2020/1/14 20:33
@@ -22,7 +20,9 @@ public class JotterController {
 
     @PostMapping("api/admin/content/article")
     public Result saveArticle(@RequestBody JotterArticle article) {
-        return ResultFactory.buildSuccessResult("测试");
+        System.out.println(article.getId());
+        jotterArticleService.addOrUpdate(article);
+        return ResultFactory.buildSuccessResult("保存成功");
     }
 
     @GetMapping("/api/article")
@@ -35,4 +35,9 @@ public class JotterController {
         return jotterArticleService.findById(id);
     }
 
+    @DeleteMapping("/api/admin/content/article/{id}")
+    public Result deleteArticle(@PathVariable("id") int id) {
+        jotterArticleService.delete(id);
+        return ResultFactory.buildSuccessResult("删除成功");
+    }
 }

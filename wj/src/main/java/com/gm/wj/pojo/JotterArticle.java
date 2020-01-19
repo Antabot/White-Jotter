@@ -16,6 +16,7 @@ import java.sql.Date;
 public class JotterArticle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     private String articleTitle;
     private String articleContentHtml;
