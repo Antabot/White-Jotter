@@ -28,4 +28,12 @@ public class JotterArticleService {
         return jotterArticleDAO.findById(id);
     }
 
+    public void addOrUpdate(JotterArticle article) {
+        jotterArticleDAO.save(article);
+    }
+
+    public void delete(int id) {
+        jotterArticleDAO.deleteById(id);
+    }
+
 }

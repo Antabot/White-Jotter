@@ -4,7 +4,9 @@
       <div>
         <span style="font-size: 20px"><strong>{{article.articleTitle}}</strong></span>
         <el-divider content-position="left">{{article.articleDate}}</el-divider>
-        <p v-html="article.articleContentHtml"></p>
+        <div class="markdown-body">
+          <div v-html="article.articleContentHtml"></div>
+        </div>
       </div>
     </el-card>
   </div>
@@ -35,5 +37,5 @@
 </script>
 
 <style scoped>
-
+  @import "../../styles/markdown.css";
 </style>
