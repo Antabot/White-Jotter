@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import AppIndex from '../components/home/AppIndex'
 import Articles from '../components/jotter/Articles'
-import Editor from '../components/jotter/Editor'
+import Editor from '../components/admin/content/ArticleEditor'
 import LibraryIndex from '../components/library/LibraryIndex'
 import Login from '../components/Login'
 import Home from '../components/Home'
@@ -45,7 +45,7 @@ export default new Router({
           component: ArticleDetails
         },
         {
-          path: '/admin/editor',
+          path: '/admin/content/editor',
           name: 'Editor',
           component: Editor,
           meta: {
@@ -123,7 +123,7 @@ export const createRouter = routes => new Router({
           component: ArticleDetails
         },
         {
-          path: '/admin/editor',
+          path: '/admin/content/editor',
           name: 'Editor',
           component: Editor,
           meta: {

@@ -29,9 +29,13 @@
 
 ![图书馆](https://i.loli.net/2019/12/03/AGLbIupct68ThBD.png)
 
-## 3.登录页面
+## 3.笔记本
 
-![登录页面](https://i.loli.net/2019/04/14/5cb2fd5b78ae7.png)
+提供笔记、博文展示功能
+
+![笔记本首页.png](https://i.loli.net/2020/01/20/VAsOapuWriB6RFT.png)
+
+![文章内容.png](https://i.loli.net/2020/01/20/DQgbpy2LKhiZc4x.png)
 
 ## 4.后台管理
 
@@ -127,10 +131,20 @@ npm run build
 
 16.[功能级访问控制的实现](https://learner.blog.csdn.net/article/details/103250775)
 
+17.[后台角色、权限与菜单分配](https://learner.blog.csdn.net/article/details/103603726)
+
 (持续更新中)
 
 # 近期更新
+
+## 2020
+
+01-20 利用开源 markdown 编辑器实现文章展示与管理模块
  
+---
+
+##2019 
+
 12-01 实现功能级权限控制  
 11-30 利用 vue-elment-admin 项目完善后台界面设计  
 11-17 重构项目，完成搭建后台基础界面，实现按角色加载菜单，取消前台访问限制  
