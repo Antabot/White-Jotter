@@ -7,7 +7,7 @@
         <el-breadcrumb-item>文章管理</el-breadcrumb-item>
       </el-breadcrumb>
     </el-row>
-    <el-link href="/admin/editor" :underline="false" target="_blank" class="add-link">
+    <el-link href="/admin/content/editor" :underline="false" target="_blank" class="add-link">
       <el-button type="success">写文章</el-button>
     </el-link>
     <el-card style="margin: 18px 2%;width: 95%">
@@ -65,9 +65,15 @@
           </template>
         </el-table-column>
       </el-table>
-      <div style="margin: 20px 0 20px 0;float: left">
-        <el-button>取消选择</el-button>
-        <el-button>批量删除</el-button>
+      <div style="margin: 20px 0 50px 0">
+        <el-pagination
+          background
+          style="float:right;"
+          layout="total, prev, pager, next, jumper"
+          @current-change="handleCurrentChange"
+          :page-size="pageSize"
+          :total="total">
+        </el-pagination>
       </div>
     </el-card>
   </div>
@@ -78,7 +84,9 @@
     name: 'ArticleManagement',
     data () {
       return {
-        articles: []
+        articles: [],
+        pageSize: 10,
+        total: ''
       }
     },
     mounted () {
@@ -92,9 +100,19 @@
     methods: {
       loadArticles () {
         var _this = this
-        this.$axios.get('/article').then(resp => {
+        this.$axios.get('/article/' + this.pageSize + '/1').then(resp => {
           if (resp && resp.status === 200) {
             _this.articles = resp.data.content
+            _this.total = resp.data.totalElements
+          }
+        })
+      },
+      handleCurrentChange (page) {
+        var _this = this
+        this.$axios.get('/article/' + this.pageSize + '/' + page).then(resp => {
+          if (resp && resp.status === 200) {
+            _this.articles = resp.data.content
+            _this.total = resp.data.totalElements
           }
         })
       },

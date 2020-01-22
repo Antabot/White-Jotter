@@ -17,12 +17,12 @@
     <el-row style="height: calc(100vh - 140px);">
       <mavon-editor
         v-model="article.articleContentMd"
-        :value=this.article.articleContentMd
         style="height: 100%;"
         ref=md
         @save="saveArticles"
         fontSize="16px">
-        <button type="button" class="op-icon el-icon-document" :title="'摘要/封面'" slot="left-toolbar-after" @click="dialogVisible = true"></button>
+        <button type="button" class="op-icon el-icon-document" :title="'摘要/封面'" slot="left-toolbar-after"
+                @click="dialogVisible = true"></button>
       </mavon-editor>
       <el-dialog
         :visible.sync="dialogVisible"
@@ -40,9 +40,9 @@
           <img-upload @onUpload="uploadImg" ref="imgUpload" style="margin-top: 5px"></img-upload>
         </div>
         <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisible = false">取 消</el-button>
-    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-  </span>
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        </span>
       </el-dialog>
     </el-row>
   </div>
@@ -50,6 +50,7 @@
 
 <script>
   import ImgUpload from './ImgUpload'
+
   export default {
     name: 'Editor',
     components: {ImgUpload},
@@ -96,17 +97,6 @@
             message: '已取消发布'
           })
         })
-      },
-      viewArticle (id) {
-        let articleUrl = this.$router.resolve(
-          {
-            path: '../../jotter/article',
-            query: {
-              id: id
-            }
-          }
-        )
-        window.open(articleUrl.href, '_blank')
       },
       uploadImg () {
         this.article.articleCover = this.$refs.imgUpload.url

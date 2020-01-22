@@ -24,9 +24,9 @@ public class JotterController {
         return ResultFactory.buildSuccessResult("保存成功");
     }
 
-    @GetMapping("/api/article")
-    public Page listArticles() {
-        return jotterArticleService.list(0, 10);
+    @GetMapping("/api/article/{size}/{page}")
+    public Page listArticles(@PathVariable("size") int size, @PathVariable("page") int page) {
+        return jotterArticleService.list(page - 1, size);
     }
 
     @GetMapping("/api/article/{id}")

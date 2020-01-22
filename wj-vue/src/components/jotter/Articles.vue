@@ -17,6 +17,13 @@
         </div>
       </el-card>
     </div>
+    <el-pagination
+      background
+      layout="total, prev, pager, next, jumper"
+      @current-change="handleCurrentChange"
+      :page-size="pageSize"
+      :total="total">
+    </el-pagination>
   </div>
 </template>
 
@@ -26,7 +33,9 @@
     name: 'Articles',
     data () {
       return {
-        articles: []
+        articles: [],
+        pageSize: 4,
+        total: ''
       }
     },
     mounted () {
@@ -35,9 +44,19 @@
     methods: {
       loadArticles () {
         var _this = this
-        this.$axios.get('/article').then(resp => {
+        this.$axios.get('/article/' + this.pageSize + '/1').then(resp => {
           if (resp && resp.status === 200) {
             _this.articles = resp.data.content
+            _this.total = resp.data.totalElements
+          }
+        })
+      },
+      handleCurrentChange (page) {
+        var _this = this
+        this.$axios.get('/article/' + this.pageSize + '/' + page).then(resp => {
+          if (resp && resp.status === 200) {
+            _this.articles = resp.data.content
+            _this.total = resp.data.totalElements
           }
         })
       }
@@ -48,10 +67,9 @@
 <style scoped>
   .articles-area {
     width: 990px;
+    height: 750px;
     margin-left: auto;
     margin-right: auto;
-    /*margin-top: -20px;*/
-    background-color: white;
   }
 
   .article-link {
