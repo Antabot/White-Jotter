@@ -1,7 +1,7 @@
 package com.gm.wj.dao;
 
-import com.gm.wj.pojo.Book;
-import com.gm.wj.pojo.Category;
+import com.gm.wj.entity.Book;
+import com.gm.wj.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

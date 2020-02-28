@@ -1,6 +1,6 @@
 package com.gm.wj.dao;
 
-import com.gm.wj.pojo.AdminRoleMenu;
+import com.gm.wj.entity.AdminRoleMenu;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

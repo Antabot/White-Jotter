@@ -1,10 +1,12 @@
-package com.gm.wj.pojo;
+package com.gm.wj.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 /**
+ * Relations between users and role.
+ *
  * @author Evan
  * @date 2019/11
  */
@@ -18,7 +20,14 @@ public class AdminUserRole {
     @Column(name = "id")
     private int id;
 
+    /**
+     * User id.
+     */
     private int uid;
+
+    /**
+     * Role id.
+     */
     private int rid;
 
     public int getId() {

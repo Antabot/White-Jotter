@@ -1,10 +1,12 @@
-package com.gm.wj.pojo;
+package com.gm.wj.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 /**
+ * Permission entity.
+ *
  * @author Evan
  * @date 2019/11
  */
@@ -18,8 +20,19 @@ public class AdminPermission {
     @Column(name = "id")
     private int id;
 
+    /**
+     * Permission name;
+     */
     private String name;
+
+    /**
+     * Permission's description(in Chinese)
+     */
     private String desc_;
+
+    /**
+     * The path which triggers permission check.
+     */
     private String url;
 
     public int getId() {

@@ -1,6 +1,6 @@
 package com.gm.wj.realm;
 
-import com.gm.wj.pojo.User;
+import com.gm.wj.entity.User;
 import com.gm.wj.service.AdminPermissionService;
 import com.gm.wj.service.AdminRoleService;
 import com.gm.wj.service.UserService;

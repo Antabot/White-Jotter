@@ -70,8 +70,7 @@
       searchResult () {
         var _this = this
         this.$axios
-          .post('/search', {
-            keywords: this.$refs.searchBar.keywords
+          .get('/search?keywords=' + this.$refs.searchBar.keywords, {
           }).then(resp => {
           if (resp && resp.status === 200) {
             _this.books = resp.data

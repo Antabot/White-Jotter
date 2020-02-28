@@ -1,8 +1,8 @@
 package com.gm.wj.service;
 
 import com.gm.wj.dao.AdminUserRoleDAO;
-import com.gm.wj.pojo.AdminRole;
-import com.gm.wj.pojo.AdminUserRole;
+import com.gm.wj.entity.AdminRole;
+import com.gm.wj.entity.AdminUserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

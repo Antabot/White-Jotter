@@ -1,8 +1,8 @@
 package com.gm.wj.service;
 
 import com.gm.wj.dao.BookDAO;
-import com.gm.wj.pojo.Book;
-import com.gm.wj.pojo.Category;
+import com.gm.wj.entity.Book;
+import com.gm.wj.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

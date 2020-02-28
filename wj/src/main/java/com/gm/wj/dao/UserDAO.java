@@ -1,6 +1,6 @@
 package com.gm.wj.dao;
 
-import com.gm.wj.pojo.User;
+import com.gm.wj.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

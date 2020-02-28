@@ -1,7 +1,6 @@
 package com.gm.wj.controller;
 
-import com.gm.wj.pojo.Book;
-import com.gm.wj.pojo.Search;
+import com.gm.wj.entity.Book;
 import com.gm.wj.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,12 +37,12 @@ public class LibraryController {
         bookService.deleteById(book.getId());
     }
 
-    @PostMapping("/api/search")
-    public List<Book> searchResult(@RequestBody Search s) {
-        if ("".equals(s.getKeywords())) {
+    @GetMapping("/api/search")
+    public List<Book> searchResult(@RequestParam("keywords") String keywords) {
+        if ("".equals(keywords)) {
             return bookService.list();
         } else {
-            return bookService.Search(s.getKeywords());
+            return bookService.Search(keywords);
         }
     }
 

@@ -1,25 +1,34 @@
-package com.gm.wj.pojo;
-
+package com.gm.wj.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 /**
+ * Relations between roles and permissions.
+ *
  * @author Evan
  * @date 2019/11
  */
 
 @Entity
-@Table(name = "admin_role_menu")
+@Table(name = "admin_role_permission")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
-public class AdminRoleMenu {
+public class AdminRolePermission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
+    /**
+     * Role id.
+     */
     private int rid;
-    private int mid;
+
+    /**
+     * Permission id.
+     */
+    private int pid;
 
     public int getId() {
         return id;
@@ -37,11 +46,11 @@ public class AdminRoleMenu {
         this.rid = rid;
     }
 
-    public int getMid() {
-        return mid;
+    public int getPid() {
+        return pid;
     }
 
-    public void setMid(int mid) {
-        this.mid = mid;
+    public void setPid(int pid) {
+        this.pid = pid;
     }
 }

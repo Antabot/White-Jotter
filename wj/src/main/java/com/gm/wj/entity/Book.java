@@ -1,10 +1,12 @@
-package com.gm.wj.pojo;
+package com.gm.wj.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 /**
+ * Book entity.
+ *
  * @author Evan
  * @date 2019/4
  */
@@ -18,24 +20,42 @@ public class Book {
     @Column(name = "id")
     private int id;
 
+    /**
+     * Title of the book.
+     */
+    private String title;
+
+    /**
+     * Author name.
+     */
+    private String author;
+
+    /**
+     * Publication date.
+     */
+    private String date;
+
+    /**
+     * Press.
+     */
+    private String press;
+
+    /**
+     * Abstract of the book.
+     */
+    private String abs;
+
+    /**
+     * The url of the book's cover.
+     */
+    private String cover;
+
+    /**
+     * Category id.
+     */
     @ManyToOne
     @JoinColumn(name="cid")
     private Category category;
-
-    private String cover;
-    private String title;
-    private String author;
-    private String date;
-    private String press;
-    private String abs;
-
-    public Category getCategory() {
-        return category;
-}
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
     public String getDate() {
         return date;
@@ -69,14 +89,6 @@ public class Book {
         this.id = id;
     }
 
-    public String getCover() {
-        return cover;
-    }
-
-    public void setCover(String cover) {
-        this.cover = cover;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -91,5 +103,21 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 }

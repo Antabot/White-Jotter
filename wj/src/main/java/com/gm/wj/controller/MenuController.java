@@ -1,6 +1,6 @@
 package com.gm.wj.controller;
 
-import com.gm.wj.pojo.AdminMenu;
+import com.gm.wj.entity.AdminMenu;
 import com.gm.wj.service.AdminMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
