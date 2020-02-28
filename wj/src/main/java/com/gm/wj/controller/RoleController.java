@@ -1,8 +1,8 @@
 package com.gm.wj.controller;
 
-import com.gm.wj.pojo.AdminPermission;
-import com.gm.wj.pojo.AdminRole;
-import com.gm.wj.pojo.AdminRoleMenu;
+import com.gm.wj.entity.AdminPermission;
+import com.gm.wj.entity.AdminRole;
+import com.gm.wj.entity.AdminRoleMenu;
 import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.AdminPermissionService;

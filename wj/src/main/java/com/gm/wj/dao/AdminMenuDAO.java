@@ -1,9 +1,7 @@
 package com.gm.wj.dao;
 
-import com.gm.wj.pojo.AdminMenu;
-import io.lettuce.core.dynamic.annotation.Param;
+import com.gm.wj.entity.AdminMenu;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

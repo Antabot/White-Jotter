@@ -1,7 +1,7 @@
 package com.gm.wj.service;
 
 import com.gm.wj.dao.AdminPermissionDAO;
-import com.gm.wj.pojo.*;
+import com.gm.wj.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

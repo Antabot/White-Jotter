@@ -1,4 +1,4 @@
-package com.gm.wj.pojo;
+package com.gm.wj.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
+ * Category entity.
+ *
  * @author Evan
  * @date 2019/4
  */
@@ -24,6 +26,9 @@ public class Category {
     @Column(name = "id")
     private int id;
 
+    /**
+     * Category name in Chinese.
+     */
     private String name;
 
     public int getId() {

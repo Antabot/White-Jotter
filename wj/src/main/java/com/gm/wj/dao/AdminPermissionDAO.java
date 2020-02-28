@@ -1,6 +1,6 @@
 package com.gm.wj.dao;
 
-import com.gm.wj.pojo.AdminPermission;
+import com.gm.wj.entity.AdminPermission;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

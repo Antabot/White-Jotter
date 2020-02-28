@@ -1,6 +1,6 @@
 package com.gm.wj.controller;
 
-import com.gm.wj.pojo.User;
+import com.gm.wj.entity.User;
 import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.UserService;

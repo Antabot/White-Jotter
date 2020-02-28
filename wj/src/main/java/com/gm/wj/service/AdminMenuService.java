@@ -1,10 +1,10 @@
 package com.gm.wj.service;
 
 import com.gm.wj.dao.AdminMenuDAO;
-import com.gm.wj.pojo.AdminMenu;
-import com.gm.wj.pojo.AdminRoleMenu;
-import com.gm.wj.pojo.AdminUserRole;
-import com.gm.wj.pojo.User;
+import com.gm.wj.entity.AdminMenu;
+import com.gm.wj.entity.AdminRoleMenu;
+import com.gm.wj.entity.AdminUserRole;
+import com.gm.wj.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

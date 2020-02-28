@@ -1,7 +1,7 @@
 package com.gm.wj.service;
 
 import com.gm.wj.dao.JotterArticleDAO;
-import com.gm.wj.pojo.JotterArticle;
+import com.gm.wj.entity.JotterArticle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
