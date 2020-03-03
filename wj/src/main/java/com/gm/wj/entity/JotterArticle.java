@@ -11,7 +11,6 @@ import java.sql.Date;
  * @author Evan
  * @date 2020/1/14 20:25
  */
-
 @Entity
 @Table(name = "jotter_article")
 @JsonIgnoreProperties({"handler","hibernateLazyInitializer"})

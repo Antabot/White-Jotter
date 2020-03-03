@@ -8,7 +8,6 @@ import com.gm.wj.entity.Category;
  * @author Evan
  * @date 2019/4
  */
-
 public interface CategoryDAO extends JpaRepository<Category, Integer> {
 
 }

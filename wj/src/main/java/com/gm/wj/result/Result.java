@@ -4,7 +4,6 @@ package com.gm.wj.result;
  * @author Evan
  * @date 2019/4
  */
-
 public class Result {
     private int code;
     private String message;

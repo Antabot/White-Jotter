@@ -2,7 +2,6 @@ package com.gm.wj.controller;
 
 import com.gm.wj.entity.AdminPermission;
 import com.gm.wj.entity.AdminRole;
-import com.gm.wj.entity.AdminRoleMenu;
 import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.AdminPermissionService;
@@ -16,10 +15,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
+ * Role controller.
+ *
  * @author Evan
  * @date 2019/11
  */
-
 @RestController
 public class RoleController {
     @Autowired
@@ -67,14 +67,6 @@ public class RoleController {
 
     @PutMapping("/api/admin/role/menu")
     public void updateRoleMenu(@RequestParam int rid, @RequestBody LinkedHashMap menusIds) {
-        adminRoleMenuService.deleteAllByRid(rid);
-        for (Object value : menusIds.values()) {
-            for (int mid : (List<Integer>)value) {
-                AdminRoleMenu rm = new AdminRoleMenu();
-                rm.setRid(rid);
-                rm.setMid(mid);
-                adminRoleMenuService.save(rm);
-            }
-        }
+        adminRoleMenuService.updateRoleMenu(rid, menusIds);
     }
 }

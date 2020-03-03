@@ -10,7 +10,6 @@ import java.util.List;
  * @author Evan
  * @date 2019/4
  */
-
 public interface UserDAO extends JpaRepository<User,Integer> {
     User findByUsername(String username);
 

@@ -15,7 +15,6 @@ import java.util.List;
  * @author Evan
  * @date 2019/11
  */
-
 @Service
 public class AdminRoleService {
     @Autowired
@@ -51,7 +50,7 @@ public class AdminRoleService {
     }
 
     public List<AdminRole> listRolesByUser(String username) {
-        int uid =  userService.findByUserName(username).getId();
+        int uid =  userService.findByUsername(username).getId();
         List<AdminRole> roles = new ArrayList<>();
         List<AdminUserRole> urs = adminUserRoleService.listAllByUid(uid);
         for (AdminUserRole ur: urs) {
