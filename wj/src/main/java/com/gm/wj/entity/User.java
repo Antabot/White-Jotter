@@ -11,7 +11,6 @@ import java.util.List;
  * @author Evan
  * @date 2019/4
  */
-
 @Entity
 @Table(name = "user")
 @JsonIgnoreProperties({"handler","hibernateLazyInitializer"})

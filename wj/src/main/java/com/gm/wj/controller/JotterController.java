@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
  * @author Evan
  * @date 2020/1/14 20:33
  */
-
 @RestController
 public class JotterController {
     @Autowired

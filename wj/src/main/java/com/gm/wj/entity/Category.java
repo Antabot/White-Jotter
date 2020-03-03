@@ -15,7 +15,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author Evan
  * @date 2019/4
  */
-
 @Entity
 @Table(name = "category")
 @JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })

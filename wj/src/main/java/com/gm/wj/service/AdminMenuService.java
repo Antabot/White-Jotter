@@ -17,7 +17,6 @@ import java.util.List;
  * @author Evan
  * @date 2019/10
  */
-
 @Service
 public class AdminMenuService {
     @Autowired
@@ -33,7 +32,7 @@ public class AdminMenuService {
 
     public List<AdminMenu> getMenusByCurrentUser() {
         String username = SecurityUtils.getSubject().getPrincipal().toString();
-        User user = userService.findByUserName(username);
+        User user = userService.findByUsername(username);
         List<AdminUserRole> userRoleList = adminUserRoleService.listAllByUid(user.getId());
         List<AdminMenu> menus = new ArrayList<>();
         for (AdminUserRole userRole : userRoleList) {
