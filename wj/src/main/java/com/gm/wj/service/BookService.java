@@ -25,12 +25,22 @@ public class BookService {
         return bookDAO.findAll(sort);
     }
 
-    public void addOrUpdate(Book book) {
-        bookDAO.save(book);
+    public boolean addOrUpdate(Book book) {
+        try {
+            bookDAO.save(book);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
     }
 
-    public void deleteById(int id) {
-        bookDAO.deleteById(id);
+    public boolean deleteById(int id) {
+        try {
+            bookDAO.deleteById(id);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
     }
 
     public List<Book> listByCategory(int cid) {

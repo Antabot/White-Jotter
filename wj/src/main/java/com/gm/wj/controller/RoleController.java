@@ -38,9 +38,7 @@ public class RoleController {
 
     @PutMapping("/api/admin/role/status")
     public Result updateRoleStatus(@RequestBody AdminRole requestRole) {
-        AdminRole adminRole = adminRoleService.findById(requestRole.getId());
-        adminRole.setEnabled(requestRole.isEnabled());
-        adminRoleService.addOrUpdate(adminRole);
+        AdminRole adminRole = adminRoleService.updateRoleStatus(requestRole);
         String message = "用户" + adminRole.getNameZh() + "状态更新成功";
         return ResultFactory.buildSuccessResult(message);
     }
@@ -53,11 +51,14 @@ public class RoleController {
         return ResultFactory.buildSuccessResult(message);
     }
 
+
     @PostMapping("/api/admin/role")
     public Result addRole(@RequestBody AdminRole requestRole) {
-        adminRoleService.addOrUpdate(requestRole);
-        String message = "添加角色成功";
-        return ResultFactory.buildSuccessResult(message);
+        if (adminRoleService.editRole(requestRole)) {
+            return ResultFactory.buildSuccessResult("修改用户成功");
+        } else {
+            return ResultFactory.buildFailResult("参数错误，修改失败");
+        }
     }
 
     @GetMapping("/api/admin/role/perm")
@@ -66,7 +67,11 @@ public class RoleController {
     }
 
     @PutMapping("/api/admin/role/menu")
-    public void updateRoleMenu(@RequestParam int rid, @RequestBody LinkedHashMap menusIds) {
-        adminRoleMenuService.updateRoleMenu(rid, menusIds);
+    public Result updateRoleMenu(@RequestParam int rid, @RequestBody LinkedHashMap menusIds) {
+        if(adminRoleMenuService.updateRoleMenu(rid, menusIds)) {
+            return ResultFactory.buildSuccessResult("更新成功");
+        } else {
+            return ResultFactory.buildFailResult("参数错误，更新失败");
+        }
     }
 }

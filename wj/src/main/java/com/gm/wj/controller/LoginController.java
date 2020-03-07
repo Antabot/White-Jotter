@@ -37,34 +37,37 @@ public class LoginController {
         try {
             User user = userService.findByUsername(username);
             if (!user.isEnabled()) {
-                String message = "该用户已被禁用";
-                return ResultFactory.buildFailResult(message);
+                return ResultFactory.buildFailResult("该用户已被禁用");
             }
             subject.login(usernamePasswordToken);
-            // 生成随机 token 并存储在 session 中
             return ResultFactory.buildSuccessResult(usernamePasswordToken);
 
         } catch (IncorrectCredentialsException e) {
-            String message = "密码错误";
-            return ResultFactory.buildFailResult(message);
+            return ResultFactory.buildFailResult("密码错误");
         } catch (UnknownAccountException e) {
-            String message = "账号不存在";
-            return ResultFactory.buildFailResult(message);
+            return ResultFactory.buildFailResult("账号不存在");
         }
     }
 
     @PostMapping("/api/register")
     public Result register(@RequestBody User user) {
-        String message = userService.register(user);
-        return ResultFactory.buildSuccessResult(message);
+        int status = userService.register(user);
+        switch (status) {
+            case 0:
+                return ResultFactory.buildFailResult("用户名和密码不能为空");
+            case 1:
+                return ResultFactory.buildSuccessResult("注册成功");
+            case 2:
+                return ResultFactory.buildFailResult("用户已存在");
+        }
+        return ResultFactory.buildFailResult("未知错误");
     }
 
     @GetMapping("/api/logout")
     public Result logout() {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
-        String message = "成功登出";
-        return ResultFactory.buildSuccessResult(message);
+        return ResultFactory.buildSuccessResult("成功登出");
     }
 
     @GetMapping("/api/authentication")

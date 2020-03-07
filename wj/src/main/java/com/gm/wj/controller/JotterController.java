@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 /**
+ * Jotter controller.
+ *
  * @author Evan
  * @date 2020/1/14 20:33
  */
@@ -19,8 +21,10 @@ public class JotterController {
 
     @PostMapping("api/admin/content/article")
     public Result saveArticle(@RequestBody JotterArticle article) {
-        jotterArticleService.addOrUpdate(article);
-        return ResultFactory.buildSuccessResult("保存成功");
+        if(jotterArticleService.addOrUpdate(article)) {
+            return ResultFactory.buildSuccessResult("保存成功");
+        }
+        return ResultFactory.buildFailResult("参数错误，保存失败");
     }
 
     @GetMapping("/api/article/{size}/{page}")
@@ -35,7 +39,9 @@ public class JotterController {
 
     @DeleteMapping("/api/admin/content/article/{id}")
     public Result deleteArticle(@PathVariable("id") int id) {
-        jotterArticleService.delete(id);
-        return ResultFactory.buildSuccessResult("删除成功");
+        if(jotterArticleService.delete(id)) {
+            return ResultFactory.buildSuccessResult("删除成功");
+        }
+        return ResultFactory.buildFailResult("参数错误，删除失败");
     }
 }
