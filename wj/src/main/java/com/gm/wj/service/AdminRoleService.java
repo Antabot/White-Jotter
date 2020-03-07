@@ -5,8 +5,11 @@ import com.gm.wj.entity.AdminMenu;
 import com.gm.wj.entity.AdminPermission;
 import com.gm.wj.entity.AdminRole;
 import com.gm.wj.entity.AdminUserRole;
+import com.gm.wj.result.Result;
+import com.gm.wj.result.ResultFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,8 @@ public class AdminRoleService {
     AdminUserRoleService adminUserRoleService;
     @Autowired
     AdminPermissionService adminPermissionService;
+    @Autowired
+    AdminRolePermissionService adminRolePermissionService;
     @Autowired
     AdminMenuService adminMenuService;
 
@@ -57,5 +62,21 @@ public class AdminRoleService {
             roles.add(adminRoleDAO.findById(ur.getRid()));
         }
         return roles;
+    }
+
+    public AdminRole updateRoleStatus(AdminRole role) {
+        AdminRole roleInDB = adminRoleDAO.findById(role.getId());
+        roleInDB.setEnabled(role.isEnabled());
+        return adminRoleDAO.save(roleInDB);
+    }
+
+    public boolean editRole(@RequestBody AdminRole requestRole) {
+        try {
+            adminRoleDAO.save(requestRole);
+            adminRolePermissionService.savePermChanges(requestRole.getId(), requestRole.getPerms());
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
     }
 }

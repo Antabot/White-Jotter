@@ -37,15 +37,20 @@ public class AdminRoleMenuService {
 
     @Modifying
     @Transactional
-    public void updateRoleMenu(int rid, LinkedHashMap menusIds) {
-        deleteAllByRid(rid);
-        for (Object value : menusIds.values()) {
-            for (int mid : (List<Integer>)value) {
-                AdminRoleMenu rm = new AdminRoleMenu();
-                rm.setRid(rid);
-                rm.setMid(mid);
-                adminRoleMenuDAO.save(rm);
+    public boolean updateRoleMenu(int rid, LinkedHashMap menusIds) {
+        try {
+            deleteAllByRid(rid);
+            for (Object value : menusIds.values()) {
+                for (int mid : (List<Integer>) value) {
+                    AdminRoleMenu rm = new AdminRoleMenu();
+                    rm.setRid(rid);
+                    rm.setMid(mid);
+                    adminRoleMenuDAO.save(rm);
+                }
             }
+        } catch (IllegalArgumentException e) {
+            return false;
         }
+        return true;
     }
 }

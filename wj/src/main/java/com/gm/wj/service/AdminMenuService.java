@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -67,15 +66,10 @@ public class AdminMenuService {
 
     public void handleMenus(List<AdminMenu> menus) {
         for (AdminMenu menu : menus) {
-            menu.setChildren(getAllByParentId(menu.getId()));
+            List<AdminMenu> children = getAllByParentId(menu.getId());
+            menu.setChildren(children);
         }
 
-        Iterator<AdminMenu> iterator = menus.iterator();
-        while (iterator.hasNext()) {
-            AdminMenu menu = iterator.next();
-            if (menu.getParentId() != 0) {
-                iterator.remove();
-            }
-        }
+        menus.removeIf(menu -> menu.getParentId() != 0);
     }
 }

@@ -1,6 +1,8 @@
 package com.gm.wj.controller;
 
 import com.gm.wj.entity.Book;
+import com.gm.wj.result.Result;
+import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.BookService;
 import com.gm.wj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +30,19 @@ public class LibraryController {
     }
 
     @PostMapping("/api/admin/content/books")
-    public Book addOrUpdateBooks(@RequestBody Book book) {
-        bookService.addOrUpdate(book);
-        return book;
+    public Result addOrUpdateBooks(@RequestBody Book book) {
+        if(bookService.addOrUpdate(book)) {
+            return ResultFactory.buildSuccessResult("修改成功");
+        }
+        return ResultFactory.buildFailResult("参数错误，修改失败");
     }
 
     @PostMapping("/api/admin/content/books/delete")
-    public void deleteBook(@RequestBody Book book) {
-        bookService.deleteById(book.getId());
+    public Result deleteBook(@RequestBody Book book) {
+        if (bookService.deleteById(book.getId())) {
+            return ResultFactory.buildSuccessResult("删除成功");
+        }
+        return ResultFactory.buildFailResult("参数错误，删除失败");
     }
 
     @GetMapping("/api/search")

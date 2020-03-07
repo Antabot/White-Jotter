@@ -20,13 +20,11 @@ public class MenuController {
 
     @GetMapping("/api/menu")
     public List<AdminMenu> menu() {
-        List<AdminMenu> menus = adminMenuService.getMenusByCurrentUser();
-        return menus;
+        return adminMenuService.getMenusByCurrentUser();
     }
 
     @GetMapping("/api/admin/role/menu")
     public List<AdminMenu> listAllMenus() {
-        List<AdminMenu> menus = adminMenuService.getMenusByRoleId(1);
-        return menus;
+        return adminMenuService.getMenusByRoleId(1);
     }
 }

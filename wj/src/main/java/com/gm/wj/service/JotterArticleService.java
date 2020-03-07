@@ -19,19 +19,29 @@ public class JotterArticleService {
 
     public Page list(int page, int size) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
-        return  jotterArticleDAO.findAll(PageRequest.of(page, size, sort));
+        return jotterArticleDAO.findAll(PageRequest.of(page, size, sort));
     }
 
     public JotterArticle findById(int id) {
         return jotterArticleDAO.findById(id);
     }
 
-    public void addOrUpdate(JotterArticle article) {
-        jotterArticleDAO.save(article);
+    public boolean addOrUpdate(JotterArticle article) {
+        try {
+            jotterArticleDAO.save(article);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
     }
 
-    public void delete(int id) {
-        jotterArticleDAO.deleteById(id);
+    public boolean delete(int id) {
+        try {
+            jotterArticleDAO.deleteById(id);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
     }
 
 }
