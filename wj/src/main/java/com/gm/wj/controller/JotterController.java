@@ -5,7 +5,6 @@ import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.JotterArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -28,13 +27,13 @@ public class JotterController {
     }
 
     @GetMapping("/api/article/{size}/{page}")
-    public Page listArticles(@PathVariable("size") int size, @PathVariable("page") int page) {
-        return jotterArticleService.list(page - 1, size);
+    public Result listArticles(@PathVariable("size") int size, @PathVariable("page") int page) {
+        return ResultFactory.buildSuccessResult(jotterArticleService.list(page - 1, size));
     }
 
     @GetMapping("/api/article/{id}")
-    public JotterArticle getOneArticle(@PathVariable("id") int id) {
-        return jotterArticleService.findById(id);
+    public Result getOneArticle(@PathVariable("id") int id) {
+        return ResultFactory.buildSuccessResult(jotterArticleService.findById(id));
     }
 
     @DeleteMapping("/api/admin/content/article/{id}")

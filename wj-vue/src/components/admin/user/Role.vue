@@ -138,23 +138,23 @@
         var _this = this
         this.$axios.get('/admin/role').then(resp => {
           if (resp && resp.status === 200) {
-            _this.roles = resp.data
+            _this.roles = resp.data.result
           }
         })
       },
       listPerms () {
         var _this = this
         this.$axios.get('/admin/role/perm').then(resp => {
-          if (resp && resp.status === 200) {
-            _this.perms = resp.data
+          if (resp && resp.data.code === 200) {
+            _this.perms = resp.data.result
           }
         })
       },
       listMenus () {
         var _this = this
         this.$axios.get('/admin/role/menu').then(resp => {
-          if (resp && resp.status === 200) {
-            _this.menus = resp.data
+          if (resp && resp.data.code === 200) {
+            _this.menus = resp.data.result
           }
         })
       },
@@ -169,7 +169,7 @@
               enabled: value,
               id: role.id
             }).then(resp => {
-              if (resp && resp.status === 200) {
+              if (resp && resp.data.code === 200) {
                 if (value) {
                   this.$message('角色 [' + role.nameZh + '] 已启用')
                 } else {
@@ -228,8 +228,8 @@
           enabled: role.enabled,
           perms: perms
         }).then(resp => {
-          if (resp && resp.status === 200) {
-            this.$alert(resp.data.data)
+          if (resp && resp.data.code === 200) {
+            this.$alert(resp.data.result)
             this.dialogFormVisible = false
             this.listRoles()
           }
@@ -237,8 +237,8 @@
         this.$axios.put('/admin/role/menu?rid=' + role.id, {
           menusIds: this.$refs.tree.getCheckedKeys()
         }).then(resp => {
-          if (resp && resp.status === 200) {
-            console.log(resp.data.data)
+          if (resp && resp.data.code === 200) {
+            console.log(resp.data.result)
           }
         })
       }

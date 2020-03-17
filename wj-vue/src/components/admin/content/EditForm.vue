@@ -101,7 +101,7 @@
             abs: this.form.abs,
             category: this.form.category
           }).then(resp => {
-            if (resp && resp.status === 200) {
+            if (resp && resp.data.code === 200) {
               this.dialogFormVisible = false
               this.$emit('onSubmit')
             }

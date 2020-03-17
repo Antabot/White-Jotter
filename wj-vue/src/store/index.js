@@ -8,6 +8,7 @@ export default new Vuex.Store({
     user: {
       name: window.localStorage.getItem('user') == null ? '未登录' : JSON.parse(window.localStorage.getItem('user' || '[]')).name,
       username: window.localStorage.getItem('user') == null ? '' : JSON.parse(window.localStorage.getItem('user' || '[]')).username
+      // username: 'admin'
     },
     adminMenus: []
   },

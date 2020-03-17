@@ -1,6 +1,5 @@
 package com.gm.wj.controller;
 
-import com.gm.wj.entity.AdminPermission;
 import com.gm.wj.entity.AdminRole;
 import com.gm.wj.result.Result;
 import com.gm.wj.result.ResultFactory;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 
 /**
  * Role controller.
@@ -32,8 +30,8 @@ public class RoleController {
     AdminRoleMenuService adminRoleMenuService;
 
     @GetMapping("/api/admin/role")
-    public List<AdminRole> listRoles(){
-        return adminRoleService.list();
+    public Result listRoles(){
+        return ResultFactory.buildSuccessResult(adminRoleService.list());
     }
 
     @PutMapping("/api/admin/role/status")
@@ -62,8 +60,8 @@ public class RoleController {
     }
 
     @GetMapping("/api/admin/role/perm")
-    public List<AdminPermission> listPerms() {
-        return adminPermissionService.list();
+    public Result listPerms() {
+        return ResultFactory.buildSuccessResult(adminPermissionService.list());
     }
 
     @PutMapping("/api/admin/role/menu")

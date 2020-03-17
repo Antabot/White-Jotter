@@ -44,9 +44,6 @@
         }
       },
       methods: {
-        // handleOpen (key, keyPath) {
-        //   console.log(key, keyPath)
-        // },
         handleSelect (key, keyPath) {
           this.cid = key
           this.$emit('indexSelect')

@@ -142,16 +142,16 @@
         listUsers () {
           var _this = this
           this.$axios.get('/admin/user').then(resp => {
-            if (resp && resp.status === 200) {
-              _this.users = resp.data
+            if (resp && resp.data.code === 200) {
+              _this.users = resp.data.result
             }
           })
         },
         listRoles () {
           var _this = this
           this.$axios.get('/admin/role').then(resp => {
-            if (resp && resp.status === 200) {
-              _this.roles = resp.data
+            if (resp && resp.data.code === 200) {
+              _this.roles = resp.data.result
             }
           })
         },
@@ -161,7 +161,7 @@
               enabled: value,
               username: user.username
             }).then(resp => {
-              if (resp && resp.status === 200) {
+              if (resp && resp.data.code === 200) {
                 if (value) {
                   this.$message('用户 [' + user.username + '] 已启用')
                 } else {
@@ -192,7 +192,7 @@
             email: user.email,
             roles: roles
           }).then(resp => {
-            if (resp && resp.status === 200) {
+            if (resp && resp.data.code === 200) {
               this.$alert('用户信息修改成功')
               this.dialogFormVisible = false
               // 修改角色后重新请求用户信息，实现视图更新
@@ -213,7 +213,7 @@
           this.$axios.put('/admin/user/password', {
             username: username
           }).then(resp => {
-            if (resp && resp.status === 200) {
+            if (resp && resp.data.code === 200) {
               this.$alert('密码已重置为 123')
           }
           })

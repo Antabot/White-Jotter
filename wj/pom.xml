@@ -23,12 +23,27 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- springboot tomcat 支持 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<!-- log4j2 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
 		<!-- 热部署 -->
 		<dependency>
@@ -46,16 +61,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+		</dependency>
 		<!-- springboot test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<!-- thymeleaf -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<!-- elastic search -->
 		<dependency>
@@ -67,13 +81,6 @@
 			<groupId>com.sun.jna</groupId>
 			<artifactId>jna</artifactId>
 			<version>3.0.9</version>
-		</dependency>
-
-		<!-- thymeleaf legacyhtml5 模式支持 -->
-		<dependency>
-			<groupId>net.sourceforge.nekohtml</groupId>
-			<artifactId>nekohtml</artifactId>
-			<version>1.9.22</version>
 		</dependency>
 		<!-- 测试支持 -->
 		<dependency>
@@ -117,10 +124,11 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.41</version>
 		</dependency>
+		<!-- lombok -->
 		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>3.8.3</version>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>compile</scope>
 		</dependency>
     </dependencies>
 	<properties>

@@ -7,8 +7,6 @@ import com.gm.wj.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
-
 /**
  * User controller.
  *
@@ -24,8 +22,8 @@ public class UserController {
     AdminUserRoleService adminUserRoleService;
 
     @GetMapping("/api/admin/user")
-    public List<User> listUsers() {
-        return userService.list();
+    public Result listUsers() {
+        return ResultFactory.buildSuccessResult(userService.list());
     }
 
     @PutMapping("/api/admin/user/status")

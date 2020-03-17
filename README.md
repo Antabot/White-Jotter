@@ -133,17 +133,24 @@ npm run build
 
 17.[后台角色、权限与菜单分配](https://learner.blog.csdn.net/article/details/103603726)
 
+18.[博客功能开发](https://learner.blog.csdn.net/article/details/104033436)
+
+19.[项目优化解决方案](https://learner.blog.csdn.net/article/details/104763090)
+
 (持续更新中)
 
 # 近期更新
 
 ## 2020
-
+03-17 后端接口全部使用统一返回类，并将返回类中原 data 属性更名为 result    
+03-14 启用 lombok  
+03-11 使用 log4j2 替代原有日志插件  
+03 
 01-20 利用开源 markdown 编辑器实现文章展示与管理模块
  
 ---
 
-##2019 
+## 2019 
 
 12-01 实现功能级权限控制  
 11-30 利用 vue-elment-admin 项目完善后台界面设计  
