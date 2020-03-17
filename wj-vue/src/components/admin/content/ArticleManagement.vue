@@ -86,7 +86,7 @@
       return {
         articles: [],
         pageSize: 10,
-        total: ''
+        total: 0
       }
     },
     mounted () {
@@ -101,18 +101,18 @@
       loadArticles () {
         var _this = this
         this.$axios.get('/article/' + this.pageSize + '/1').then(resp => {
-          if (resp && resp.status === 200) {
-            _this.articles = resp.data.content
-            _this.total = resp.data.totalElements
+          if (resp && resp.data.code === 200) {
+            _this.articles = resp.data.result.content
+            _this.total = resp.data.result.totalElements
           }
         })
       },
       handleCurrentChange (page) {
         var _this = this
         this.$axios.get('/article/' + this.pageSize + '/' + page).then(resp => {
-          if (resp && resp.status === 200) {
-            _this.articles = resp.data.content
-            _this.total = resp.data.totalElements
+          if (resp && resp.data.code === 200) {
+            _this.articles = resp.data.result.content
+            _this.total = resp.data.result.totalElements
           }
         })
       },
@@ -145,7 +145,7 @@
         }).then(() => {
             this.$axios
               .delete('/admin/content/article/' + id).then(resp => {
-              if (resp && resp.status === 200) {
+              if (resp && resp.data.code === 200) {
                 this.loadArticles()
               }
             })

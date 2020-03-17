@@ -83,7 +83,7 @@
                 articleCover: this.article.articleCover,
                 articleDate: this.article.articleDate
               }).then(resp => {
-              if (resp && resp.status === 200) {
+              if (resp && resp.data.code === 200) {
                 this.$message({
                   type: 'info',
                   message: '已保存成功'

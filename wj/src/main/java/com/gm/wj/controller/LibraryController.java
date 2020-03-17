@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Library controller.
@@ -25,8 +24,8 @@ public class LibraryController {
     BookService bookService;
 
     @GetMapping("/api/books")
-    public List<Book> listBooks() {
-        return bookService.list();
+    public Result listBooks() {
+        return ResultFactory.buildSuccessResult(bookService.list());
     }
 
     @PostMapping("/api/admin/content/books")
@@ -46,20 +45,20 @@ public class LibraryController {
     }
 
     @GetMapping("/api/search")
-    public List<Book> searchResult(@RequestParam("keywords") String keywords) {
+    public Result searchResult(@RequestParam("keywords") String keywords) {
         if ("".equals(keywords)) {
-            return bookService.list();
+            return ResultFactory.buildSuccessResult(bookService.list());
         } else {
-            return bookService.Search(keywords);
+            return ResultFactory.buildSuccessResult(bookService.Search(keywords));
         }
     }
 
     @GetMapping("/api/categories/{cid}/books")
-    public List<Book> listByCategory(@PathVariable("cid") int cid) {
+    public Result listByCategory(@PathVariable("cid") int cid) {
         if (0 != cid) {
-            return bookService.listByCategory(cid);
+            return ResultFactory.buildSuccessResult(bookService.listByCategory(cid));
         } else {
-            return listBooks();
+            return ResultFactory.buildSuccessResult(bookService.list());
         }
     }
 

@@ -1,11 +1,10 @@
 package com.gm.wj.controller;
 
-import com.gm.wj.entity.AdminMenu;
+import com.gm.wj.result.Result;
+import com.gm.wj.result.ResultFactory;
 import com.gm.wj.service.AdminMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * Menu controller.
@@ -19,12 +18,12 @@ public class MenuController {
     AdminMenuService adminMenuService;
 
     @GetMapping("/api/menu")
-    public List<AdminMenu> menu() {
-        return adminMenuService.getMenusByCurrentUser();
+    public Result menu() {
+        return ResultFactory.buildSuccessResult(adminMenuService.getMenusByCurrentUser());
     }
 
     @GetMapping("/api/admin/role/menu")
-    public List<AdminMenu> listAllMenus() {
-        return adminMenuService.getMenusByRoleId(1);
+    public Result listAllMenus() {
+        return ResultFactory.buildSuccessResult(adminMenuService.getMenusByRoleId(1));
     }
 }

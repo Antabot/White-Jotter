@@ -27,8 +27,8 @@
       loadArticle () {
         var _this = this
         this.$axios.get('/article/' + this.$route.query.id).then(resp => {
-          if (resp && resp.status === 200) {
-            _this.article = resp.data
+          if (resp && resp.data.code === 200) {
+            _this.article = resp.data.result
           }
         })
       }

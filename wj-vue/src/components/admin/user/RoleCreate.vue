@@ -59,7 +59,7 @@
           })
           .then(resp => {
             if (resp.data.code === 200) {
-              this.$alert(resp.data.data, '提示', {
+              this.$alert(resp.data.result, '提示', {
                 confirmButtonText: '确定'
               })
               this.clear()

@@ -35,13 +35,12 @@ public class LoginController {
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, requestUser.getPassword());
         usernamePasswordToken.setRememberMe(true);
         try {
+            subject.login(usernamePasswordToken);
             User user = userService.findByUsername(username);
             if (!user.isEnabled()) {
                 return ResultFactory.buildFailResult("该用户已被禁用");
             }
-            subject.login(usernamePasswordToken);
             return ResultFactory.buildSuccessResult(usernamePasswordToken);
-
         } catch (IncorrectCredentialsException e) {
             return ResultFactory.buildFailResult("密码错误");
         } catch (UnknownAccountException e) {

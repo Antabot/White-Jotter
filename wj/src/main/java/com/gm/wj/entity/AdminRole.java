@@ -1,6 +1,7 @@
 package com.gm.wj.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * @author Evan
  * @date 2019/11
  */
+@Data
 @Entity
 @Table(name = "admin_role")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
@@ -36,6 +38,7 @@ public class AdminRole {
      */
     private boolean enabled;
 
+
     /**
      * Transient property for storing permissions owned by current role.
      */
@@ -47,52 +50,4 @@ public class AdminRole {
      */
     @Transient
     private List<AdminMenu> menus;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNameZh() {
-        return nameZh;
-    }
-
-    public void setNameZh(String nameZh) {
-        this.nameZh = nameZh;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public List<AdminPermission> getPerms() {
-        return perms;
-    }
-
-    public void setPerms(List<AdminPermission> perms) {
-        this.perms = perms;
-    }
-
-    public List<AdminMenu> getMenus() {
-        return menus;
-    }
-
-    public void setMenus(List<AdminMenu> menus) {
-        this.menus = menus;
-    }
 }
