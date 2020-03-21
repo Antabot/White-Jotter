@@ -5,11 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: {
-      name: window.localStorage.getItem('user') == null ? '未登录' : JSON.parse(window.localStorage.getItem('user' || '[]')).name,
-      username: window.localStorage.getItem('user') == null ? '' : JSON.parse(window.localStorage.getItem('user' || '[]')).username
-      // username: 'admin'
-    },
+    username: window.localStorage.getItem('username') == null ? '' : JSON.parse(window.localStorage.getItem('username' || '[]')),
     adminMenus: []
   },
   mutations: {
@@ -18,12 +14,12 @@ export default new Vuex.Store({
     },
     login (state, data) {
       state.user = data
-      window.localStorage.setItem('user', JSON.stringify(data))
+      window.localStorage.setItem('username', JSON.stringify(data))
     },
     logout (state) {
       // 注意不能用 null 清除，否则将无法判断 user 里具体的内容
       state.user = []
-      window.localStorage.removeItem('user')
+      window.localStorage.removeItem('username')
       state.adminMenus = []
     }
   },

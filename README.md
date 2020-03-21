@@ -54,7 +54,7 @@
 ## 2.后端技术栈
 
 1.Spring Boot  
-2.Spring Data + JPA 
+2.Spring Data + JPA  
 3.MySQL  
 4.Shiro
 
@@ -144,8 +144,7 @@ npm run build
 ## 2020
 03-17 后端接口全部使用统一返回类，并将返回类中原 data 属性更名为 result    
 03-14 启用 lombok  
-03-11 使用 log4j2 替代原有日志插件  
-03 
+03-11 使用 log4j2 替代原有日志插件   
 01-20 利用开源 markdown 编辑器实现文章展示与管理模块
  
 ---

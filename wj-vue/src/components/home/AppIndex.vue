@@ -40,7 +40,6 @@
     padding-bottom: 20px;
     padding-left: 5px;
     background-color: white;
-    /*background: url("../../assets/img/bg/bg3.jpg");*/
   }
 
   #side-menu {
