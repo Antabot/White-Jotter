@@ -35,7 +35,7 @@
       return {
         articles: [],
         pageSize: 4,
-        total: ''
+        total: 0
       }
     },
     mounted () {

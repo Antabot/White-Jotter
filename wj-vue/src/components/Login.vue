@@ -21,6 +21,7 @@
   </body>
 </template>
 <script>
+  // import initAdminMenu from '../main.js'
   export default{
     data () {
       return {
