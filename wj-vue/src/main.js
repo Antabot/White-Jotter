@@ -37,7 +37,11 @@ router.beforeEach((to, from, next) => {
         })
       }
     } else {
-      next()
+      if (to.path.startsWith('/login') && store.state.user.username) {
+        router.replace('/index')
+      } else {
+        next()
+      }
     }
   }
 )
@@ -49,6 +53,7 @@ axios.interceptors.response.use(
   },
   error => {
     if (error) {
+      store.commit('logout')
       router.replace('/login')
     }
     // 返回接口返回的错误信息
