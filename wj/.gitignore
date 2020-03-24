@@ -24,3 +24,4 @@ HELP.md
 /nbdist/
 /.nb-gradle/
 /build/
+/src/main/resources/static/
