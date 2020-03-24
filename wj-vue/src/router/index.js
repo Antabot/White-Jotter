@@ -10,7 +10,7 @@ import AdminIndex from '../components/admin/AdminIndex'
 import Register from '../components/Register'
 import DashBoard from '../components/admin/dashboard/admin/index'
 import ArticleDetails from '../components/jotter/ArticleDetails'
-// import Error404 from '../components/pages/Error404'
+import Error404 from '../components/pages/Error404'
 
 Vue.use(Router)
 
@@ -87,11 +87,11 @@ export default new Router({
           }
         }
       ]
+    },
+    {
+      path: '*',
+      component: Error404
     }
-    // {
-    //   path: '*',
-    //   component: Error404
-    // }
   ]
 })
 
@@ -169,10 +169,10 @@ export const createRouter = routes => new Router({
           }
         }
       ]
+    },
+    {
+      path: '*',
+      component: Error404
     }
-    // {
-    //   path: '*',
-    //   component: Error404
-    // }
   ]
 })
