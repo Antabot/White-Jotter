@@ -25,3 +25,4 @@ HELP.md
 /.nb-gradle/
 /build/
 /src/main/resources/static/
+/logs/
