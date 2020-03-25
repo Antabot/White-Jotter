@@ -21,7 +21,6 @@
   </body>
 </template>
 <script>
-  // import initAdminMenu from '../main.js'
   export default{
     data () {
       return {
@@ -93,10 +92,4 @@
     margin: 0px 0px 35px 0px;
     text-align: left;
   }
-  /*.login_button {*/
-    /*background: #505458;*/
-  /*}*/
-  /*el_checkbox {*/
-    /*background: #505458;*/
-  /*}*/
 </style>

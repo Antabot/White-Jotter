@@ -37,15 +37,9 @@ public class AdminMenuService {
         for (AdminUserRole userRole : userRoleList) {
             List<AdminRoleMenu> rms = adminRoleMenuService.findAllByRid(userRole.getRid());
             for (AdminRoleMenu rm : rms) {
-                // 增加防止多角色状态下菜单重复的逻辑
                 AdminMenu menu = adminMenuDAO.findById(rm.getMid());
-                boolean isExist = false;
-                for (AdminMenu m : menus) {
-                    if (m.getId() == menu.getId()) {
-                        isExist = true;
-                    }
-                }
-                if (!isExist) {
+                // 防止多角色状态下菜单重复
+                if(!menus.contains(menu)) {
                     menus.add(menu);
                 }
             }
