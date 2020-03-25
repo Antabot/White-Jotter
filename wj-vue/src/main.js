@@ -1,5 +1,4 @@
 import Vue from 'vue'
-// import ElementUI from 'element-ui'
 import App from './App'
 import router from './router'
 import mavonEditor from 'mavon-editor'
