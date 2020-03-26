@@ -143,7 +143,9 @@ router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) {
       if (store.state.username) {
         axios.get('/authentication').then(resp => {
-          if (resp) next()
+          if (resp) {
+            next()
+          }
         })
       } else {
         next({
@@ -164,10 +166,11 @@ axios.interceptors.response.use(
   },
   error => {
     if (error) {
+      store.commit('logout')
       router.replace('/login')
     }
     // 返回接口返回的错误信息
-    return Promise.reject(error.response)
+    return Promise.reject(error)
   })
 
 const initAdminMenu = (router, store) => {
