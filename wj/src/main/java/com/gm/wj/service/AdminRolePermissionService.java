@@ -26,11 +26,11 @@ public class AdminRolePermissionService {
     @Transactional
     public void savePermChanges(int rid, List<AdminPermission> perms) {
         adminRolePermissionDAO.deleteAllByRid(rid);
-        for (AdminPermission perm : perms) {
+        perms.forEach(p -> {
             AdminRolePermission rp = new AdminRolePermission();
             rp.setRid(rid);
-            rp.setPid(perm.getId());
+            rp.setPid(p.getId());
             adminRolePermissionDAO.save(rp);
-        }
+        });
     }
 }
