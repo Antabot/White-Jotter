@@ -26,11 +26,11 @@ public class AdminUserRoleService {
     @Transactional
     public void saveRoleChanges(int uid, List<AdminRole> roles) {
         adminUserRoleDAO.deleteAllByUid(uid);
-        for (AdminRole role : roles) {
+        roles.forEach(r -> {
             AdminUserRole ur = new AdminUserRole();
             ur.setUid(uid);
-            ur.setRid(role.getId());
+            ur.setRid(r.getId());
             adminUserRoleDAO.save(ur);
-        }
+        });
     }
 }

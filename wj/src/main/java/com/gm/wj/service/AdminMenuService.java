@@ -27,23 +27,27 @@ public class AdminMenuService {
     @Autowired
     AdminRoleMenuService adminRoleMenuService;
 
-    public List<AdminMenu> getAllByParentId(int parentId) {return adminMenuDAO.findAllByParentId(parentId);}
+    public List<AdminMenu> getAllByParentId(int parentId) {
+        return adminMenuDAO.findAllByParentId(parentId);
+    }
 
     public List<AdminMenu> getMenusByCurrentUser() {
         String username = SecurityUtils.getSubject().getPrincipal().toString();
         User user = userService.findByUsername(username);
         List<AdminUserRole> userRoleList = adminUserRoleService.listAllByUid(user.getId());
         List<AdminMenu> menus = new ArrayList<>();
-        for (AdminUserRole userRole : userRoleList) {
-            List<AdminRoleMenu> rms = adminRoleMenuService.findAllByRid(userRole.getRid());
-            for (AdminRoleMenu rm : rms) {
+
+        userRoleList.forEach(ur -> {
+            List<AdminRoleMenu> rms = adminRoleMenuService.findAllByRid(ur.getRid());
+            rms.forEach(rm -> {
                 AdminMenu menu = adminMenuDAO.findById(rm.getMid());
                 // 防止多角色状态下菜单重复
                 if(!menus.contains(menu)) {
                     menus.add(menu);
                 }
-            }
-        }
+            });
+        });
+
         handleMenus(menus);
         return menus;
     }
@@ -51,19 +55,19 @@ public class AdminMenuService {
     public List<AdminMenu> getMenusByRoleId(int rid) {
         List<AdminMenu> menus = new ArrayList<>();
         List<AdminRoleMenu> rms = adminRoleMenuService.findAllByRid(rid);
-        for (AdminRoleMenu rm : rms) {
-            menus.add(adminMenuDAO.findById(rm.getMid()));
-        }
+
+        rms.forEach(rm -> menus.add(adminMenuDAO.findById(rm.getMid())));
+
         handleMenus(menus);
         return menus;
     }
 
     public void handleMenus(List<AdminMenu> menus) {
-        for (AdminMenu menu : menus) {
-            List<AdminMenu> children = getAllByParentId(menu.getId());
-            menu.setChildren(children);
-        }
+        menus.forEach(m -> {
+            List<AdminMenu> children = getAllByParentId(m.getId());
+            m.setChildren(children);
+        });
 
-        menus.removeIf(menu -> menu.getParentId() != 0);
+        menus.removeIf(m -> m.getParentId() != 0);
     }
 }

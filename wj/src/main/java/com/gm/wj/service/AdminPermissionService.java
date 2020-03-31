@@ -47,9 +47,7 @@ public class AdminPermissionService {
     public List<AdminPermission> listPermsByRoleId(int rid) {
         List<AdminRolePermission> rps = adminRolePermissionService.findAllByRid(rid);
         List<AdminPermission> perms = new ArrayList<>();
-        for (AdminRolePermission rp : rps) {
-            perms.add(adminPermissionDAO.findById(rp.getPid()));
-        }
+        rps.forEach(rp -> perms.add(adminPermissionDAO.findById(rp.getPid())));
         return perms;
     }
 
@@ -57,12 +55,11 @@ public class AdminPermissionService {
         List<AdminRole> roles = adminRoleService.listRolesByUser(username);
         Set<String> URLs = new HashSet<>();
 
-        for (AdminRole role : roles) {
-            List<AdminRolePermission> rps = adminRolePermissionService.findAllByRid(role.getId());
-            for (AdminRolePermission rp : rps) {
-                URLs.add(adminPermissionDAO.findById(rp.getPid()).getUrl());
-            }
-        }
+        roles.forEach(r -> {
+            List<AdminRolePermission> rps = adminRolePermissionService.findAllByRid(r.getId());
+            rps.forEach(rp -> URLs.add(adminPermissionDAO.findById(rp.getPid()).getUrl()));
+        });
+
         return URLs;
     }
 }

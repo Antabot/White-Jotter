@@ -45,7 +45,6 @@ public class BookService {
 
     public List<Book> listByCategory(int cid) {
         Category category = categoryService.get(cid);
-        Sort sort = new Sort(Sort.Direction.DESC, "id");
         return bookDAO.findAllByCategory(category);
     }
 

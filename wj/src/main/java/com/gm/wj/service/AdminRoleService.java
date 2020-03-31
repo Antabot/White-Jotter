@@ -5,8 +5,6 @@ import com.gm.wj.entity.AdminMenu;
 import com.gm.wj.entity.AdminPermission;
 import com.gm.wj.entity.AdminRole;
 import com.gm.wj.entity.AdminUserRole;
-import com.gm.wj.result.Result;
-import com.gm.wj.result.ResultFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,9 +56,7 @@ public class AdminRoleService {
         int uid =  userService.findByUsername(username).getId();
         List<AdminRole> roles = new ArrayList<>();
         List<AdminUserRole> urs = adminUserRoleService.listAllByUid(uid);
-        for (AdminUserRole ur: urs) {
-            roles.add(adminRoleDAO.findById(ur.getRid()));
-        }
+        urs.forEach(ur -> roles.add(adminRoleDAO.findById(ur.getRid())));
         return roles;
     }
 
