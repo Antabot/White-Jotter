@@ -2,6 +2,7 @@ package com.gm.wj.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -15,6 +16,7 @@ import java.sql.Date;
 @Data
 @Entity
 @Table(name = "jotter_article")
+@ToString
 @JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 public class JotterArticle {
     @Id
