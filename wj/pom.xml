@@ -130,6 +130,12 @@
 			<artifactId>lombok</artifactId>
 			<scope>compile</scope>
 		</dependency>
+		<!-- hutool -->
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>5.2.5</version>
+		</dependency>
     </dependencies>
 	<properties>
 		<java.version>1.8</java.version>

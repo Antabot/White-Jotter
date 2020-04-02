@@ -9,6 +9,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * Category entity.
@@ -19,6 +20,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "category")
+@ToString
 @JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
 
 public class Category {

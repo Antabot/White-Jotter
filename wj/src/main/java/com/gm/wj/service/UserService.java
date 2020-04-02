@@ -1,6 +1,9 @@
 package com.gm.wj.service;
 
+import cn.hutool.core.convert.Convert;
+import cn.hutool.core.convert.Converter;
 import com.gm.wj.dao.UserDAO;
+import com.gm.wj.dto.UserDTO;
 import com.gm.wj.entity.AdminRole;
 import com.gm.wj.entity.User;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
@@ -9,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.HtmlUtils;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Evan
@@ -24,14 +30,18 @@ public class UserService {
     @Autowired
     AdminUserRoleService adminUserRoleService;
 
-    public List<User> list() {
-        List<User> users =  userDAO.list();
+    public List<UserDTO> list() {
+        List<User> users =  userDAO.findAll();
         List<AdminRole> roles;
-        for (User user : users) {
-            roles = adminRoleService.listRolesByUser(user.getUsername());
-            user.setRoles(roles);
+
+        List<UserDTO> userDTOS = users.stream().map(user -> (UserDTO) new UserDTO().convertFrom(user)).collect(Collectors.toList());
+
+        for (UserDTO userDTO : userDTOS) {
+            roles = adminRoleService.listRolesByUser(userDTO.getUsername());
+            userDTO.setRoles(roles);
         }
-        return users;
+
+        return userDTOS;
     }
 
     public boolean isExist(String username) {
