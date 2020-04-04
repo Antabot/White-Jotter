@@ -51,7 +51,7 @@ public class LoginController {
     }
 
     @PostMapping("/api/register")
-    public Result register(@RequestBody @Valid User user) {
+    public Result register(@RequestBody User user) {
         int status = userService.register(user);
         switch (status) {
             case 0:

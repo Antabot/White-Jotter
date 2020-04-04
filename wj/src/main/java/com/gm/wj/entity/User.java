@@ -2,12 +2,10 @@ package com.gm.wj.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -34,7 +32,6 @@ public class User {
     /**
      * Username.
      */
-    @NotNull(message = "用户名不能为 null")
     @NotEmpty(message = "用户名不能为空")
     private String username;
 
@@ -56,8 +53,6 @@ public class User {
     /**
      * Phone number.
      */
-    @NotNull(message = "电话号码不能为空")
-    @Length(min = 11, max = 11, message = "请输入正确的电话号码")
     private String phone;
 
     /**
