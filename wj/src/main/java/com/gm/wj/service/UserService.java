@@ -1,7 +1,5 @@
 package com.gm.wj.service;
 
-import cn.hutool.core.convert.Convert;
-import cn.hutool.core.convert.Converter;
 import com.gm.wj.dao.UserDAO;
 import com.gm.wj.dto.UserDTO;
 import com.gm.wj.entity.AdminRole;
@@ -12,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.HtmlUtils;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +27,7 @@ public class UserService {
     AdminUserRoleService adminUserRoleService;
 
     public List<UserDTO> list() {
-        List<User> users =  userDAO.findAll();
+        List<User> users = userDAO.findAll();
         List<AdminRole> roles;
 
         List<UserDTO> userDTOS = users.stream().map(user -> (UserDTO) new UserDTO().convertFrom(user)).collect(Collectors.toList());
@@ -46,14 +42,14 @@ public class UserService {
 
     public boolean isExist(String username) {
         User user = userDAO.findByUsername(username);
-        return null!=user;
+        return null != user;
     }
 
     public User findByUsername(String username) {
         return userDAO.findByUsername(username);
     }
 
-    public User get(String username, String password){
+    public User get(String username, String password) {
         return userDAO.getByUsernameAndPassword(username, password);
     }
 
@@ -95,47 +91,34 @@ public class UserService {
 
         user.setSalt(salt);
         user.setPassword(encodedPassword);
+
         userDAO.save(user);
 
         return 1;
     }
 
-    public boolean updateUserStatus(User user) {
+    public void updateUserStatus(User user) {
         User userInDB = userDAO.findByUsername(user.getUsername());
         userInDB.setEnabled(user.isEnabled());
-        try {
-            userDAO.save(userInDB);
-        } catch (IllegalArgumentException e) {
-            return false;
-        } return true;
+        userDAO.save(userInDB);
     }
 
-    public boolean resetPassword(User user) {
+    public void resetPassword(User user) {
         User userInDB = userDAO.findByUsername(user.getUsername());
         String salt = new SecureRandomNumberGenerator().nextBytes().toString();
         int times = 2;
         userInDB.setSalt(salt);
         String encodedPassword = new SimpleHash("md5", "123", salt, times).toString();
         userInDB.setPassword(encodedPassword);
-        try {
-            userDAO.save(userInDB);
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        return true;
+        userDAO.save(userInDB);
     }
 
-    public boolean editUser(User user) {
+    public void editUser(User user) {
         User userInDB = userDAO.findByUsername(user.getUsername());
         userInDB.setName(user.getName());
         userInDB.setPhone(user.getPhone());
         userInDB.setEmail(user.getEmail());
-        try {
-            userDAO.save(userInDB);
-            adminUserRoleService.saveRoleChanges(userInDB.getId(), user.getRoles());
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        return true;
+        userDAO.save(userInDB);
+        adminUserRoleService.saveRoleChanges(userInDB.getId(), user.getRoles());
     }
 }

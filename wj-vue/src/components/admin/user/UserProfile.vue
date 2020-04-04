@@ -197,6 +197,8 @@
               this.dialogFormVisible = false
               // 修改角色后重新请求用户信息，实现视图更新
               this.listUsers()
+            } else {
+              this.$alert(resp.data.message)
             }
           })
         },

@@ -30,18 +30,14 @@ public class LibraryController {
 
     @PostMapping("/api/admin/content/books")
     public Result addOrUpdateBooks(@RequestBody Book book) {
-        if(bookService.addOrUpdate(book)) {
-            return ResultFactory.buildSuccessResult("修改成功");
-        }
-        return ResultFactory.buildFailResult("参数错误，修改失败");
+        bookService.addOrUpdate(book);
+        return ResultFactory.buildSuccessResult("修改成功");
     }
 
     @PostMapping("/api/admin/content/books/delete")
     public Result deleteBook(@RequestBody Book book) {
-        if (bookService.deleteById(book.getId())) {
-            return ResultFactory.buildSuccessResult("删除成功");
-        }
-        return ResultFactory.buildFailResult("参数错误，删除失败");
+        bookService.deleteById(book.getId());
+        return ResultFactory.buildSuccessResult("删除成功");
     }
 
     @GetMapping("/api/search")

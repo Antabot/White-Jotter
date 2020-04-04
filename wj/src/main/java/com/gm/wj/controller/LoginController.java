@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
+import javax.validation.Valid;
+
 /**
  * Login and register controller.
  *
@@ -49,7 +51,7 @@ public class LoginController {
     }
 
     @PostMapping("/api/register")
-    public Result register(@RequestBody User user) {
+    public Result register(@RequestBody @Valid User user) {
         int status = userService.register(user);
         switch (status) {
             case 0:

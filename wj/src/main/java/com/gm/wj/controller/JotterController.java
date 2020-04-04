@@ -7,6 +7,8 @@ import com.gm.wj.service.JotterArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Jotter controller.
  *
@@ -19,11 +21,9 @@ public class JotterController {
     JotterArticleService jotterArticleService;
 
     @PostMapping("api/admin/content/article")
-    public Result saveArticle(@RequestBody JotterArticle article) {
-        if(jotterArticleService.addOrUpdate(article)) {
-            return ResultFactory.buildSuccessResult("保存成功");
-        }
-        return ResultFactory.buildFailResult("参数错误，保存失败");
+    public Result saveArticle(@RequestBody @Valid JotterArticle article) {
+        jotterArticleService.addOrUpdate(article);
+        return ResultFactory.buildSuccessResult("保存成功");
     }
 
     @GetMapping("/api/article/{size}/{page}")
@@ -38,9 +38,7 @@ public class JotterController {
 
     @DeleteMapping("/api/admin/content/article/{id}")
     public Result deleteArticle(@PathVariable("id") int id) {
-        if(jotterArticleService.delete(id)) {
-            return ResultFactory.buildSuccessResult("删除成功");
-        }
-        return ResultFactory.buildFailResult("参数错误，删除失败");
+        jotterArticleService.delete(id);
+        return ResultFactory.buildSuccessResult("删除成功");
     }
 }
