@@ -7,6 +7,8 @@ import com.gm.wj.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * User controller.
  *
@@ -27,29 +29,20 @@ public class UserController {
     }
 
     @PutMapping("/api/admin/user/status")
-    public Result updateUserStatus(@RequestBody User requestUser) {
-        if (userService.updateUserStatus(requestUser)) {
-            return ResultFactory.buildSuccessResult("用户状态更新成功");
-        } else {
-            return ResultFactory.buildFailResult("参数错误，更新失败");
-        }
+    public Result updateUserStatus(@RequestBody @Valid User requestUser) {
+        userService.updateUserStatus(requestUser);
+        return ResultFactory.buildSuccessResult("用户状态更新成功");
     }
 
     @PutMapping("/api/admin/user/password")
-    public Result resetPassword(@RequestBody User requestUser) {
-        if (userService.resetPassword(requestUser)) {
-            return ResultFactory.buildSuccessResult("重置密码成功");
-        } else {
-            return ResultFactory.buildFailResult("参数错误，重置失败");
-        }
+    public Result resetPassword(@RequestBody @Valid User requestUser) {
+        userService.resetPassword(requestUser);
+        return ResultFactory.buildSuccessResult("重置密码成功");
     }
 
     @PutMapping("/api/admin/user")
-    public Result editUser(@RequestBody User requestUser) {
-        if(userService.editUser(requestUser)) {
-            return ResultFactory.buildSuccessResult("修改用户信息成功");
-        } else {
-            return ResultFactory.buildFailResult("参数错误，修改失败");
-        }
+    public Result editUser(@RequestBody @Valid User requestUser) {
+        userService.editUser(requestUser);
+        return ResultFactory.buildSuccessResult("修改用户信息成功");
     }
 }

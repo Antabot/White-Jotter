@@ -53,7 +53,7 @@ public class AdminRoleService {
     }
 
     public List<AdminRole> listRolesByUser(String username) {
-        int uid =  userService.findByUsername(username).getId();
+        int uid = userService.findByUsername(username).getId();
         List<AdminRole> roles = new ArrayList<>();
         List<AdminUserRole> urs = adminUserRoleService.listAllByUid(uid);
         urs.forEach(ur -> roles.add(adminRoleDAO.findById(ur.getRid())));
@@ -66,13 +66,8 @@ public class AdminRoleService {
         return adminRoleDAO.save(roleInDB);
     }
 
-    public boolean editRole(@RequestBody AdminRole requestRole) {
-        try {
-            adminRoleDAO.save(requestRole);
-            adminRolePermissionService.savePermChanges(requestRole.getId(), requestRole.getPerms());
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        return true;
+    public void editRole(@RequestBody AdminRole requestRole) {
+        adminRoleDAO.save(requestRole);
+        adminRolePermissionService.savePermChanges(requestRole.getId(), requestRole.getPerms());
     }
 }

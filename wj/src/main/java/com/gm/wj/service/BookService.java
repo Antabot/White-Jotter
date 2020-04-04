@@ -5,7 +5,9 @@ import com.gm.wj.entity.Book;
 import com.gm.wj.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,22 +27,12 @@ public class BookService {
         return bookDAO.findAll(sort);
     }
 
-    public boolean addOrUpdate(Book book) {
-        try {
-            bookDAO.save(book);
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        return true;
+    public void addOrUpdate(Book book) {
+        bookDAO.save(book);
     }
 
-    public boolean deleteById(int id) {
-        try {
-            bookDAO.deleteById(id);
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        return true;
+    public void deleteById(int id) {
+        bookDAO.deleteById(id);
     }
 
     public List<Book> listByCategory(int cid) {

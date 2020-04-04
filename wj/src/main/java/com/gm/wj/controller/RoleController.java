@@ -30,7 +30,7 @@ public class RoleController {
     AdminRoleMenuService adminRoleMenuService;
 
     @GetMapping("/api/admin/role")
-    public Result listRoles(){
+    public Result listRoles() {
         return ResultFactory.buildSuccessResult(adminRoleService.list());
     }
 
@@ -52,11 +52,8 @@ public class RoleController {
 
     @PostMapping("/api/admin/role")
     public Result addRole(@RequestBody AdminRole requestRole) {
-        if (adminRoleService.editRole(requestRole)) {
-            return ResultFactory.buildSuccessResult("修改用户成功");
-        } else {
-            return ResultFactory.buildFailResult("参数错误，修改失败");
-        }
+        adminRoleService.editRole(requestRole);
+        return ResultFactory.buildSuccessResult("修改用户成功");
     }
 
     @GetMapping("/api/admin/role/perm")
@@ -66,10 +63,7 @@ public class RoleController {
 
     @PutMapping("/api/admin/role/menu")
     public Result updateRoleMenu(@RequestParam int rid, @RequestBody LinkedHashMap menusIds) {
-        if(adminRoleMenuService.updateRoleMenu(rid, menusIds)) {
-            return ResultFactory.buildSuccessResult("更新成功");
-        } else {
-            return ResultFactory.buildFailResult("参数错误，更新失败");
-        }
+        adminRoleMenuService.updateRoleMenu(rid, menusIds);
+        return ResultFactory.buildSuccessResult("更新成功");
     }
 }

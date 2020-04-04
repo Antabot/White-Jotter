@@ -1,10 +1,11 @@
 package com.gm.wj.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 /**
@@ -14,11 +15,13 @@ import java.util.List;
  * @date 2019/4
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "user")
 @ToString
 @JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
-
 public class User {
 
     @Id
@@ -29,6 +32,7 @@ public class User {
     /**
      * Username.
      */
+    @NotEmpty(message = "用户名不能为空")
     private String username;
 
     /**
@@ -53,7 +57,10 @@ public class User {
 
     /**
      * Email address.
+     *
+     * A Email address can be null,but should be correct if exists.
      */
+    @Email(message = "请输入正确的邮箱")
     private String email;
 
     /**

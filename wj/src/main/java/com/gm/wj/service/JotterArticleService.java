@@ -26,22 +26,12 @@ public class JotterArticleService {
         return jotterArticleDAO.findById(id);
     }
 
-    public boolean addOrUpdate(JotterArticle article) {
-        try {
-            jotterArticleDAO.save(article);
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        return true;
+    public void addOrUpdate(JotterArticle article) {
+        jotterArticleDAO.save(article);
     }
 
-    public boolean delete(int id) {
-        try {
-            jotterArticleDAO.deleteById(id);
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        return true;
+    public void delete(int id) {
+        jotterArticleDAO.deleteById(id);
     }
 
 }
