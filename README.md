@@ -10,7 +10,7 @@
 
 除了用作入门练习，我还希望该项目可以作为一些常见 Web 项目的脚手架，帮助大家简化搭建网站的流程。之所以叫白卷，是因为它从 0 开始，会随着时间的推移逐渐完善。
 
-前端地址：[https://github.com/Antabot/wj-vue](https://github.com/Antabot/wj-vue)
+前端地址：[https://github.com/Antabot/White-Jotter-Vue](https://github.com/Antabot/White-Jotter-Vue)
 
 后端地址：[https://github.com/Antabot/White-Jotter](https://github.com/Antabot/White-Jotter)
 
@@ -66,19 +66,25 @@
 
 1.clone 项目到本地
 
+前端：
+
+`git clone https://github.com/Antabot/White-Jotter-Vue`
+
+后端：
+
 `git clone https://github.com/Antabot/White-Jotter`
 
-2.数据库脚本放在 `wj` 项目的根目录下，在MySQL中执行数据库脚本  
+2.数据库脚本放在后端项目的 `src\main\resources` 目录下，在MySQL中执行数据库脚本  
 
-3.数据库配置在 `wj` 项目的 `src\main\resources` 目录下的`application.properties` 文件中，mysql 版本为 8.0.15   
+3.数据库配置在后端项目的 `src\main\resources` 目录下的`application.properties` 文件中，mysql 版本为 8.0.15   
 
-4.在IntelliJ IDEA中运行 `wj` 项目，为了保证项目成功运行，可以右键点击 `pom.xml` 选择 maven -> reimport ，并重启项目
+4.在IntelliJ IDEA中运行后端项目，为了保证项目成功运行，可以右键点击 `pom.xml` 选择 maven -> reimport ，并重启项目
 
-至此，服务端就启动成功了，同时，运行 `wj-vue` 项目，访问 `http://localhost:8080` ，即可进入登录页面，默认账号是 `admin`，密码是 `123`
+至此，服务端就启动成功了，同时，运行前端项目，访问 `http://localhost:8080` ，即可进入登录页面，默认账号是 `admin`，密码是 `123`
 
 如果要做二次开发，请继续看第五、六步。
 
-5.clone 前端项目，进入 `wj-vue` 目录中，在命令行依次输入如下命令：  
+5.进入前端项目根目录中，在命令行依次输入如下命令：  
 
 ```
 # 安装依赖
@@ -98,6 +104,8 @@ npm run build
 ```  
 
 该命令执行成功之后， `wj-vue` 目录下生成一个 `dist` 文件夹，可以将该文件夹中的两个文件 `static` 和 `index.html` 拷贝到 `wj` 项目中 `resources/static/` 目录下，然后直接运行 `wj` 项目，访问 `http://localhost:8443` ，实际上是把前端打包后作为静态文件，但不推荐使用这种方式。
+
+前后端分离部署的方式详见教程第十篇：[「图片上传与项目的打包部署」](https://learner.blog.csdn.net/article/details/97619312)
 
 # 教程
 
