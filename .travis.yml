@@ -6,7 +6,7 @@ sudo: enabled
 before_install:
   - chmod +x mvnw
   - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS wj default charset utf8 COLLATE utf8_general_ci;' -uroot
-  - sudo mysql -e mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';" -uroot
+  - sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';" -uroot
 
 sevices:
   - mysql
