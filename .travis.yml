@@ -9,7 +9,7 @@ before_install:
   - sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';" -uroot
 
 before_script:
-  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('Admin123!') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
+  - echo "USE mysql;UPDATE user SET password=PASSWORD('Admin123!') WHERE user='root';FLUSH PRIVILEGES;" | mysql -u root
 
 sevices:
   - mysql
