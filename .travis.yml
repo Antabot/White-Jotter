@@ -8,6 +8,9 @@ before_install:
   - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS wj default charset utf8 COLLATE utf8_general_ci;' -uroot
   - sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';" -uroot
 
+before_script:
+  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('Admin123!') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
+
 sevices:
   - mysql
 
