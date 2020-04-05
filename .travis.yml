@@ -9,7 +9,7 @@ before_install:
   - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS wj default charset utf8 COLLATE utf8_general_ci;' -uroot
 
 before_script:
-  - sudo mysql -e "user wj;UPDATE user SET password=PASSWORD('Admin123!') WHERE user='root';"  -uroot
+  - sudo mysql -e "use wj;UPDATE user SET password=PASSWORD('Admin123!') WHERE user='root';"  -uroot
 
 sevices:
   - mysql
