@@ -1,5 +1,5 @@
 language: java
-jdk: oraclejdk8
+jdk: oraclejdk12
 
 script:
 - ./mvnw clean install -B
