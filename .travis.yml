@@ -1,10 +1,12 @@
 language: java
 jdk: openjdk11
 
+sudo: enabled
+
 before_install:
   - chmod +x mvnw
 
-services:
+sevices:
   - mysql
 
 script:
