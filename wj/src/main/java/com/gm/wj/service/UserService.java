@@ -121,4 +121,8 @@ public class UserService {
         userDAO.save(userInDB);
         adminUserRoleService.saveRoleChanges(userInDB.getId(), user.getRoles());
     }
+
+    public void deleteById(int id) {
+        userDAO.deleteById(id);
+    }
 }
