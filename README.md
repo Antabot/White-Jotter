@@ -10,6 +10,10 @@
 
 除了用作入门练习，我还希望该项目可以作为一些常见 Web 项目的脚手架，帮助大家简化搭建网站的流程。之所以叫白卷，是因为它从 0 开始，会随着时间的推移逐渐完善。
 
+前端地址：[https://github.com/Antabot/wj-vue](https://github.com/Antabot/wj-vue)
+
+后端地址：[https://github.com/Antabot/White-Jotter](https://github.com/Antabot/White-Jotter)
+
 欢迎加入微信圈子 【开发者】 分享、讨论学习经验：
 
 ![圈子](https://i.loli.net/2020/01/17/HySWdM7wDfF8EKC.png)
@@ -74,7 +78,7 @@
 
 如果要做二次开发，请继续看第五、六步。
 
-5.进入到 `wj-vue` 目录中，在命令行依次输入如下命令：  
+5.clone 前端项目，进入 `wj-vue` 目录中，在命令行依次输入如下命令：  
 
 ```
 # 安装依赖
