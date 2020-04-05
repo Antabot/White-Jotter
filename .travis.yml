@@ -6,7 +6,7 @@ sudo: enabled
 before_install:
   - chmod +x mvnw
   - mysql -e 'CREATE DATABASE wj;'
-  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('Admin121') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('Admin123!') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
   # - sudo mysql_upgrade -u root -p Admin123!
   - sudo service mysql restart
   # - sudo mysql -u root -p Admin123! -e "use wj;source ./src/main/resources/wj.sql;"
