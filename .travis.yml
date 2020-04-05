@@ -4,5 +4,8 @@ jdk: openjdk11
 before_install:
   - chmod +x mvnw
 
+services:
+  - mysql
+
 script:
   - ./mvnw clean install -B
