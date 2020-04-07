@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,11 +27,13 @@ public class AdminRolePermissionService {
     @Transactional
     public void savePermChanges(int rid, List<AdminPermission> perms) {
         adminRolePermissionDAO.deleteAllByRid(rid);
+        List<AdminRolePermission> rps = new ArrayList<>();
         perms.forEach(p -> {
             AdminRolePermission rp = new AdminRolePermission();
             rp.setRid(rid);
             rp.setPid(p.getId());
-            adminRolePermissionDAO.save(rp);
+            rps.add(rp);
         });
+        adminRolePermissionDAO.saveAll(rps);
     }
 }

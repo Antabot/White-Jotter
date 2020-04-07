@@ -1,6 +1,7 @@
 package com.gm.wj.service;
 
 import com.gm.wj.dao.AdminRoleMenuDAO;
+import com.gm.wj.entity.AdminRole;
 import com.gm.wj.entity.AdminRoleMenu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
@@ -9,8 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Evan
@@ -25,10 +28,8 @@ public class AdminRoleMenuService {
         return adminRoleMenuDAO.findAllByRid(rid);
     }
 
-    @Modifying
-    @Transactional
-    public void deleteAllByRid(int rid) {
-        adminRoleMenuDAO.deleteAllByRid(rid);
+    public List<AdminRoleMenu> findAllByRid(List<Integer> rids) {
+        return adminRoleMenuDAO.findAllByRid(rids);
     }
 
     public void save(AdminRoleMenu rm) {
@@ -37,16 +38,16 @@ public class AdminRoleMenuService {
 
     @Modifying
     @Transactional
-    public boolean updateRoleMenu(int rid, LinkedHashMap menusIds) {
-        deleteAllByRid(rid);
-        for (Object value : menusIds.values()) {
-            for (int mid : (List<Integer>) value) {
-                AdminRoleMenu rm = new AdminRoleMenu();
-                rm.setRid(rid);
-                rm.setMid(mid);
-                adminRoleMenuDAO.save(rm);
-            }
+    public void updateRoleMenu(int rid, Map menusIds) {
+        adminRoleMenuDAO.deleteAllByRid(rid);
+        List<AdminRoleMenu> rms = new ArrayList<>();
+        for (Integer mid : (List<Integer>)menusIds.get("menusIds")) {
+            AdminRoleMenu rm = new AdminRoleMenu();
+            rm.setMid(mid);
+            rm.setRid(rid);
+            rms.add(rm);
         }
-        return true;
+
+        adminRoleMenuDAO.saveAll(rms);
     }
 }

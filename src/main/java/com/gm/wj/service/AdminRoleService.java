@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Evan
@@ -44,9 +44,6 @@ public class AdminRoleService {
         return roles;
     }
 
-    public AdminRole findById(int id) {
-        return adminRoleDAO.findById(id);
-    }
 
     public void addOrUpdate(AdminRole adminRole) {
         adminRoleDAO.save(adminRole);
@@ -54,10 +51,9 @@ public class AdminRoleService {
 
     public List<AdminRole> listRolesByUser(String username) {
         int uid = userService.findByUsername(username).getId();
-        List<AdminRole> roles = new ArrayList<>();
-        List<AdminUserRole> urs = adminUserRoleService.listAllByUid(uid);
-        urs.forEach(ur -> roles.add(adminRoleDAO.findById(ur.getRid())));
-        return roles;
+        List<Integer> rids = adminUserRoleService.listAllByUid(uid)
+                .stream().map(AdminUserRole::getRid).collect(Collectors.toList());
+        return adminRoleDAO.findAllById(rids);
     }
 
     public AdminRole updateRoleStatus(AdminRole role) {
@@ -66,8 +62,8 @@ public class AdminRoleService {
         return adminRoleDAO.save(roleInDB);
     }
 
-    public void editRole(@RequestBody AdminRole requestRole) {
-        adminRoleDAO.save(requestRole);
-        adminRolePermissionService.savePermChanges(requestRole.getId(), requestRole.getPerms());
+    public void editRole(@RequestBody AdminRole role) {
+        adminRoleDAO.save(role);
+        adminRolePermissionService.savePermChanges(role.getId(), role.getPerms());
     }
 }

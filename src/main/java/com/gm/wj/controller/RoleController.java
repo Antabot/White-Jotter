@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Role controller.
@@ -62,7 +63,7 @@ public class RoleController {
     }
 
     @PutMapping("/api/admin/role/menu")
-    public Result updateRoleMenu(@RequestParam int rid, @RequestBody LinkedHashMap menusIds) {
+    public Result updateRoleMenu(@RequestParam int rid, @RequestBody Map menusIds) {
         adminRoleMenuService.updateRoleMenu(rid, menusIds);
         return ResultFactory.buildSuccessResult("更新成功");
     }

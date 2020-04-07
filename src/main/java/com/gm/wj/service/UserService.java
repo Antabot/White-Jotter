@@ -53,10 +53,6 @@ public class UserService {
         return userDAO.getByUsernameAndPassword(username, password);
     }
 
-    public void addOrUpdate(User user) {
-        userDAO.save(user);
-    }
-
     public int register(User user) {
         String username = user.getUsername();
         String name = user.getName();
