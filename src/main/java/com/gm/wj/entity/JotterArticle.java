@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 /**
@@ -23,7 +24,7 @@ public class JotterArticle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @NotEmpty(message = "id 不能为空")
+    @NotNull(message = "id 不能为 null")
     private int id;
 
     /**
