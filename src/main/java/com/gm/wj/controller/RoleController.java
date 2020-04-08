@@ -32,7 +32,7 @@ public class RoleController {
 
     @GetMapping("/api/admin/role")
     public Result listRoles() {
-        return ResultFactory.buildSuccessResult(adminRoleService.list());
+        return ResultFactory.buildSuccessResult(adminRoleService.listWithPermsAndMenus());
     }
 
     @PutMapping("/api/admin/role/status")

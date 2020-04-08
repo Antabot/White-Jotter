@@ -28,14 +28,17 @@ public class UserService {
 
     public List<UserDTO> list() {
         List<User> users = userDAO.findAll();
-        List<AdminRole> roles;
 
-        List<UserDTO> userDTOS = users.stream().map(user -> (UserDTO) new UserDTO().convertFrom(user)).collect(Collectors.toList());
+        // Find all roles in DB to enable JPA persistence context.
+//        List<AdminRole> allRoles = adminRoleService.findAll();
 
-        for (UserDTO userDTO : userDTOS) {
-            roles = adminRoleService.listRolesByUser(userDTO.getUsername());
-            userDTO.setRoles(roles);
-        }
+        List<UserDTO> userDTOS = users
+                .stream().map(user -> (UserDTO) new UserDTO().convertFrom(user)).collect(Collectors.toList());
+
+        userDTOS.forEach(u -> {
+            List<AdminRole> roles = adminRoleService.listRolesByUser(u.getUsername());
+            u.setRoles(roles);
+        });
 
         return userDTOS;
     }

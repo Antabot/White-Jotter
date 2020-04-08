@@ -31,7 +31,7 @@ public class AdminRoleService {
     @Autowired
     AdminMenuService adminMenuService;
 
-    public List<AdminRole> list() {
+    public List<AdminRole> listWithPermsAndMenus() {
         List<AdminRole> roles = adminRoleDAO.findAll();
         List<AdminPermission> perms;
         List<AdminMenu> menus;
@@ -42,6 +42,10 @@ public class AdminRoleService {
             role.setMenus(menus);
         }
         return roles;
+    }
+
+    public List<AdminRole> findAll() {
+        return adminRoleDAO.findAll();
     }
 
 
