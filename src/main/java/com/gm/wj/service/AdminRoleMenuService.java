@@ -38,10 +38,10 @@ public class AdminRoleMenuService {
 
     @Modifying
     @Transactional
-    public void updateRoleMenu(int rid, Map menusIds) {
+    public void updateRoleMenu(int rid, Map<String, List<Integer>> menusIds) {
         adminRoleMenuDAO.deleteAllByRid(rid);
         List<AdminRoleMenu> rms = new ArrayList<>();
-        for (Integer mid : (List<Integer>)menusIds.get("menusIds")) {
+        for (Integer mid : menusIds.get("menusIds")) {
             AdminRoleMenu rm = new AdminRoleMenu();
             rm.setMid(mid);
             rm.setRid(rid);
