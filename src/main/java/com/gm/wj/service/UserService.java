@@ -43,6 +43,10 @@ public class UserService {
         return userDTOS;
     }
 
+    public void addOrUpdate(User user) {
+        userDAO.save(user);
+    }
+
     public boolean isExist(String username) {
         User user = userDAO.findByUsername(username);
         return null != user;
