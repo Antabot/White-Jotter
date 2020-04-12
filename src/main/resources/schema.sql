@@ -23,12 +23,12 @@ CREATE TABLE `admin_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `path` varchar(64) DEFAULT NULL,
   `name` varchar(64) DEFAULT NULL,
-  `name_zh` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `icon_cls` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `name_zh` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `icon_cls` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `component` varchar(64) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Table structure for admin_permission
@@ -63,7 +63,7 @@ CREATE TABLE `admin_role_menu` (
   `rid` int(11) DEFAULT NULL,
   `mid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=194 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=194 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Table structure for admin_role_permission
@@ -126,13 +126,13 @@ DROP TABLE IF EXISTS `jotter_article`;
 CREATE TABLE `jotter_article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `article_title` varchar(255) DEFAULT NULL,
-  `article_content_html` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `article_content_md` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `article_content_html` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `article_content_md` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
   `article_abstract` varchar(255) DEFAULT NULL,
   `article_cover` varchar(255) DEFAULT NULL,
   `article_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------
 -- Table structure for user
