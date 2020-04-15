@@ -75,9 +75,11 @@
 
 `git clone https://github.com/Antabot/White-Jotter`
 
-2.数据库脚本放在后端项目的 `src\main\resources` 目录下，在MySQL中执行数据库脚本  
+2.在 mysql 中创建数据库 `wj`，运行项目，将自动注入数据。如需关闭此功能，请将 `application.properties` 中的 `spring.datasource.initialization-mode=always` 代码删除。
 
-3.数据库配置在后端项目的 `src\main\resources` 目录下的`application.properties` 文件中，mysql 版本为 8.0.15   
+数据库完整脚本 `wj.sql` 放在后端项目的 `src\main\resources` 目录下，也可根据需要自行在 MySQL 中执行数据库脚本。  
+
+3.数据库配置在后端项目的 `src\main\resources` 目录下的`application.properties` 文件中，mysql 版本为 8.0.15   。
 
 4.在IntelliJ IDEA中运行后端项目，为了保证项目成功运行，可以右键点击 `pom.xml` 选择 maven -> reimport ，并重启项目
 
@@ -152,12 +154,10 @@ npm run build
 
 (持续更新中)
 
-# 近期更新
+# 重要更新
 
 ## 2020
-03-17 后端接口全部使用统一返回类，并将返回类中原 data 属性更名为 result    
-03-14 启用 lombok  
-03-11 使用 log4j2 替代原有日志插件   
+04-05 拆分前后端项目  
 01-20 利用开源 markdown 编辑器实现文章展示与管理模块
  
 ---
