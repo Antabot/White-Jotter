@@ -1,5 +1,7 @@
 package com.gm.wj.service;
 
+import com.gm.wj.dao.UserDAO;
+import com.gm.wj.dto.UserDTO;
 import com.gm.wj.entity.AdminRole;
 import com.gm.wj.entity.User;
 import lombok.extern.log4j.Log4j2;
@@ -8,75 +10,53 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.TransactionSystemException;
-import org.springframework.transaction.annotation.Transactional;
+import static org.mockito.Mockito.*;
 
-import javax.validation.ConstraintViolationException;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
 
 @Log4j2
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserServiceTest {
-    @Autowired
+    @Mock
+    private UserDAO userDAO;
+    @Mock
+    private AdminRoleService adminRoleService;
+    @InjectMocks
     private UserService userService;
 
+    List<User> users = new ArrayList<>();
     List<AdminRole> roles = new ArrayList<>();
+    User testUser = User.builder().username("utest").build();
+    AdminRole testRole = AdminRole.builder().name("rtest").build();
 
     @Before
     public void before() {
-        userService.addOrUpdate(User.builder().username("utest").build());
+
     }
 
     @Test
-    @Transactional
-    public void testEdit_Normal() {
-        User user = User.builder().username("utest").email("123@456.com").phone("12312312312").roles(roles).build();
-        userService.editUser(user);
-        Assert.assertThat(userService.findByUsername("utest").getEmail(), is("123@456.com"));
-        Assert.assertThat(userService.findByUsername("utest").getPhone(), is("12312312312"));
-    }
-
-    @Test
-    @Transactional
-    public void testEdit_EmailIsNullOrEmpty() {
-        User user = User.builder().username("utest").email(null).roles(roles).build();
-        userService.editUser(user);
-        Assert.assertThat(userService.findByUsername("utest").getEmail(), nullValue());
-        user.setEmail("");
-        userService.editUser(user);
-        Assert.assertThat(userService.findByUsername("utest").getEmail(), is(""));
-    }
-
-    @Test(expected = TransactionSystemException.class)
-    public void testEdit_InvalidEmail() {
-        User user = User.builder().username("utest").email("123").roles(roles).build();
-        userService.editUser(user);
-    }
-
-    @Test(expected = ConstraintViolationException.class)
-    public void testEdit_InvalidUsernameCase1() {
-        User user = User.builder().username(null).build();
-        userService.addOrUpdate(user);
-    }
-
-    @Test(expected = ConstraintViolationException.class)
-    public void testEdit_InvalidUsernameCase2() {
-        User user = User.builder().username("").build();
-        userService.addOrUpdate(user);
+    public void testList() {
+        users.add(testUser);
+        roles.add(testRole);
+        when(userDAO.findAll()).thenReturn(users);
+        when(adminRoleService.listRolesByUser(testUser.getUsername())).thenReturn(roles);
+        List<UserDTO> userDTOS = userService.list();
+        Assert.assertThat(userDTOS.get(0).getUsername(), is("utest"));
+        Assert.assertThat(userDTOS.get(0).getRoles().get(0).getName(), is("rtest"));
     }
 
     @After
     public void after() {
-        User user = userService.findByUsername("utest");
-        userService.deleteById(user.getId());
+
     }
 }
