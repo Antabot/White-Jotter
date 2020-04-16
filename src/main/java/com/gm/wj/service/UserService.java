@@ -43,10 +43,6 @@ public class UserService {
         return userDTOS;
     }
 
-    public void addOrUpdate(User user) {
-        userDAO.save(user);
-    }
-
     public boolean isExist(String username) {
         User user = userDAO.findByUsername(username);
         return null != user;
@@ -106,14 +102,14 @@ public class UserService {
         userDAO.save(userInDB);
     }
 
-    public void resetPassword(User user) {
+    public User resetPassword(User user) {
         User userInDB = userDAO.findByUsername(user.getUsername());
         String salt = new SecureRandomNumberGenerator().nextBytes().toString();
         int times = 2;
         userInDB.setSalt(salt);
         String encodedPassword = new SimpleHash("md5", "123", salt, times).toString();
         userInDB.setPassword(encodedPassword);
-        userDAO.save(userInDB);
+        return userDAO.save(userInDB);
     }
 
     public void editUser(User user) {
