@@ -1,9 +1,11 @@
 package com.gm.wj.service;
 
+import com.gm.wj.config.RedisConfig;
 import com.gm.wj.dao.BookDAO;
 import com.gm.wj.entity.Book;
 import com.gm.wj.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,7 @@ public class BookService {
     @Autowired
     CategoryService categoryService;
 
+//    @Cacheable(value = RedisConfig.REDIS_KEY_DATABASE)
     public List<Book> list() {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         return bookDAO.findAll(sort);

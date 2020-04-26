@@ -11,6 +11,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * Category entity.
  *
@@ -22,7 +24,7 @@ import lombok.ToString;
 @Table(name = "category")
 @ToString
 @JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
-public class Category {
+public class Category{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
