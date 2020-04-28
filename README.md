@@ -61,7 +61,7 @@
 1.Spring Boot  
 2.Spring Data + JPA  
 3.MySQL  
-4.Shiro
+4.Shiro  
 5.Redis
 
 # 部署方法
