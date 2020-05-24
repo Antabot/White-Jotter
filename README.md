@@ -22,19 +22,19 @@
 
 # 整体效果
 
-## 1.首页
+## 首页
 
 作为展示页面，包括开发这个项目的主要参考资料、近期更新和 Slogan
 
 ![首页](https://img-blog.csdnimg.cn/20190403215932913.png)
 
-## 2.图书馆
+## 图书馆
 
 提供图书信息展示功能
 
 ![图书馆](https://i.loli.net/2019/12/03/AGLbIupct68ThBD.png)
 
-## 3.笔记本
+## 笔记本
 
 提供笔记、博文展示功能
 
@@ -42,27 +42,42 @@
 
 ![文章内容.png](https://i.loli.net/2020/01/20/DQgbpy2LKhiZc4x.png)
 
-## 4.后台管理
+## 后台管理
 
 包含 dashboard、内容管理、用户及权限管理等
 
 ![后台](https://img-blog.csdnimg.cn/20191202200516251.png)
 
-# 技术栈
+# 架构图
 
-## 1.前端技术栈
+- **应用架构**
 
-1.Vue  
+![应用架构](https://img-blog.csdnimg.cn/20200524211402855.JPG)
+
+- **技术架构**
+
+![技术架构](https://img-blog.csdnimg.cn/20200524211507112.JPG)
+
+# 主要技术栈
+
+## 前端
+
+1.Vue.js  
 2.ElementUI  
 3.axios   
 
-## 2.后端技术栈
+## 后端
 
 1.Spring Boot  
-2.Spring Data + JPA  
-3.MySQL  
-4.Shiro  
-5.Redis
+2.Apache Shiro
+3.Apache Log4j2
+4.Spring Data JPA
+5.Spring Data Redis
+
+## 数据库
+
+1.MySQL
+2.Redis
 
 # 部署方法
 
