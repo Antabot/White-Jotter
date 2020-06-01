@@ -1,17 +1,17 @@
 package com.gm.wj.service;
 
-import com.gm.wj.config.RedisConfig;
 import com.gm.wj.dao.BookDAO;
 import com.gm.wj.entity.Book;
 import com.gm.wj.entity.Category;
+import com.gm.wj.redis.RedisService;
+import com.gm.wj.util.CastUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.processing.Processor;
 import java.util.List;
+import java.util.Timer;
 
 /**
  * @author Evan
@@ -20,22 +20,44 @@ import java.util.List;
 @Service
 public class BookService {
     @Autowired
-    BookDAO bookDAO;
+    private BookDAO bookDAO;
     @Autowired
-    CategoryService categoryService;
+    private CategoryService categoryService;
+    @Autowired
+    private RedisService redisService;
 
 //    @Cacheable(value = RedisConfig.REDIS_KEY_DATABASE)
     public List<Book> list() {
-        Sort sort = new Sort(Sort.Direction.DESC, "id");
-        return bookDAO.findAll(sort);
+        String key = "booklist";
+        List<Book> books = CastUtils.castList(redisService.get(key), Book.class);
+        if (books == null) {
+            Sort sort = new Sort(Sort.Direction.DESC, "id");
+            books = bookDAO.findAll(sort);
+            redisService.set(key, books);
+        }
+        return books;
     }
 
     public void addOrUpdate(Book book) {
+        redisService.delete("booklist");
         bookDAO.save(book);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        redisService.delete("booklist");
     }
 
     public void deleteById(int id) {
+        redisService.delete("booklist");
         bookDAO.deleteById(id);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        redisService.delete("booklist");
     }
 
     public List<Book> listByCategory(int cid) {

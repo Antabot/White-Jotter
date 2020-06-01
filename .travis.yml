@@ -18,6 +18,7 @@ before_install:
 
 sevices:
   - mysql
+  - redis-server --port 6379
 
 script:
   - ./mvnw clean install -B

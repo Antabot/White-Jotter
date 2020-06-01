@@ -76,7 +76,7 @@
 
 ## 数据库
 
-1.MySQL
+1.MySQL  
 2.Redis
 
 # 部署方法
@@ -95,7 +95,7 @@
 
 数据库完整脚本 `wj.sql` 放在后端项目的 `src\main\resources` 目录下，也可根据需要自行在 MySQL 中执行数据库脚本。  
 
-Redis 端口为 6379（默认端口），密码为空。
+运行项目前请启动 Redis 服务，端口为 6379（默认端口），密码为空。
 
 3.数据库配置在后端项目的 `src\main\resources` 目录下的`application.properties` 文件中，mysql 版本为 8.0.15   。
 
