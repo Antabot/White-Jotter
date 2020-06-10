@@ -1,6 +1,7 @@
 package com.gm.wj.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,10 @@ public class RedisService {
     public Object get(String key) {
         return redisTemplate.opsForValue().get(key);
     }
+
+//    public <T> PageImpl<T> getPage(String key) {
+//        return redisTemplate.opsForValue().get(key);
+//    }
 
     public Boolean delete(String key) {
         return redisTemplate.delete(key);

@@ -8,8 +8,7 @@ import java.util.List;
  * @date 2020/5/31 19:04
  */
 public class CastUtils {
-    public static <T> List<T> castList(Object obj, Class<T> clazz)
-    {
+    public static <T> List<T> objectConvertToList(Object obj, Class<T> clazz) {
         List<T> result = new ArrayList<T>();
         if(obj instanceof List<?>)
         {
