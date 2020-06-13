@@ -1,13 +1,11 @@
 package com.gm.wj.service;
 
-import com.gm.wj.config.RedisConfig;
 import com.gm.wj.dao.BookDAO;
 import com.gm.wj.entity.Book;
 import com.gm.wj.entity.Category;
 import com.gm.wj.redis.RedisService;
 import com.gm.wj.util.CastUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +39,7 @@ public class BookService {
         return books;
     }
 
+//    直接用注解实现缓存
 //    @Cacheable(value = RedisConfig.REDIS_KEY_DATABASE)
 //    public List<Book> list() {
 //        List<Book> books;

@@ -10,6 +10,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 /**
  * @author Evan
  * @date 2020/1/14 21:00
@@ -46,15 +48,31 @@ public class JotterArticleService {
 
 
     public JotterArticle findById(int id) {
-        return jotterArticleDAO.findById(id);
+        JotterArticle article;
+        String key = "article:" + id;
+        Object articleCache = redisService.get(key);
+
+        if (articleCache == null) {
+            article = jotterArticleDAO.findById(id);
+            redisService.set(key, article);
+        } else {
+            article = (JotterArticle) articleCache;
+        }
+        return article;
     }
 
     public void addOrUpdate(JotterArticle article) {
+        redisService.delete("article" + article.getId());
+        Set<String> keys = redisService.getKeysByPattern("articlepage*");
+        redisService.delete(keys);
+
         jotterArticleDAO.save(article);
     }
 
     public void delete(int id) {
+        redisService.delete("article:" + id);
+        Set<String> keys = redisService.getKeysByPattern("articlepage*");
+        redisService.delete(keys);
         jotterArticleDAO.deleteById(id);
     }
-
 }
