@@ -72,16 +72,16 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- elastic search -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>-->
+<!--		</dependency>-->
 		<!-- 用了 elasticsearch 就要加这么一个，不然要com.sun.jna.Native 错误 -->
-		<dependency>
-			<groupId>com.sun.jna</groupId>
-			<artifactId>jna</artifactId>
-			<version>3.0.9</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.sun.jna</groupId>-->
+<!--			<artifactId>jna</artifactId>-->
+<!--			<version>3.0.9</version>-->
+<!--		</dependency>-->
 		<!-- tomcat的支持.-->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
@@ -134,6 +134,11 @@
 			<groupId>cn.hutool</groupId>
 			<artifactId>hutool-all</artifactId>
 			<version>5.2.5</version>
+		</dependency>
+		<!-- actuator -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
     </dependencies>
 	<properties>
