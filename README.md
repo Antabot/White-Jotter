@@ -4,16 +4,13 @@
 
 ![lisense](https://img.shields.io/github/license/Antabot/White-Jotter)
 ![release](https://img.shields.io/github/v/release/Antabot/White-Jotter)
-![Build Status](https://www.travis-ci.org/Antabot/White-Jotter.svg?branch=master)
 
 
 这是一个简单的前后端分离项目，主要采用 Vue.js + SpringBoot 技术栈开发。
 
 除了用作入门练习，我还希望该项目可以作为一些常见 Web 项目的脚手架，帮助大家简化搭建网站的流程。之所以叫白卷，是因为它从 0 开始，会随着时间的推移逐渐完善。
 
-前端地址：[https://github.com/Antabot/White-Jotter-Vue](https://github.com/Antabot/White-Jotter-Vue)
-
-后端地址：[https://github.com/Antabot/White-Jotter](https://github.com/Antabot/White-Jotter)
+https://github.com/Antabot/White-Jotter)
 
 欢迎加入微信圈子 【开发者】 分享、讨论学习经验：
 
@@ -86,12 +83,6 @@
 
 1.clone 项目到本地
 
-前端：
-
-`git clone https://github.com/Antabot/White-Jotter-Vue`
-
-后端：
-
 `git clone https://github.com/Antabot/White-Jotter`
 
 2.在 mysql 中创建数据库 `wj`，运行项目，将自动注入数据。如需关闭此功能，请将 `application.properties` 中的 `spring.datasource.initialization-mode=always` 代码删除。
@@ -117,7 +108,7 @@ npm install
 # 在 localhost:8080 启动项目
 npm run dev
 
-```  
+```
 
 由于在 `wj-vue` 项目中已经配置了端口转发，将数据转发到SpringBoot上，因此项目启动之后，在浏览器中输入 `http://localhost:8080` 就可以访问我们的前端项目了，所有的请求通过端口转发将数据传到 SpringBoot 中（注意此时不要关闭 SpringBoot 项目）。
 
@@ -125,7 +116,7 @@ npm run dev
 
 ```
 npm run build
-```  
+```
 
 该命令执行成功之后， `wj-vue` 目录下生成一个 `dist` 文件夹，可以将该文件夹中的两个文件 `static` 和 `index.html` 拷贝到 `wj` 项目中 `resources/static/` 目录下，然后直接运行 `wj` 项目，访问 `http://localhost:8443` ，实际上是把前端打包后作为静态文件，但不推荐使用这种方式。
 
@@ -178,9 +169,9 @@ npm run build
 # 重要更新
 
 ## 2020
-04-05 拆分前后端项目  
+
 01-20 利用开源 markdown 编辑器实现文章展示与管理模块
- 
+
 ---
 
 ## 2019 
