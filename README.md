@@ -12,13 +12,12 @@
 
 https://github.com/Antabot/White-Jotter)
 
-欢迎加入微信圈子 【开发者】 分享、讨论学习经验：
-
-![圈子](https://i.loli.net/2020/01/17/HySWdM7wDfF8EKC.png)
 
 感谢 JetBrains 提供全家桶开源许可，IDEA 确实是 Java 领域最好用的 IDE。
 
 <a href="https://www.jetbrains.com/?from=White-Jotter"><img src="https://i.loli.net/2020/06/15/wfyV6jGX8F9RPhB.png" width = "200" height = "216" alt="" align=center /></a>
+
+如果大家对 0 前端代码快速开发企业级后台管理系统感兴趣，可以关注 [【Erupt Framework 🚀 通用后台管理项目】](https://github.com/erupts/erupt)
 
 # 整体效果
 
