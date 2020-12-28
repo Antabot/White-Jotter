@@ -10,14 +10,6 @@
 
 除了用作入门练习，我还希望该项目可以作为一些常见 Web 项目的脚手架，帮助大家简化搭建网站的流程。之所以叫白卷，是因为它从 0 开始，会随着时间的推移逐渐完善。
 
-前端地址：[https://github.com/Antabot/White-Jotter-Vue](https://github.com/Antabot/White-Jotter-Vue)
-
-后端地址：[https://github.com/Antabot/White-Jotter](https://github.com/Antabot/White-Jotter)
-
-欢迎加入微信圈子 【开发者】 分享、讨论学习经验：
-
-![圈子](https://i.loli.net/2020/01/17/HySWdM7wDfF8EKC.png)
-
 感谢 JetBrains 提供全家桶开源许可，IDEA 确实是 Java 领域最好用的 IDE。
 
 <a href="https://www.jetbrains.com/?from=White-Jotter"><img src="https://i.loli.net/2020/06/15/wfyV6jGX8F9RPhB.png" width = "200" height = "216" alt="" align=center /></a>
