@@ -6,9 +6,7 @@
 ![release](https://img.shields.io/github/v/release/Antabot/White-Jotter)
 
 
-这是一个简单的前后端分离项目，主要采用 Vue.js + SpringBoot 技术栈开发。
-
-除了用作入门练习，我还希望该项目可以作为一些常见 Web 项目的脚手架，帮助大家简化搭建网站的流程。之所以叫白卷，是因为它从 0 开始，会随着时间的推移逐渐完善。
+这是一个简单的项目，旨在让新入门 web 的开发者体验使用 Vue + Java(Spring Boot) + Mysql 以前后端分离模式完成开发的流程。由于开发过程中并未充分考虑安全防护问题，并不建议将该项目用于生产环境。
 
 https://github.com/Antabot/White-Jotter)
 
@@ -16,8 +14,6 @@ https://github.com/Antabot/White-Jotter)
 感谢 JetBrains 提供全家桶开源许可，IDEA 确实是 Java 领域最好用的 IDE。
 
 <a href="https://www.jetbrains.com/?from=White-Jotter"><img src="https://i.loli.net/2020/06/15/wfyV6jGX8F9RPhB.png" width = "200" height = "216" alt="" align=center /></a>
-
-如果大家对 0 前端代码快速开发企业级后台管理系统感兴趣，可以关注 [【Erupt Framework 🚀 通用后台管理项目】](https://github.com/erupts/erupt)
 
 # 整体效果
 
@@ -123,7 +119,7 @@ npm run build
 
 # 教程
 
-我在 CSDN 上分享了开发这个项目的教程，有兴趣的小伙伴可以点击下面的链接查看。  
+我在 CSDN 上分享了开发这个项目的教程：  
 
 1.[项目简介](https://blog.csdn.net/Neuf_Soleil/article/details/88925013)
 
